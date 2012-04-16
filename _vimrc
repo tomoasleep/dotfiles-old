@@ -21,8 +21,12 @@ Bundle 'taglist.vim'
 Bundle 'Source-Explorer-srcexpl.vim'
 Bundle 'Align'
 Bundle 'ZenCoding.vim'
-
-
+Bundle 'proton'
+""Bundle 'CSApprox'
+Bundle 'pyte'
+Bundle 'twilight256.vim'
+Bundle 'twilight'
+Bundle 'altercation/vim-colors-solarized'
 
 
 ""Bundle 'SuperTab-continued.'
@@ -44,7 +48,7 @@ Bundle 'm2ym/rsense'
 Bundle "bouzuya/vim-ibus"
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Shougo/vimshell.git'
-Bundle 'Shougo/vimproc'
+""Bundle 'Shougo/vimproc'
 
 
 " github 以外のリポジトリ (3)
@@ -141,32 +145,53 @@ nnoremap ,F :call FilteringNew().parseQuery(input('>'), '|')
 nnoremap ,g :call FilteringGetForSource()
 
 ""vim-ibus
-if has('gui_running')
-else
-inoremap <silent> <Esc> <Esc>:<C-u>call ibus#disable()<CR>
-inoremap <silent> <C-c> <Esc>:<C-u>call ibus#disable()<CR>
-noremap <silent> <Esc> :<C-u>call ibus#disable()<CR>
-noremap <silent> <C-c> :<C-u>call ibus#disable()<CR>
+"if has('gui_running')
+"else
+"inoremap <silent> <Esc> <Esc>:<C-u>call ibus#disable()<CR>
+"inoremap <silent> <C-c> <Esc>:<C-u>call ibus#disable()<CR>
+"noremap <silent> <Esc> :<C-u>call ibus#disable()<CR>
+"noremap <silent> <C-c> :<C-u>call ibus#disable()<CR>
 
+"endif
+
+
+
+"---------------------------------------------------------------------------
+" 日本語入力に関する設定:
+"
+if has('multi_byte_ime') || has('xim')
+  " IME ON時のカーソルの色を設定(設定例:紫)
+  highlight CursorIM guibg=Purple guifg=NONE
+  " 挿入モード・検索モードでのデフォルトのIME状態設定
+  set iminsert=0 imsearch=0
+  if has('xim') && has('GUI_GTK')
+    " XIMの入力開始キーを設定:
+    " 下記の s-space はShift+Spaceの意味でkinput2+canna用設定
+    "set imactivatekey=s-space
+  endif
+  " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
+  inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 endif
+
+
 
 set mouse=a
 set ttymouse=xterm2
 
 
-if &term =~ "xterm"
-    let &t_SI .= "\e[?2004h"
-	let &t_EI .= "\e[?2004l"
-	let &pastetoggle = "\e[201~"
-			
-	function XTermPasteBegin(ret)
-			set paste
-			return a:ret
-	endfunction
-
-	inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-endif
-
+"if &term =~ "xterm"
+"    let &t_SI .= "\e[?2004h"
+"	let &t_EI .= "\e[?2004l"
+"	let &pastetoggle = "\e[201~"
+"			
+"	function XTermPasteBegin(ret)
+"			set paste
+"			return a:ret
+"	endfunction
+"
+"	inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+"endif
+"
 
 ""if &term =~ "xterm"
 ""		let &t_ti .= "\e[?2004h"
@@ -195,18 +220,18 @@ function! SOLSpaceHilight()
 endf
 "全角スペースをハイライトさせる。
 function! JISX0208SpaceHilight()
-    syntax match JISX0208Space "　" display containedin=ALL
-    highlight JISX0208Space term=underline ctermbg=LightCyan
+""    syntax match JISX0208Space "　" display containedin=ALL
+""    highlight JISX0208Space term=underline ctermbg=LightCyan
 endf
 "syntaxの有無をチェックし、新規バッファと新規読み込み時にハイライトさせる
-if has("syntax")
-    syntax on
-        augroup invisible
-        autocmd! invisible
-        autocmd BufNew,BufRead * call SOLSpaceHilight()
-        autocmd BufNew,BufRead * call JISX0208SpaceHilight()
-    augroup END
-endif
+"if has("syntax")
+"    syntax on
+"        augroup invisible
+"        autocmd! invisible
+"        autocmd BufNew,BufRead * call SOLSpaceHilight()
+"        autocmd BufNew,BufRead * call JISX0208SpaceHilight()
+"    augroup END
+"endif
 
 ""taglist
 set tags=tags
@@ -214,27 +239,24 @@ set tags=tags
 
 ""Powerline
 let g:Powerline_symbols = 'fancy'
-set t_Co=256
-
-
 
 set noexpandtab
 
 
-imap OA <Up>
-imap OB <Down>
-imap OC <Right>
-imap OD <Left>
+"imap OA <Up>
+"imap OB <Down>
+"imap OC <Right>
+"imap OD <Left>
 
-noremap [A <Up>
-noremap [C <Right>
-noremap [B <Down>
-noremap [D <Left>
+"noremap [A <Up>
+"noremap [C <Right>
+"noremap [B <Down>
+"noremap [D <Left>
 
-noremap! [A <Up>
-noremap! [C <Right>
-noremap! [B <Down>
-noremap! [D <Left>
+"noremap! [A <Up>
+"noremap! [C <Right>
+"noremap! [B <Down>
+"noremap! [D <Left>
 
 
 ""Taglist.vim
@@ -248,3 +270,44 @@ nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 
 ""Unite.vim
 imap <C-k> <Plug>(neocomplcache_start_unite_complete)
+
+" カーソル行をハイライト
+set cursorline
+" " カレントウィンドウにのみ罫線を引く
+augroup cch
+autocmd! cch
+autocmd WinLeave * set nocursorline
+autocmd WinEnter,BufRead * set cursorline
+augroup END
+hi clear CursorLine
+hi CursorLine gui=underline
+highlight CursorLine ctermbg=white guibg=black
+
+""colorscheme pyte
+
+
+""Solarized
+syntax enable  
+let g:solarized_termcolors=256
+""set background=dark  
+""light にしたければ下  
+set background=light  
+colorscheme solarized  
+
+
+
+""tabでのcomp設定
+function InsertTabWrapper()
+	if pumvisible()
+		return "\<c-n>"
+	endif
+	let col = col('.') - 1
+	if !col || getline('.')[col - 1] !~ '\k\|<\|/'
+		return "\<tab>"
+	elseif exists('&omnifunc') && &omnifunc == ''
+		return "\<c-n>"
+	else
+		return "\<c-x>\<c-o>"
+	endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
