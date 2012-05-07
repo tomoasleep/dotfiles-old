@@ -12,6 +12,7 @@ Bundle "fugitive.vim"
 Bundle "AutoClose"
 Bundle "The-NERD-tree"
 Bundle "endwise.vim"
+Bundle 'TwitVim'
 ""Bundle 'ruby.vim'
 Bundle 'neco-look'
 Bundle 'surround.vim'
@@ -21,12 +22,17 @@ Bundle 'taglist.vim'
 Bundle 'Source-Explorer-srcexpl.vim'
 Bundle 'Align'
 Bundle 'ZenCoding.vim'
-Bundle 'proton'
+""Bundle 'proton'
 ""Bundle 'CSApprox'
 Bundle 'pyte'
-Bundle 'twilight256.vim'
-Bundle 'twilight'
+""Bundle 'twilight256.vim'
+""Bundle 'twilight'
 Bundle 'altercation/vim-colors-solarized'
+""Bundle 'Solarized'
+Bundle 'java_getset.vim'
+Bundle 'matchit.zip'
+Bundle 'ruby-matchit'
+""Bundle 'Vim-JDE'
 
 
 ""Bundle 'SuperTab-continued.'
@@ -45,11 +51,14 @@ Bundle "tsaleh/vim-matchit"
 Bundle 'thinca/vim-quickrun'
 Bundle "ujihisa/neco-rubymf"
 Bundle 'm2ym/rsense'
-Bundle "bouzuya/vim-ibus"
+""Bundle "bouzuya/vim-ibus"
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Shougo/vimshell.git'
-""Bundle 'Shougo/vimproc'
-
+Bundle 'Shougo/vimproc'
+Bundle "Shougo/neocomplcache-snippets-complete"
+""Bundle 'vim-scripts/javacomplete'
+Bundle "scrooloose/syntastic"
+Bundle "kana/vim-smartchr"
 
 " github 以外のリポジトリ (3)
 Bundle "git://git.wincent.com/command-t.git"
@@ -87,11 +96,39 @@ if !exists('g:neocomplcache_omni_patterns')
  let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+" 補完をキャンセル
+inoremap <expr><C-e>  neocomplcache#close_popup()
+
+""let g:neocomplcache_enable_insert_char_pre = 1
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+
+" SuperTab like snippets behavior.
+imap <expr><C-TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><C-CR> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<C-CR>"
+
+" For snippet_complete marker.
+if has('conceal')
+		set conceallevel=2 concealcursor=i
+endif
+imap <C-l>    <Plug>(neocomplcache_snippets_expand)
+smap <C-l>    <Plug>(neocomplcache_snippets_expand)
+
+
+imap <C-s>  <Plug>(neocomplcache_start_unite_snippet)
+
+noremap es :<C-u>NeoComplCacheEditSnippets<CR>
+
+
+
 
 """ ref.vim
 nmap ,ra :<C-u>Ref alc<Space>
 
+let g:ref_refe_cmd = "/Users/kamadoinc/Documents/Reference/ruby-refm-1.9.2-dynamic-20110729/refe-1_9_2"
 let g:ref_alc_start_linenumber = 39 " 表示する行数
+let g:ref_phpmanual_path = "/Users/kamadoinc/Documents/Reference/php-chunked-xhtml"
 
 "<C-Space>でomni補完
 imap <C-Space> <C-x><C-o>
@@ -139,10 +176,12 @@ set showcmd
 "set timeoutlen=100     " timeout after 100 msec"
 
 
-"Quick filter
-nnoremap ,f :call FilteringNew().addToParameter('alt', @/)
-nnoremap ,F :call FilteringNew().parseQuery(input('>'), '|')
-nnoremap ,g :call FilteringGetForSource()
+"Quich filter
+nnoremap ,f :call FilteringNew().addToParameter('alt', @/).run()<CR>
+nnoremap ,F :call FilteringNew().parseQuery(input('>'), '|').run()<CR>
+nnoremap ,g :call FilteringGetForSource().return()<CR>
+" filtering.vimの機能を利用。カーソル下文字の検索
+nmap ,r :call Gather(expand("<cword>"), 0)<CR>:echo<CR>
 
 ""vim-ibus
 "if has('gui_running')
@@ -169,8 +208,11 @@ if has('multi_byte_ime') || has('xim')
     " 下記の s-space はShift+Spaceの意味でkinput2+canna用設定
     "set imactivatekey=s-space
   endif
-  " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
-  inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+  " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除 
+  	inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+	if has("gui_running")
+			inoremap <silent> <Esc> <Esc>:set noimdisable<CR>
+	endif
 endif
 
 
@@ -236,6 +278,11 @@ endf
 ""taglist
 set tags=tags
 
+""srcexpl.vim
+let g:SrcExpl_UpdateTags = 1
+nnoremap <silent> <C-z> :SrcExplToggle<CR>
+
+
 
 ""Powerline
 let g:Powerline_symbols = 'fancy'
@@ -258,9 +305,11 @@ set noexpandtab
 "noremap! [B <Down>
 "noremap! [D <Left>
 
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nmap <C-c><C-c> :nohlsearch<CR><Esc>
 
 ""Taglist.vim
-nnoremap <silent> <F8> :TlistToggle<CR>
+nnoremap <silent> <C-s> :TlistToggle<CR>
 
 ""Trinity.vim
 nnoremap <silent> <C-l> :TrinityToggleAll<CR>
@@ -270,6 +319,10 @@ nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 
 ""Unite.vim
 imap <C-k> <Plug>(neocomplcache_start_unite_complete)
+
+""twitvim
+let twitvim_login_b64 = "bmVtdW5lbXUzZGVzdTphc2xlZXAzMjk="
+let twitvim_count = 100
 
 " カーソル行をハイライト
 set cursorline
@@ -288,12 +341,23 @@ highlight CursorLine ctermbg=white guibg=black
 
 ""Solarized
 syntax enable  
-let g:solarized_termcolors=256
+""let g:solarized_termcolors=256
 ""set background=dark  
 ""light にしたければ下  
 set background=light  
-colorscheme solarized  
+if has("gui_running")
+else
+		let g:solarized_termcolors=256
+endif
+let g:solarized_degrade=0
+let g:solarized_bold=1
+let g:solarized_underline=1
+let g:solarized_italic=1
+let g:solarized_termtrans=0
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
 
+colorscheme solarized  
 
 
 ""tabでのcomp設定
@@ -311,3 +375,88 @@ function InsertTabWrapper()
 	endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
+""カレントディレクトリの移動
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
+function! s:ChangeCurrentDir(directory, bang)
+    if a:directory == ''
+        lcd %:p:h
+    else
+        execute 'lcd' . a:directory
+    endif
+
+    if a:bang == ''
+        pwd
+    endif
+endfunction
+
+" Change current directory.
+nnoremap <silent> <Space>cd :<C-u>CD<CR>
+
+""smartchr
+inoremap <expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+
+
+""javacomp
+""autocmd FileType java :setlocal omnifunc=javacomplete#Complete
+""autocmd FileType java :setlocal completefunc=javacomplete#CompleteParamsInfo
+
+""syntastic
+let g:syntastic_check_on_open = 1
+let g:syntastic_echo_current_error = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_enable_balloons = 1
+let g:syntastic_enable_highlighting = 1
+""let g:syntastic_auto_jump = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_loc_list_height = 5
+ 
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['php'],
+                           \ 'passive_filetypes': [] }
+ 
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+
+"[JAVA] :Makeでコンパイル
+autocmd FileType java :command! Make call s:Make()
+function! s:Make()
+		:w
+		let path = expand("%")
+		let syn = "javac ".path
+		let dpath = split(path,".java$")
+		let ret = system(syn)
+		if ret == ""
+				:echo "=======\r\nCompile Success"
+		else
+				:echo "=======\r\nCompile Failure\r\n".ret 
+		endif
+endfunction
+
+"[JAVA] :Doでコンパイル後のファイルを実行 
+autocmd FileType java :command! Do call s:Do()
+function! s:Do()
+		let path = expand("%")
+		let dpath = split(path,".java$")
+		let syn = "java ".dpath[0]
+		let ret = system(syn)
+		:echo "=======\r\n実行結果:\r\n".ret
+endfunction
+
+"[JAVA] :Exeでコンパイルしてから実行
+autocmd FileType java :command! Exe call s:Javac()
+function! s:Javac()
+		:w
+		let path = expand("%")
+		let syn = "javac ".path
+		let dpath = split(path,".java$")
+		let ret = system(syn)
+		if ret == ""
+				:echo "=======\r\nCompile Success"
+				let syn = "java ".dpath[0]
+				let ret = system(syn)
+				:echo "=======\r\n実行結果:\r\n".ret
+		else
+				:echo "=======\r\nCompile Failure\r\n".ret
+		endif
+endfunction
+au FileType java :set makeprg=javac\ %
