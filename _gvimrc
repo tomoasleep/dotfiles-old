@@ -53,3 +53,4 @@ au FileType java nmap <F5> :call CompileJava()<CR>
 "javaの辞書ファイルをセット
 au FileType java set dictionary=j2se14.dict
 
+set imdisable
