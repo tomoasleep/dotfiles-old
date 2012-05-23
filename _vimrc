@@ -178,7 +178,9 @@ set showcmd
 
 "Quich filter
 nnoremap ,f :call FilteringNew().addToParameter('alt', @/).run()<CR>
-nnoremap ,F :call FilteringNew().parseQuery(input('>'), '|').run()<CR>
+if has('gui_running')
+	nnoremap ,F :call FilteringNew().parseQuery(input('>'), '|').run()<CR>
+endif
 nnoremap ,g :call FilteringGetForSource().return()<CR>
 " filtering.vimの機能を利用。カーソル下文字の検索
 nmap ,r :call Gather(expand("<cword>"), 0)<CR>:echo<CR>
@@ -394,7 +396,7 @@ endfunction
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 ""smartchr
-inoremap <expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+""inoremap <expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 
 
 ""javacomp
@@ -460,3 +462,5 @@ function! s:Javac()
 		endif
 endfunction
 au FileType java :set makeprg=javac\ %
+
+set notitle
