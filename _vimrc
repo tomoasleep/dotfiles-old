@@ -9,7 +9,7 @@ call vundle#rc()
 ""Bundle 'css_color.vim'
 Bundle "unite.vim"
 Bundle "fugitive.vim"
-Bundle "AutoClose"
+""Bundle "AutoClose"
 Bundle "The-NERD-tree"
 Bundle "endwise.vim"
 Bundle 'TwitVim'
@@ -101,8 +101,8 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 
 ""let g:neocomplcache_enable_insert_char_pre = 1
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+imap <C-m>     <Plug>(neocomplcache_snippets_expand)
+smap <C-m>     <Plug>(neocomplcache_snippets_expand)
 
 " SuperTab like snippets behavior.
 imap <expr><C-TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -112,8 +112,8 @@ imap <expr><C-CR> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug
 if has('conceal')
 		set conceallevel=2 concealcursor=i
 endif
-imap <C-l>    <Plug>(neocomplcache_snippets_expand)
-smap <C-l>    <Plug>(neocomplcache_snippets_expand)
+imap <C-m>    <Plug>(neocomplcache_snippets_expand)
+smap <C-m>    <Plug>(neocomplcache_snippets_expand)
 
 
 imap <C-s>  <Plug>(neocomplcache_start_unite_snippet)
@@ -291,11 +291,24 @@ let g:Powerline_symbols = 'fancy'
 
 set noexpandtab
 
+inoremap <C-k> <Up>
+inoremap <C-j> <down>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 
-"imap OA <Up>
-"imap OB <Down>
-"imap OC <Right>
-"imap OD <Left>
+""#BackSpaceもDeleteも遠すぎ。俺には押せない
+inoremap <C-u> <BS>
+inoremap <C-f> <BS>
+inoremap <C-i> <Del>
+
+""#現在行の下に空行入れたくなることってよくあるよね？
+inoremap <C-o> <ESC>o
+
+
+imap OA <Up>
+imap OB <Down>
+imap OC <Right>
+imap OD <Left>
 
 "noremap [A <Up>
 "noremap [C <Right>
@@ -320,7 +333,7 @@ nnoremap <silent> <C-l> :TrinityToggleAll<CR>
 nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 
 ""Unite.vim
-imap <C-k> <Plug>(neocomplcache_start_unite_complete)
+imap <C-.> <Plug>(neocomplcache_start_unite_complete)
 
 ""twitvim
 let twitvim_login_b64 = "bmVtdW5lbXUzZGVzdTphc2xlZXAzMjk="
