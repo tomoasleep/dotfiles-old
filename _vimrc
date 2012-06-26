@@ -77,10 +77,13 @@ set helplang=ja,en
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
 let g:NeoComplCache_SmartCase = 1
+let g:neocomplcache_enable_smart_case = 1
 " キャメルケース補完を有効にする
 let g:NeoComplCache_EnableCamelCaseCompletion = 1
+let g:neocomplcache_enable_camel_case_completion = 1
 " アンダーバー補完を有効にする
 let g:NeoComplCache_EnableUnderbarCompletion = 1
+let g:neocomplcache_enable_underbar_completion = 1
 " シンタックスファイルの補完対象キーワードとする最小の長さ
 let g:NeoComplCache_MinSyntaxLength = 3
 " プラグイン毎の補完関数を呼び出す文字数
@@ -96,6 +99,13 @@ if !exists('g:neocomplcache_omni_patterns')
  let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
 " 補完をキャンセル
 inoremap <expr><C-e>  neocomplcache#close_popup()
 
@@ -103,6 +113,8 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 " Plugin key-mappings.
 imap <C-m>     <Plug>(neocomplcache_snippets_expand)
 smap <C-m>     <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " SuperTab like snippets behavior.
 imap <expr><C-TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -117,6 +129,7 @@ smap <C-m>    <Plug>(neocomplcache_snippets_expand)
 
 
 imap <C-s>  <Plug>(neocomplcache_start_unite_snippet)
+imap <C-q>  <Plug>(neocomplcache_start_unite_quick_match)
 
 noremap es :<C-u>NeoComplCacheEditSnippets<CR>
 
@@ -374,7 +387,6 @@ let g:solarized_visibility="high"
 
 colorscheme solarized  
 
-
 ""tabでのcomp設定
 function InsertTabWrapper()
 	if pumvisible()
@@ -390,6 +402,7 @@ function InsertTabWrapper()
 	endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
 
 ""カレントディレクトリの移動
 command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
@@ -475,5 +488,15 @@ function! s:Javac()
 		endif
 endfunction
 au FileType java :set makeprg=javac\ %
+
+function! s:fwrap()
+if has("set nowrap?")
+	noremap <F5> wrap
+else 
+	set nowrap
+endif
+endfunction
+
+noremap <F5> :call s:fwrap()<CR>
 
 set notitle
