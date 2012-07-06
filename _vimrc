@@ -41,6 +41,12 @@ Bundle 'ruby-matchit'
 
 "Bundle "project.vim"
 " github の任意のリポジトリ (2)"
+Bundle "Shougo/unite.vim"
+Bundle "thinca/vim-unite-history"
+Bundle "tsukkee/unite.tag"
+Bundle "h1mmesuke/unite-tag"
+Bundle "Sixeight/unite-grep"
+Bundle "tsukkee/unite-help"
 Bundle "tpope/vim-rails" 
 Bundle "tpope/vim-fugitive"
 Bundle "thinca/vim-ref"
@@ -192,7 +198,7 @@ set showcmd
 "Quich filter
 nnoremap ,f :call FilteringNew().addToParameter('alt', @/).run()<CR>
 if has('gui_running')
-	nnoremap ,F :call FilteringNew().parseQuery(input('>'), '|').run()<CR>
+	"nnoremap ,F :call FilteringNew().parseQuery(input('>'), '|').run()<CR>
 endif
 nnoremap ,g :call FilteringGetForSource().return()<CR>
 " filtering.vimの機能を利用。カーソル下文字の検索
@@ -348,6 +354,21 @@ nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 ""Unite.vim
 imap <C-.> <Plug>(neocomplcache_start_unite_complete)
 
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <C-n>f :<C-u>Unite -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" 全部乗せ
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+" 起動時にインサートモードで開始
+let g:unite_enable_start_insert = 1
+
 ""twitvim
 let twitvim_login_b64 = "bmVtdW5lbXUzZGVzdTphc2xlZXAzMjk="
 let twitvim_count = 100
@@ -500,3 +521,7 @@ endfunction
 noremap <F5> :call s:fwrap()<CR>
 
 set notitle
+
+au FileType ruby set ts=2 sw=2 expandtab
+
+set nowrap
