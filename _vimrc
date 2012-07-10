@@ -43,8 +43,8 @@ Bundle 'ruby-matchit'
 " github の任意のリポジトリ (2)"
 Bundle "Shougo/unite.vim"
 Bundle "thinca/vim-unite-history"
-Bundle "tsukkee/unite.tag"
-Bundle "h1mmesuke/unite-tag"
+"Bundle "tsukkee/unite.tag"
+"Bundle "h1mmesuke/unite-tag"
 Bundle "Sixeight/unite-grep"
 Bundle "tsukkee/unite-help"
 Bundle "tpope/vim-rails" 
@@ -65,6 +65,8 @@ Bundle "Shougo/neocomplcache-snippets-complete"
 ""Bundle 'vim-scripts/javacomplete'
 Bundle "scrooloose/syntastic"
 Bundle "kana/vim-smartchr"
+Bundle "h1mesuke/unite-outline"
+Bundle "tsukkee/unite-tag"
 
 " github 以外のリポジトリ (3)
 Bundle "git://git.wincent.com/command-t.git"
@@ -356,16 +358,53 @@ imap <C-.> <Plug>(neocomplcache_start_unite_complete)
 
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+nnoremap <silent> <Space>b :<C-u>Unite buffer<CR>
+nnoremap <silent> <C-n>b :<C-u>Unite buffer<CR>
 " ファイル一覧
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <C-n>f :<C-u>Unite -buffer-name=files file<CR>
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file bookmark file/new<CR>
+nnoremap <silent> <Space>ff :<C-u>UniteWithBufferDir -buffer-name=files file bookmark file/new<CR>
+nnoremap <silent> <Space>fn :<C-u>Unite -buffer-name=files file bookmark file/new<CR>
+nnoremap <silent> <C-n>ff :<C-u>Unite -buffer-name=files file bookmark file/new<CR>
 " レジスタ一覧
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> <Space>r :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> <C-n>r :<C-u>Unite -buffer-name=register register<CR>
 " 最近使用したファイル一覧
-nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+nnoremap <silent> ,ufm :<C-u>Unite file_mru<CR>
+nnoremap <silent> <Space>fm :<C-u>Unite file_mru<CR>
+nnoremap <silent> <C-n>fm :<C-u>Unite file_mru<CR>
+" outline
+nnoremap <silent> ,uo :<C-u>Unite outline<CR>
+nnoremap <silent> <Space>oo :<C-u>Unite -buffer-name=outline outline <CR>
+nnoremap <silent> <Space>on :<C-u>Unite -no-quit -vertical -winwidth=30 -buffer-name=outline outline<CR>
+nnoremap <silent> <C-n>o :<C-u>Unite outline<CR>
+call unite#set_buffer_name_option('outline', 'ignorecase', 1)
+call unite#set_buffer_name_option('outline', 'smartcase',  1)
+" line検索
+nnoremap <silent> ,uln :<C-u>UniteWithCursorWord line<CR>
+nnoremap <silent> <Space>ln :<C-u>UniteWithCursorWord line<CR>
+nnoremap <silent> <Space>ll :<C-u>Unite line<CR>
+nnoremap <silent> <C-n>ln :<C-u>UniteWithCursorWord line<CR>
+" line検索
+nnoremap <silent> ,ug :<C-u>Unite grep<CR>
+nnoremap <silent> <Space>g :<C-u>Unite grep<CR>
+nnoremap <silent> <C-n>g :<C-u>Unite grep<CR>
+" tag検索
+nnoremap <silent> ,utt :<C-u>Unite tag<CR>
+nnoremap <silent> <Space>tt :<C-u>Unite tag<CR>
+nnoremap <silent> <C-n>tt :<C-u>Unite tag<CR>
+" tag検索
+nnoremap <silent> ,utf :<C-u>Unite tag/file<CR>
+nnoremap <silent> <Space>tf :<C-u>Unite tag/file<CR>
+nnoremap <silent> <C-n>tf :<C-u>Unite tag/file<CR>
+" tag検索
+nnoremap <silent> ,uti :<C-u>Unite tag/include<CR>
+nnoremap <silent> <Space>ti :<C-u>Unite tag/include<CR>
+nnoremap <silent> <C-n>ti :<C-u>Unite tag/include<CR>
 " 全部乗せ
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> <Space>a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> <C-n>a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 " 起動時にインサートモードで開始
 let g:unite_enable_start_insert = 1
 
@@ -462,7 +501,7 @@ let g:syntastic_loc_list_height = 5
  
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': ['php'],
-                           \ 'passive_filetypes': [] }
+                           \ 'passive_filetypes': ['java'] }
  
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
