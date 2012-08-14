@@ -67,6 +67,7 @@ Bundle "scrooloose/syntastic"
 Bundle "kana/vim-smartchr"
 Bundle "h1mesuke/unite-outline"
 Bundle "tsukkee/unite-tag"
+Bundle "tyru/eskk.vim"
 
 " github 以外のリポジトリ (3)
 Bundle "git://git.wincent.com/command-t.git"
@@ -142,6 +143,13 @@ imap <C-q>  <Plug>(neocomplcache_start_unite_quick_match)
 noremap es :<C-u>NeoComplCacheEditSnippets<CR>
 
 
+" eskk.vim
+" don't use default mappings
+let g:eskk#no_default_mappings = 1
+
+nnoremap <A-j> <Plug>(eskk:enable)
+nnoremap <A-e> <Plug>(eskk:disable)
+
 
 
 """ ref.vim
@@ -167,7 +175,8 @@ set statusline+=%h    " %h ヘルプバッファフラグ
 set statusline+=%w    " %w プレビューウィンドウフラグ
 set statusline+=%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}  " fencとffを表示
 set statusline+=%y    " バッファ内のファイルのタイプ
-set statusline+=[%{ibus#is_enabled()?'あ':'aA'}] 
+
+""set statusline+=[%{ibus#is_enabled()?'あ':'aA'}] 
 set statusline+=\     " 空白スペース
 if winwidth(0) >= 130
 	set statusline+=%F    " バッファ内のファイルのフルパス
@@ -354,33 +363,44 @@ nnoremap <silent> <C-l> :TrinityToggleAll<CR>
 nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 
 ""Unite.vim
+nnoremap [unite] <Nop>
+nmap <Space>f [unite]
+nmap <C-n> [unite]
+imap <silent> <C-n> [unite]
+nmap ,u [unite]
+nmap <A-n> [unite]
+imap <silent> <A-n> [unite]
+
 imap <C-.> <Plug>(neocomplcache_start_unite_complete)
+imap [unite]n <Plug>(neocomplcache_start_unite_complete)
 
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> <Space>b :<C-u>Unite buffer<CR>
 nnoremap <silent> <C-n>b :<C-u>Unite buffer<CR>
 " ファイル一覧
+nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file bookmark <CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file bookmark file/new<CR>
 nnoremap <silent> <Space>ff :<C-u>UniteWithBufferDir -buffer-name=files file bookmark file/new<CR>
 nnoremap <silent> <Space>fn :<C-u>Unite -buffer-name=files file bookmark file/new<CR>
 nnoremap <silent> <C-n>ff :<C-u>Unite -buffer-name=files file bookmark file/new<CR>
 " レジスタ一覧
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> <Space>r :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> <C-n>r :<C-u>Unite -buffer-name=register register<CR>
 " 最近使用したファイル一覧
-nnoremap <silent> ,ufm :<C-u>Unite file_mru<CR>
+nnoremap <silent> [unite]fm :<C-u>Unite file_mru<CR>
 nnoremap <silent> <Space>fm :<C-u>Unite file_mru<CR>
 nnoremap <silent> <C-n>fm :<C-u>Unite file_mru<CR>
 " outline
-nnoremap <silent> ,uo :<C-u>Unite outline<CR>
+nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
 nnoremap <silent> <Space>oo :<C-u>Unite -buffer-name=outline outline <CR>
 nnoremap <silent> <Space>on :<C-u>Unite -no-quit -vertical -winwidth=30 -buffer-name=outline outline<CR>
 nnoremap <silent> <C-n>o :<C-u>Unite outline<CR>
 call unite#set_buffer_name_option('outline', 'ignorecase', 1)
 call unite#set_buffer_name_option('outline', 'smartcase',  1)
 " line検索
+nnoremap <silent> [unite]ln :<C-u>UniteWithCursorWord line<CR>
 nnoremap <silent> ,uln :<C-u>UniteWithCursorWord line<CR>
 nnoremap <silent> <Space>ln :<C-u>UniteWithCursorWord line<CR>
 nnoremap <silent> <Space>ll :<C-u>Unite line<CR>
@@ -407,6 +427,14 @@ nnoremap <silent> <Space>a :<C-u>UniteWithBufferDir -buffer-name=files buffer fi
 nnoremap <silent> <C-n>a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 " 起動時にインサートモードで開始
 let g:unite_enable_start_insert = 1
+
+
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  " 単語単位からパス単位で削除するように変更
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+endfunction
+
 
 ""twitvim
 let twitvim_login_b64 = "bmVtdW5lbXUzZGVzdTphc2xlZXAzMjk="
@@ -564,3 +592,4 @@ set notitle
 au FileType ruby set ts=2 sw=2 expandtab
 
 set nowrap
+"set listchars=tab:>\
