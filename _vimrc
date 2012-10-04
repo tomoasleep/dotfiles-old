@@ -27,20 +27,18 @@ Bundle 'ZenCoding.vim'
 Bundle 'pyte'
 ""Bundle 'twilight256.vim'
 ""Bundle 'twilight'
-Bundle 'altercation/vim-colors-solarized'
 ""Bundle 'Solarized'
 Bundle 'java_getset.vim'
 Bundle 'matchit.zip'
-Bundle 'ruby-matchit'
+"Bundle 'ruby-matchit'
 ""Bundle 'Vim-JDE'
-
-
 ""Bundle 'SuperTab-continued.'
-
 ""Bundle 'neco-ghc'
-
 "Bundle "project.vim"
+"
 " github の任意のリポジトリ (2)"
+Bundle "tpope/vim-rvm"
+Bundle 'altercation/vim-colors-solarized'
 Bundle "Shougo/unite.vim"
 Bundle "thinca/vim-unite-history"
 "Bundle "tsukkee/unite.tag"
@@ -55,7 +53,7 @@ Bundle 'othree/eregex.vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle "tsaleh/vim-matchit"
 Bundle 'thinca/vim-quickrun'
-Bundle "ujihisa/neco-rubymf"
+"Bundle "ujihisa/neco-rubymf"
 Bundle 'm2ym/rsense'
 ""Bundle "bouzuya/vim-ibus"
 Bundle 'Lokaltog/vim-powerline'
@@ -63,14 +61,14 @@ Bundle 'Shougo/vimshell.git'
 Bundle 'Shougo/vimproc'
 Bundle "Shougo/neocomplcache-snippets-complete"
 ""Bundle 'vim-scripts/javacomplete'
-Bundle "scrooloose/syntastic"
+"Bundle "scrooloose/syntastic"
 Bundle "kana/vim-smartchr"
 Bundle "h1mesuke/unite-outline"
 Bundle "tsukkee/unite-tag"
-Bundle "tyru/eskk.vim"
+"Bundle "tyru/eskk.vim"
 
 " github 以外のリポジトリ (3)
-Bundle "git://git.wincent.com/command-t.git"
+"Bundle "git://git.wincent.com/command-t.git"
 	 
 filetype plugin indent on
 syntax on
@@ -82,6 +80,17 @@ set number
 
 set runtimepath+=/path/to/vimdoc-ja
 set helplang=ja,en
+
+if has('kaoriya')
+	let s:ruby_libruby = system('ruby -rrbconfig -e "print Config::CONFIG[\"libdir\"] + \"/\" + Config::CONFIG[\"LIBRUBY\"]"')
+	if filereadable(s:ruby_libruby)
+		let $RUBY_DLL = s:ruby_libruby
+	endif
+endif
+
+
+
+
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
@@ -142,6 +151,19 @@ imap <C-q>  <Plug>(neocomplcache_start_unite_quick_match)
 
 noremap es :<C-u>NeoComplCacheEditSnippets<CR>
 
+
+" surround.vim
+let g:surround_{char2nr('%')} = "%(\r)"
+let g:surround_{char2nr('w')} = "%w(\r)"
+let g:surround_{char2nr('#')} = "#{\r}"
+let g:surround_{char2nr('e')} = "begin \r end"
+let g:surround_{char2nr('i')} = "if \1if\1 \r end"
+let g:surround_{char2nr('u')} = "unless \1unless\1 \r end"
+let g:surround_{char2nr('c')} = "class \1class\1 \r end"
+let g:surround_{char2nr('m')} = "module \1module\1 \r end"
+let g:surround_{char2nr('d')} = "def \1def\1\2args\r..*\r(&)\2 \r end"
+let g:surround_{char2nr('p')} = "\1method\1 do \2args\r..*\r|&| \2\r end"
+let g:surround_{char2nr('P')} = "\1method\1 {\2args\r..*\r|&|\2 \r }"
 
 " eskk.vim
 " don't use default mappings
@@ -350,6 +372,8 @@ imap OD <Left>
 "noremap! [B <Down>
 "noremap! [D <Left>
 
+noremap ;; :
+
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <C-c><C-c> :nohlsearch<CR><Esc>
 
@@ -464,6 +488,7 @@ set background=light
 if has("gui_running")
 else
 		let g:solarized_termcolors=256
+		set t_Co=16
 endif
 let g:solarized_degrade=0
 let g:solarized_bold=1
@@ -518,64 +543,21 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 ""autocmd FileType java :setlocal completefunc=javacomplete#CompleteParamsInfo
 
 ""syntastic
-let g:syntastic_check_on_open = 1
-let g:syntastic_echo_current_error = 1
-let g:syntastic_enable_signs = 1
-let g:syntastic_enable_balloons = 1
-let g:syntastic_enable_highlighting = 1
-""let g:syntastic_auto_jump = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_loc_list_height = 5
- 
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['php'],
-                           \ 'passive_filetypes': ['java'] }
- 
-let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_echo_current_error = 1
+"let g:syntastic_enable_signs = 1
+"let g:syntastic_enable_balloons = 1
+"let g:syntastic_enable_highlighting = 1
+"""let g:syntastic_auto_jump = 1
+"let g:syntastic_auto_loc_list = 2
+"let g:syntastic_loc_list_height = 5
+" 
+"let g:syntastic_mode_map = { 'mode': 'active',
+"                           \ 'active_filetypes': ['php'],
+"                           \ 'passive_filetypes': ['java'] }
+" 
+"let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
-"[JAVA] :Makeでコンパイル
-autocmd FileType java :command! Make call s:Make()
-function! s:Make()
-		:w
-		let path = expand("%")
-		let syn = "javac ".path
-		let dpath = split(path,".java$")
-		let ret = system(syn)
-		if ret == ""
-				:echo "=======\r\nCompile Success"
-		else
-				:echo "=======\r\nCompile Failure\r\n".ret 
-		endif
-endfunction
-
-"[JAVA] :Doでコンパイル後のファイルを実行 
-autocmd FileType java :command! Do call s:Do()
-function! s:Do()
-		let path = expand("%")
-		let dpath = split(path,".java$")
-		let syn = "java ".dpath[0]
-		let ret = system(syn)
-		:echo "=======\r\n実行結果:\r\n".ret
-endfunction
-
-"[JAVA] :Exeでコンパイルしてから実行
-autocmd FileType java :command! Exe call s:Javac()
-function! s:Javac()
-		:w
-		let path = expand("%")
-		let syn = "javac ".path
-		let dpath = split(path,".java$")
-		let ret = system(syn)
-		if ret == ""
-				:echo "=======\r\nCompile Success"
-				let syn = "java ".dpath[0]
-				let ret = system(syn)
-				:echo "=======\r\n実行結果:\r\n".ret
-		else
-				:echo "=======\r\nCompile Failure\r\n".ret
-		endif
-endfunction
-au FileType java :set makeprg=javac\ %
 
 function! s:fwrap()
 if has("set nowrap?")
@@ -588,8 +570,5 @@ endfunction
 noremap <F5> :call s:fwrap()<CR>
 
 set notitle
-
-au FileType ruby set ts=2 sw=2 expandtab
-
 set nowrap
 "set listchars=tab:>\

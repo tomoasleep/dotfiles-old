@@ -1,0 +1,2 @@
+let g:rsenseHome = '~/.vim/bundle/rsense'
+let g:rsenseUseOmniFunc = 1
