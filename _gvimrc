@@ -1,13 +1,15 @@
 set lines=60
 set columns=120
+set lsp=0
 
 colorscheme solarized
+set background=light
 " UTF-8 環境でないとうまく表示されない
 set encoding=utf-8
 " フォントサイズはお好みで
-set guifont=VL\ Gothic\ for\ Powerline:h10,Ricty\ for\ Powerline:h12,Ricty:h12
+set guifont=consolas,VL\ Gothic\ for\ Powerline:h10,Ricty\ for\ Powerline:h12,Ricty:h12
 " こっちは日本語フォント
 set guifontwide=VL\ Gothic\ for\ Powerline:h10,Ricty:h12
 " `fancy' テーマに切り替え
-let g:Powerline_symbols = 'fancy'
+""let g:Powerline_symbols = 'fancy'
 
