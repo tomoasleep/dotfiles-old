@@ -6,11 +6,13 @@ set columns=120
 " UTF-8 環境でないとうまく表示されない
 set encoding=utf-8
 " フォントサイズはお好みで
-set guifont=Ricty\ for\ Powerline\ 10,Ricty\ 10
+" set guifont=Ricty\ for\ Powerline\ 10,Ricty\ 10
+" set guifont=Inconsolata\ for\ Powerline\ 13,Ricty\ for\ Powerline\ 10,Ricty\ 10
+set guifont=Inconsolata\ for\ Powerline:h12,Ricty\ for\ Powerline\ 10,Ricty\ 10
 " こっちは日本語フォント
 "set guifontwide=Ricty\ 10
 " `fancy' テーマに切り替え
-let g:Powerline_symbols = 'fancy'
+" let g:Powerline_symbols = 'fancy'
 
 colorscheme solarized
 ""set transparency=25 " 透過率25
