@@ -8,7 +8,7 @@ set encoding=utf-8
 " フォントサイズはお好みで
 " set guifont=Ricty\ for\ Powerline\ 10,Ricty\ 10
 " set guifont=Inconsolata\ for\ Powerline\ 13,Ricty\ for\ Powerline\ 10,Ricty\ 10
-set guifont=Inconsolata\ for\ Powerline:h12,Ricty\ for\ Powerline\ 10,Ricty\ 10
+set guifont=Inconsolata\ for\ Powerline:h13,Ricty\ for\ Powerline\ 10,Ricty\ 10
 " こっちは日本語フォント
 "set guifontwide=Ricty\ 10
 " `fancy' テーマに切り替え

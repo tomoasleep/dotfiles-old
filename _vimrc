@@ -22,10 +22,9 @@ Bundle 'taglist.vim'
 Bundle 'Align'
 Bundle 'ZenCoding.vim'
 Bundle 'pyte'
-Bundle 'java_getset.vim'
+"" Bundle 'java_getset.vim'
 Bundle 'matchit.zip'
-""Bundle 'neco-ghc'
-Bundle "TagHighlight"
+"" Bundle "TagHighlight"
 
 "
 " github の任意のリポジトリ (2)"
@@ -35,34 +34,40 @@ Bundle "Shougo/unite.vim"
 Bundle "thinca/vim-unite-history"
 Bundle "Sixeight/unite-grep"
 Bundle "tsukkee/unite-help"
-Bundle "tpope/vim-rails" 
-Bundle "tpope/vim-fugitive"
+"" Bundle "tpope/vim-rails" 
+"" Bundle "tpope/vim-fugitive"
 Bundle "thinca/vim-ref"
 Bundle "Shougo/neocomplcache"
-Bundle 'othree/eregex.vim'
-Bundle 'vim-ruby/vim-ruby'
+"" Bundle 'othree/eregex.vim'
+"" Bundle 'vim-ruby/vim-ruby'
+Bundle "Shougo/neocomplcache-rsense.vim"
 Bundle "tsaleh/vim-matchit"
 Bundle 'thinca/vim-quickrun'
-Bundle 'm2ym/rsense'
+"Bundle 'm2ym/rsense'
 "" Bundle 'Lokaltog/vim-powerline'
-Bundle 'Shougo/vimshell.git'
+"" Bundle 'Shougo/vimshell.git'
 Bundle 'Shougo/vimproc'
-Bundle "Shougo/neocomplcache-snippets-complete"
-"" Bundle "scrooloose/syntastic"
+Bundle 'Shougo/neosnippet'
+"" Bundle "Shougo/neocomplcache-snippets-complete"
+Bundle "scrooloose/syntastic"
 Bundle "kana/vim-smartchr"
 Bundle "h1mesuke/unite-outline"
 Bundle "tsukkee/unite-tag"
 "Bundle "tyru/eskk.vim"
 Bundle "Shougo/vinarise"
+"Bundle "kana/vim-textobj-indent"
 Bundle "gregsexton/gitv"
-Bundle "wesleyche/SrcExpl"
+"" Bundle "wesleyche/SrcExpl"
 Bundle "alpicola/vim-egison"
-"" Bundle "dag/vim2hs"
-"" Bundle "eagletmt/ghcmod-vim"
-"" Bundle "ujihisa/neco-ghc"
+Bundle "dag/vim2hs"
+Bundle "eagletmt/ghcmod-vim"
+Bundle "ujihisa/neco-ghc"
 Bundle "kien/ctrlp.vim"
 Bundle "jcf/vim-latex"
-
+Bundle "jonathanfilip/vim-lucius"
+Bundle "Rip-Rip/clang_complete"
+Bundle "eagletmt/unite-haddock"
+Bundle "w0ng/vim-hybrid"
 
 
 " github 以外のリポジトリ (3)
@@ -75,6 +80,7 @@ filetype on
 set autoindent
 set tabstop=4
 set number
+set splitbelow
 
 set runtimepath+=/path/to/vimdoc-ja
 set helplang=ja,en
@@ -109,9 +115,13 @@ let g:NeoComplCache_PluginCompletionLength = {
   \ 'syntax_complete'   : 2
   \ }
 
-let g:rsenseHome = '~/.vim/bundle/rsense'
-let g:rsenseUseOmniFunc = 1
+""let g:rsenseHome = '~/.vim/bundle/rsense'
+""let g:rsenseUseOmniFunc = 1
 
+"" do not close preview window automatically
+let g:neocomplcache_enable_auto_close_preview = 0
+
+let g:neocomplcache#sources#rsense#home_directory = "/usr/local/bin"
 if !exists('g:neocomplcache_omni_patterns')
  let g:neocomplcache_omni_patterns = {}
 endif
@@ -123,30 +133,51 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache_force_omni_patterns.c =
+  \ '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.cpp =
+  \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplcache_force_omni_patterns.objc =
+  \ '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.objcpp =
+  \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+
 " 補完をキャンセル
 inoremap <expr><C-e>  neocomplcache#close_popup()
 
-""let g:neocomplcache_enable_insert_char_pre = 1
-" Plugin key-mappings.
-imap <C-m>     <Plug>(neocomplcache_snippets_expand)
-"" inoremap <C-k>     <Plug>(neocomplcache_snippets_expand)
-smap <C-m>     <Plug>(neocomplcache_snippets_expand)
-"" snoremap <C-k>     <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
 " SuperTab like snippets behavior.
-imap <expr><C-TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "k"
-imap <expr><C-CR> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<C-CR>"
-imap <expr><F13> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<F13>"
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
-		set conceallevel=2 concealcursor=i
+  set conceallevel=2 concealcursor=i
 endif
-imap <C-m>    <Plug>(neocomplcache_snippets_expand)
-smap <C-m>    <Plug>(neocomplcache_snippets_expand)
+
+" For snippet_complete marker.
+if has('conceal')
+		set conceallevel=2 concealcursor=nc
+endif
+"" imap <C-m>    <Plug>(neocomplcache_snippets_expand)
+"" smap <C-m>    <Plug>(neocomplcache_snippets_expand)
 
 
 imap <C-s>  <Plug>(neocomplcache_start_unite_snippet)
@@ -186,39 +217,6 @@ let g:ref_phpmanual_path = "/Users/kamadoinc/Documents/Reference/php-chunked-xht
 
 "<C-Space>でomni補完
 imap <C-Space> <C-x><C-o>
-
-" ステータスラインの表示
-"" set number
-"" set ruler
-"" set cmdheight=2
-"" set laststatus=2 "ステータスバーを常に表示
-"" set statusline=%<     " 行が長すぎるときに切り詰める位置
-"" set statusline+=[%n]  " バッファ番号
-"" set statusline+=%m    " %m 修正フラグ
-"" set statusline+=%r    " %r 読み込み専用フラグ
-"" set statusline+=%h    " %h ヘルプバッファフラグ
-"" set statusline+=%w    " %w プレビューウィンドウフラグ
-"" set statusline+=%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}  " fencとffを表示
-"" set statusline+=%y    " バッファ内のファイルのタイプ
-"" 
-"" ""set statusline+=[%{ibus#is_enabled()?'あ':'aA'}] 
-"" set statusline+=\     " 空白スペース
-"" if winwidth(0) >= 130
-"" 	set statusline+=%F    " バッファ内のファイルのフルパス
-"" else
-"" set statusline+=%t    " ファイル名のみ
-"" endif
-"" set statusline+=%=    " 左寄せ項目と右寄せ項目の区切り
-"" set statusline+=%{fugitive#statusline()}  " Gitのブランチ名を表示
-"" set statusline+=\ \   " 空白スペース2個
-"" set statusline+=%1l   " 何行目にカーソルがあるか
-"" set statusline+=/
-"" set statusline+=%L    " バッファ内の総行数
-"" set statusline+=,
-"" set statusline+=%c    " 何列目にカーソルがあるか
-"" set statusline+=%V    " 画面上の何列目にカーソルがあるか
-"" set statusline+=\ \   " 空白スペース2個
-"" set statusline+=%P    " ファイル内の何％の位置にあるか
 
 set linespace=0
 set title
@@ -267,33 +265,33 @@ set ttymouse=xterm2
 
 
 "行頭のスペースの連続をハイライトさせる
-"Tab文字も区別されずにハイライトされるので、区別したいときはTab文字の表示を別に
+"tab文字も区別されずにハイライトされるので、区別したいときはtab文字の表示を別に
 "設定する必要がある。
-function! SOLSpaceHilight()
-""    syntax match SOLSpace "^\s\+" display containedin=ALL
-""    highlight SOLSpace term=underline ctermbg=LightGray
+"function! solspacehilight()
+""    syntax match solspace "^\s\+" display containedin=all
+""    highlight solspace term=underline ctermbg=lightgray
 ""	set list
 ""	set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-endf
+"endf
 "全角スペースをハイライトさせる。
-function! JISX0208SpaceHilight()
-""    syntax match JISX0208Space "　" display containedin=ALL
-""    highlight JISX0208Space term=underline ctermbg=LightCyan
-endf
+"function! jisx0208spacehilight()
+""    syntax match jisx0208space "　" display containedin=all
+""    highlight jisx0208space term=underline ctermbg=lightcyan
+"endf
 
 ""taglist
 set tags=./tags,tags
 
 
 ""srcexpl.vim
-let g:SrcExpl_UpdateTags = 1
-let g:SrcExpl_RefreshTime = 0
-nnoremap <silent> <C-z> :SrcExplToggle<CR>
-let g:SrcExpl_RefreshMapKey = "<C-b>r"
-let g:SrcExpl_GoBackMapKey = "<C-b>b"
+let g:srcexpl_updatetags = 1
+let g:srcexpl_refreshtime = 0
+nnoremap <silent> <c-z> :srcexpltoggle<cr>
+let g:srcexpl_refreshmapkey = "<c-b>r"
+let g:srcexpl_gobackmapkey = "<c-b>b"
 
-""Powerline
-"" let g:Powerline_symbols = 'fancy'
+""powerline
+"" let g:powerline_symbols = 'fancy'
 
 set noexpandtab
 
@@ -389,70 +387,6 @@ command! US Us
 command! Ua UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file
 
 
-
-""Unite.vim
-nnoremap [unite] <Nop>
-nmap <Space>f [unite]
-nmap <C-n> [unite]
-imap <silent> <C-n> [unite]
-nmap ,u [unite]
-nmap <A-n> [unite]
-imap <silent> <A-n> [unite]
-
-imap <C-.> <Plug>(neocomplcache_start_unite_complete)
-imap [unite]n <Plug>(neocomplcache_start_unite_complete)
-
-" バッファ一覧
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> <Space>b :<C-u>Unite buffer<CR>
-nnoremap <silent> <C-n>b :<C-u>Unite buffer<CR>
-" ファイル一覧
-nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file bookmark <CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file bookmark file/new<CR>
-nnoremap <silent> <Space>ff :<C-u>UniteWithBufferDir -buffer-name=files file bookmark file/new<CR>
-nnoremap <silent> <Space>fn :<C-u>Unite -buffer-name=files file bookmark file/new<CR>
-nnoremap <silent> <C-n>ff :<C-u>Unite -buffer-name=files file bookmark file/new<CR>
-" レジスタ一覧
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> <Space>r :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> <C-n>r :<C-u>Unite -buffer-name=register register<CR>
-" 最近使用したファイル一覧
-nnoremap <silent> [unite]fm :<C-u>Unite file_mru<CR>
-nnoremap <silent> <Space>fm :<C-u>Unite file_mru<CR>
-nnoremap <silent> <C-n>fm :<C-u>Unite file_mru<CR>
-" outline
-nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
-nnoremap <silent> <Space>oo :<C-u>Unite -buffer-name=outline outline <CR>
-nnoremap <silent> <Space>on :<C-u>Unite -no-quit -vertical -winwidth=30 -buffer-name=outline outline<CR>
-nnoremap <silent> <C-n>o :<C-u>Unite outline<CR>
-call unite#set_buffer_name_option('outline', 'ignorecase', 1)
-call unite#set_buffer_name_option('outline', 'smartcase',  1)
-" line検索
-nnoremap <silent> [unite]ln :<C-u>UniteWithCursorWord line<CR>
-nnoremap <silent> ,uln :<C-u>UniteWithCursorWord line<CR>
-nnoremap <silent> <Space>ln :<C-u>UniteWithCursorWord line<CR>
-nnoremap <silent> <Space>ll :<C-u>Unite line<CR>
-nnoremap <silent> <C-n>ln :<C-u>UniteWithCursorWord line<CR>
-" line検索
-nnoremap <silent> ,ug :<C-u>Unite grep<CR>
-nnoremap <silent> <Space>g :<C-u>Unite grep<CR>
-nnoremap <silent> <C-n>g :<C-u>Unite grep<CR>
-" tag検索
-nnoremap <silent> ,utt :<C-u>Unite tag<CR>
-nnoremap <silent> <Space>tt :<C-u>Unite tag<CR>
-nnoremap <silent> <C-n>tt :<C-u>Unite tag<CR>
-" tag検索
-nnoremap <silent> ,utf :<C-u>Unite tag/file<CR>
-nnoremap <silent> <Space>tf :<C-u>Unite tag/file<CR>
-nnoremap <silent> <C-n>tf :<C-u>Unite tag/file<CR>
-" tag検索
-nnoremap <silent> ,uti :<C-u>Unite tag/include<CR>
-nnoremap <silent> <Space>ti :<C-u>Unite tag/include<CR>
-nnoremap <silent> <C-n>ti :<C-u>Unite tag/include<CR>
-" 全部乗せ
-nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> <Space>a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> <C-n>a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 " 起動時にインサートモードで開始
 let g:unite_enable_start_insert = 1
 
@@ -502,8 +436,8 @@ let g:solarized_termtrans=0
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 
-colorscheme solarized  
-set background=light
+colorscheme lucius
+set background=dark
 
 ""tabでのcomp設定
 function! InsertTabWrapper()
@@ -539,29 +473,6 @@ endfunction
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
-""smartchr
-""inoremap <expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-
-
-""javacomp
-""autocmd FileType java :setlocal omnifunc=javacomplete#Complete
-""autocmd FileType java :setlocal completefunc=javacomplete#CompleteParamsInfo
-
-""syntastic
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_echo_current_error = 1
-"let g:syntastic_enable_signs = 1
-"let g:syntastic_enable_balloons = 1
-"let g:syntastic_enable_highlighting = 1
-"""let g:syntastic_auto_jump = 1
-"let g:syntastic_auto_loc_list = 2
-"let g:syntastic_loc_list_height = 5
-" 
-"let g:syntastic_mode_map = { 'mode': 'active',
-"                           \ 'active_filetypes': ['php'],
-"                           \ 'passive_filetypes': ['java'] }
-" 
-"let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
  if !has('gui_running')
     " MapFastKeycode: helper for fast keycode mappings
