@@ -4,71 +4,77 @@ filetype off
 set rtp+=~/.vim/vundle.git/
 "" set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
-call vundle#rc()
+if has('vim_starting') 
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle'))
+endif
 
 
 " vim-scripts リポジトリ (1)
 ""Bundle 'css_color.vim'
-Bundle "unite.vim"
-Bundle "fugitive.vim"
-Bundle "The-NERD-tree"
-Bundle "endwise.vim"
-Bundle 'TwitVim'
-Bundle 'neco-look'
-Bundle 'surround.vim'
-Bundle 'Quich-Filter'
-Bundle 'trinity.vim'
-Bundle 'taglist.vim'
-Bundle 'Align'
-Bundle 'ZenCoding.vim'
-Bundle 'pyte'
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle "fugitive.vim"
+NeoBundle "The-NERD-tree"
+NeoBundle "endwise.vim"
+NeoBundle 'TwitVim'
+NeoBundle 'neco-look'
+NeoBundle 'surround.vim'
+NeoBundle 'Quich-Filter'
+NeoBundle 'trinity.vim'
+NeoBundle 'taglist.vim'
+NeoBundle 'Align'
+NeoBundle 'ZenCoding.vim'
+NeoBundle 'pyte'
 "" Bundle 'java_getset.vim'
-Bundle 'matchit.zip'
+NeoBundle 'matchit.zip'
 "" Bundle "TagHighlight"
 
 "
 " github の任意のリポジトリ (2)"
-Bundle "tpope/vim-rvm"
-Bundle 'altercation/vim-colors-solarized'
-Bundle "Shougo/unite.vim"
-Bundle "thinca/vim-unite-history"
-Bundle "Sixeight/unite-grep"
-Bundle "tsukkee/unite-help"
+NeoBundle "tpope/vim-rvm"
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle "Shougo/unite.vim"
+NeoBundle "thinca/vim-unite-history"
+NeoBundle "Sixeight/unite-grep"
+NeoBundle "tsukkee/unite-help"
 "" Bundle "tpope/vim-rails" 
 "" Bundle "tpope/vim-fugitive"
-Bundle "thinca/vim-ref"
-Bundle "Shougo/neocomplcache"
+NeoBundle "thinca/vim-ref"
+NeoBundle "Shougo/neocomplcache"
 "" Bundle 'othree/eregex.vim'
 "" Bundle 'vim-ruby/vim-ruby'
-Bundle "Shougo/neocomplcache-rsense.vim"
-Bundle "tsaleh/vim-matchit"
-Bundle 'thinca/vim-quickrun'
+NeoBundle "Shougo/neocomplcache-rsense.vim"
+NeoBundle "tsaleh/vim-matchit"
+NeoBundle 'thinca/vim-quickrun'
 "Bundle 'm2ym/rsense'
 "" Bundle 'Lokaltog/vim-powerline'
-"" Bundle 'Shougo/vimshell.git'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/vimshell.git'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/neosnippet'
 "" Bundle "Shougo/neocomplcache-snippets-complete"
-Bundle "scrooloose/syntastic"
-Bundle "kana/vim-smartchr"
-Bundle "h1mesuke/unite-outline"
-Bundle "tsukkee/unite-tag"
+NeoBundle "scrooloose/syntastic"
+NeoBundle "kana/vim-smartchr"
+NeoBundle "h1mesuke/unite-outline"
+NeoBundle "tsukkee/unite-tag"
 "Bundle "tyru/eskk.vim"
-Bundle "Shougo/vinarise"
+NeoBundle "Shougo/vinarise"
 "Bundle "kana/vim-textobj-indent"
-Bundle "gregsexton/gitv"
+NeoBundle "gregsexton/gitv"
 "" Bundle "wesleyche/SrcExpl"
-Bundle "alpicola/vim-egison"
-Bundle "dag/vim2hs"
-Bundle "eagletmt/ghcmod-vim"
-Bundle "ujihisa/neco-ghc"
-Bundle "kien/ctrlp.vim"
-Bundle "jcf/vim-latex"
-Bundle "jonathanfilip/vim-lucius"
-Bundle "Rip-Rip/clang_complete"
-Bundle "eagletmt/unite-haddock"
-Bundle "w0ng/vim-hybrid"
-
+NeoBundle "alpicola/vim-egison"
+NeoBundle "dag/vim2hs"
+NeoBundle "eagletmt/ghcmod-vim"
+NeoBundle "ujihisa/neco-ghc"
+NeoBundle "kien/ctrlp.vim"
+NeoBundle "jcf/vim-latex"
+NeoBundle "jonathanfilip/vim-lucius"
+NeoBundle "Rip-Rip/clang_complete"
+NeoBundle "eagletmt/unite-haddock"
+NeoBundle "w0ng/vim-hybrid"
+""Bundle "Shougo/vinarise.vim"
+NeoBundle "kchmck/vim-coffee-script"
+NeoBundle "nathanaelkane/vim-indent-guides"
+NeoBundle "digitaltoad/vim-jade"
 
 " github 以外のリポジトリ (3)
 "Bundle "git://git.wincent.com/command-t.git"
@@ -78,9 +84,12 @@ syntax on
 filetype on
 
 set autoindent
-set tabstop=4
 set number
 set splitbelow
+
+set expandtab
+set tabstop=2
+set shiftwidth=2
 
 set runtimepath+=/path/to/vimdoc-ja
 set helplang=ja,en
@@ -174,7 +183,7 @@ endif
 
 " For snippet_complete marker.
 if has('conceal')
-		set conceallevel=2 concealcursor=nc
+		set conceallevel=2 concealcursor=c
 endif
 "" imap <C-m>    <Plug>(neocomplcache_snippets_expand)
 "" smap <C-m>    <Plug>(neocomplcache_snippets_expand)
@@ -293,7 +302,6 @@ let g:srcexpl_gobackmapkey = "<c-b>b"
 ""powerline
 "" let g:powerline_symbols = 'fancy'
 
-set noexpandtab
 
 ""#BackSpaceもDeleteも遠すぎ。俺には押せない
 inoremap <C-u> <BS>
