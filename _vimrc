@@ -63,7 +63,7 @@ NeoBundle 'vim-scripts/SrcExpl'
 NeoBundle "tyru/vim-altercmd"
 NeoBundle "Shougo/echodoc"
 
-NeoBundle "LeafCage/lcpeek.vim"
+" NeoBundle "LeafCage/lcpeek.vim"
 NeoBundle "tsaleh/vim-matchit"
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle "ujihisa/neco-rubymf"
