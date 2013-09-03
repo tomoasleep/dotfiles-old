@@ -90,6 +90,8 @@ set splitbelow
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set laststatus=2
+set hlsearch
 
 set runtimepath+=/path/to/vimdoc-ja
 set helplang=ja,en
