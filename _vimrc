@@ -3,121 +3,138 @@
 " ＊filetype を一度offにして、Vundle の処理のあとでftpluginとindent を読み込むように指定。
 
 set nocompatible
-"filetype off
+filetype off
+ 
+set rtp+=~/.vim/vundle.git/
+"" set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
-if has('vim_starting')
-	if has("win32") || has("win64")
-		set rtp+=~/vimfiles/bundle/neobundle.vim/ 
-		call neobundle#rc('~/vimfiles/bundle/')
-	else
-		set rtp+=~/.vim/bundle/neobundle.vim/ 
-		call neobundle#rc('~/.vim/bundle/')
-	endif
+if has('vim_starting') 
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle'))
 endif
-
 
 
 " vim-scripts リポジトリ (1)
-
-"Bundle "project.vim"
-if has("unix")
-	NeoBundle 'neco-look'
-endif
+""Bundle 'css_color.vim'
+NeoBundle 'Shougo/neobundle.vim'
 NeoBundle "fugitive.vim"
 NeoBundle "The-NERD-tree"
 NeoBundle "endwise.vim"
+NeoBundle 'neco-look'
 NeoBundle 'surround.vim'
 NeoBundle 'Quich-Filter'
 NeoBundle 'trinity.vim'
-"" NeoBundle 'taglist.vim'
+NeoBundle 'taglist.vim'
 NeoBundle 'Align'
 NeoBundle 'ZenCoding.vim'
 NeoBundle 'pyte'
-NeoBundle 'ruby-matchit'
-NeoBundle "VimCoder.jar"
-NeoBundle "cake.vim"
-	
-" github の任意のリポジトリ (2)"
-NeoBundle "thinca/vim-unite-history"
-NeoBundle "tsukkee/unite-tag"
-NeoBundle "h1mesuke/unite-outline"
-NeoBundle "tsukkee/unite-help"
-NeoBundle "Shougo/unite.vim"
-NeoBundle "tpope/vim-rails" 
+"" Bundle 'java_getset.vim'
+NeoBundle 'matchit.zip'
+NeoBundle "project.tar.gz"
+"" Bundle "TagHighlight"
 
-NeoBundle "tpope/vim-fugitive"
+"
+" github の任意のリポジトリ (2)"
+NeoBundle "tpope/vim-rvm"
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle "Shougo/unite.vim"
+NeoBundle "thinca/vim-unite-history"
+NeoBundle "Sixeight/unite-grep"
+NeoBundle "tsukkee/unite-help"
+"" Bundle "tpope/vim-rails" 
+"" Bundle "tpope/vim-fugitive"
 NeoBundle "thinca/vim-ref"
 NeoBundle "Shougo/neocomplcache"
-" NeoBundle 'othree/eregex.vim'
-
-NeoBundle "gregsexton/gitv"
-NeoBundle "abudden/TagHighlight.git"
-NeoBundle "sgur/clang-binaries.vim"
-NeoBundle "nanotech/jellybeans.vim"
-
-NeoBundle "vim-scripts/newspaper.vim"
-NeoBundle "Rip-Rip/clang_complete"
-NeoBundle "kmnk/vim-unite-giti"
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'vim-scripts/SrcExpl'
-NeoBundle "tyru/vim-altercmd"
-NeoBundle "Shougo/echodoc"
-
-" NeoBundle "LeafCage/lcpeek.vim"
+"" Bundle 'othree/eregex.vim'
+"" Bundle 'vim-ruby/vim-ruby'
+NeoBundle "Shougo/neocomplcache-rsense.vim"
 NeoBundle "tsaleh/vim-matchit"
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle "ujihisa/neco-rubymf"
-NeoBundle 'm2ym/rsense'
-NeoBundle "bouzuya/vim-ibus"
-NeoBundle 'Lokaltog/vim-powerline'
-
-"" NeoBundle "Lokaltog/powerline"
-
+"Bundle 'm2ym/rsense'
+"" Bundle 'Lokaltog/vim-powerline'
 NeoBundle 'Shougo/vimshell.git'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {
+  \ 'build': {
+  \     'windows' : 'make -f make_mingw32.mak', 
+  \     'mac' : 'make -f make_mac.mak', 
+  \     'unix' : 'make -f make_unix.mak', 
+  \     },
+  \ }
+NeoBundle 'Shougo/neosnippet'
+"" Bundle "Shougo/neocomplcache-snippets-complete"
 NeoBundle "scrooloose/syntastic"
 NeoBundle "kana/vim-smartchr"
-NeoBundle "h1mesuke/unite-outline"
+NeoBundle "Shougo/unite-outline"
 NeoBundle "tsukkee/unite-tag"
-NeoBundle 'Shougo/vinarise'
-NeoBundle "ujihisa/unite-colorscheme"
-NeoBundle "Shougo/neosnippet"
-NeoBundle "PProvost/vim-ps1"
-NeoBundle "sjl/gundo.vim"
-"" NeoBundle "majutsushi/tagbar"
-NeoBundle "Shougo/vimfiler"
+"Bundle "tyru/eskk.vim"
+NeoBundle "Shougo/vinarise"
+"Bundle "kana/vim-textobj-indent"
+NeoBundle "gregsexton/gitv"
+"" Bundle "wesleyche/SrcExpl"
 NeoBundle "alpicola/vim-egison"
 NeoBundle "dag/vim2hs"
-NeoBundle "pbrisbin/html-template-syntax"
-NeoBundle "yuratomo/dotnet-complete"
-NeoBundle "mattn/benchvimrc-vim"
+NeoBundle "zenzike/vim-haskell"
+NeoBundle "eagletmt/ghcmod-vim"
+NeoBundle "ujihisa/neco-ghc"
+NeoBundle "kien/ctrlp.vim"
+NeoBundle "jcf/vim-latex"
+NeoBundle "jonathanfilip/vim-lucius"
+NeoBundle "Rip-Rip/clang_complete"
+NeoBundle "eagletmt/unite-haddock"
+NeoBundle "w0ng/vim-hybrid"
+""Bundle "Shougo/vinarise.vim"
+NeoBundle "kchmck/vim-coffee-script"
+NeoBundle "nathanaelkane/vim-indent-guides"
+NeoBundle "digitaltoad/vim-jade"
+NeoBundle "tyru/open-browser.vim"
+NeoBundle "mattn/webapi-vim"
+NeoBundle "mattn/favstar-vim"
+NeoBundle "basyura/twibill.vim"
+NeoBundle "basyura/bitly.vim"
+NeoBundle "basyura/TweetVim"
+NeoBundle "rbtnn/vimconsole.vim"
+NeoBundle "rainux/vim-vala"
+NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'airblade/vim-rooter'
 
-"" NeoBundle "eagletmt/ghcmod-vim"
-""NeoBundle "ujihisa/neco-ghc"
-
-""Bundle "Shougo/neocomplcache-clang_complete"
 " github 以外のリポジトリ (3)
-NeoBundle "git://git.wincent.com/command-t.git"
-	 
+"Bundle "git://git.wincent.com/command-t.git"
+
 filetype plugin indent on
 syntax on
 filetype on
 
+NeoBundleCheck
+
 set autoindent
-set tabstop=4
-set smarttab
 set expandtab
 set shiftwidth=4
 set number
+set splitbelow
+
+set expandtab
+set smarttab
+set tabstop=2
+set shiftwidth=2
 
 set runtimepath+=/path/to/vimdoc-ja
 set helplang=ja,en
 set updatetime=400
-
+set laststatus=2
+set hlsearch
+set imdisable
+set ignorecase
 "" not use left scroll bar to prevent from resizing when spliting varticaly
 set guioptions-=L
 
+if has("gui_running")
+else
+  set vb t_vb=
+endif
 
+set vb 
+set t_vb=''
 
 if has("win32") || has("win64") 
 		badd C:/Users/tomoya/dotfiles/_vimrc
@@ -127,6 +144,18 @@ endif
 let g:syntastic_mode_map = { 'mode': 'active',
 	\ 'active_filetypes': ['c'],
 	\ 'passive_filetypes': ['ruby', 'php'] }
+
+
+if has('kaoriya')
+	let s:ruby_libruby = system('ruby -rrbconfig -e "print Config::CONFIG[\"libdir\"] + \"/\" + Config::CONFIG[\"LIBRUBY\"]"')
+	if filereadable(s:ruby_libruby)
+		let $RUBY_DLL = s:ruby_libruby
+	endif
+endif
+
+
+badd ~/.vimrc
+
 
 
 " neocomplcache
@@ -147,9 +176,13 @@ let g:NeoComplCache_PluginCompletionLength = {
   \ 'syntax_complete'   : 2
   \ }
 
-let g:rsenseHome = '~/vimfiles/bundle/rsense'
-let g:rsenseUseOmniFunc = 1
+""let g:rsenseHome = '~/.vim/bundle/rsense'
+""let g:rsenseUseOmniFunc = 1
 
+"" do not close preview window automatically
+let g:neocomplcache_enable_auto_close_preview = 0
+
+let g:neocomplcache#sources#rsense#home_directory = "/usr/local/bin"
 if !exists('g:neocomplcache_omni_patterns')
  let g:neocomplcache_omni_patterns = {}
 endif
@@ -176,7 +209,6 @@ let g:clang_complete_auto = 0
 let g:clang_auto_select = 0
 "let g:clang_use_library = 1
 
-
 nnoremap <C-z> <C-w><C-z>
 let g:SrcExpl_winHeight = 4
 let g:SrcExpl_jumpKey = ""
@@ -190,24 +222,45 @@ let g:echodoc_enable_at_startup=1
 
 
 
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache_force_omni_patterns.c =
+  \ '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.cpp =
+  \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplcache_force_omni_patterns.objc =
+  \ '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.objcpp =
+  \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
 
 " 補完をキャンセル
 inoremap <expr><C-e>  neocomplcache#close_popup()
 
-""let g:neocomplcache_enable_insert_char_pre = 1
-" Plugin key-mappings.
-""imap <C-m>     <Plug>(neocomplcache_snippets_expand)
-""smap <C-m>     <Plug>(neocomplcache_snippets_expand)
-"" inoremap <expr><C-g>     neocomplcache#undo_completion()
-"" inoremap <expr><C-l>     neocomplcache#complete_common_string()
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
-imap <expr><C-TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><C-TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
@@ -215,79 +268,89 @@ if has('conceal')
 endif
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/vimfiles/snippets/'
+" For snippet_complete marker.
+if has('conceal')
+		set conceallevel=2 concealcursor=c
+endif
+"" imap <C-m>    <Plug>(neocomplcache_snippets_expand)
+"" smap <C-m>    <Plug>(neocomplcache_snippets_expand)
 
-" SuperTab like snippets behavior.
-"" imap <expr><C-TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-"" imap <expr><C-CR> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<C-CR>"
+
+imap <C-s>  <Plug>(neocomplcache_start_unite_snippet)
+imap <C-q>  <Plug>(neocomplcache_start_unite_quick_match)
+
+noremap es :<C-u>NeoComplCacheEditSnippets<CR>
 
 
+" surround.vim
+let g:surround_{char2nr('%')} = "%(\r)"
+let g:surround_{char2nr('w')} = "%w(\r)"
+let g:surround_{char2nr('#')} = "#{\r}"
+let g:surround_{char2nr('e')} = "begin \r end"
+let g:surround_{char2nr('i')} = "if \1if\1 \r end"
+let g:surround_{char2nr('u')} = "unless \1unless\1 \r end"
+let g:surround_{char2nr('c')} = "class \1class\1 \r end"
+let g:surround_{char2nr('m')} = "module \1module\1 \r end"
+let g:surround_{char2nr('d')} = "def \1def\1\2args\r..*\r(&)\2 \r end"
+let g:surround_{char2nr('p')} = "\1method\1 do \2args\r..*\r|&| \2\r end"
+let g:surround_{char2nr('P')} = "\1method\1 {\2args\r..*\r|&|\2 \r }"
 
-"imap <C-k>  <Plug>(neocomplcache_start_unite_snippet)
-"imap <C-q>  <Plug>(neocomplcache_start_unite_quick_match)
+" eskk.vim
+" don't use default mappings
+let g:eskk#no_default_mappings = 1
 
-"noremap es :<C-u>NeoComplCacheEditSnippets<CR>
+nnoremap <A-j> <Plug>(eskk:enable)
+nnoremap <A-e> <Plug>(eskk:disable)
+
 """ ref.vim
 nmap ,ra :<C-u>Ref alc<Space>
 
+let g:ref_refe_cmd = "/Users/kamadoinc/Documents/Reference/ruby-refm-1.9.2-dynamic-20110729/refe-1_9_2"
 let g:ref_alc_start_linenumber = 39 " 表示する行数
+let g:ref_phpmanual_path = "/Users/kamadoinc/Documents/Reference/php-chunked-xhtml"
 
 "<C-Space>でomni補完
-"imap <C-Space> <C-x><C-o>
+imap <C-Space> <C-x><C-o>
 
 set linespace=0
 set title
 set wildmenu
 set showcmd
-
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 "set notimeout          " don't timeout on mappings
 "set ttimeout           " do timeout on terminal key codes
 "set timeoutlen=100     " timeout after 100 msec"
 
 
-"Quick filter
-nnoremap ,f :call FilteringNew().addToParameter('alt', @/)
-nnoremap ,F :call FilteringNew().parseQuery(input('>'), '|')
-nnoremap ,g :call FilteringGetForSource()
-
-""vim-ibus
-"if has('gui_running')
-"else
-"inoremap <silent> <Esc> <Esc>:<C-u>call ibus#disable()<CR>
-"inoremap <silent> <C-c> <Esc>:<C-u>call ibus#disable()<CR>
-"noremap <silent> <Esc> :<C-u>call ibus#disable()<CR>
-"noremap <silent> <C-c> :<C-u>call ibus#disable()<CR>
-
-"endif
-
-
+"Quich filter
+nnoremap ,f :call FilteringNew().addToParameter('alt', @/).run()<CR>
+if has('gui_running')
+	"nnoremap ,F :call FilteringNew().parseQuery(input('>'), '|').run()<CR>
+endif
+nnoremap ,g :call FilteringGetForSource().return()<CR>
+" filtering.vimの機能を利用。カーソル下文字の検索
+nmap ,r :call Gather(expand("<cword>"), 0)<CR>:echo<CR>
 
 "---------------------------------------------------------------------------
 " 日本語入力に関する設定:
 "
-if has('multi_byte_ime') || has('xim')
-  " IME ON時のカーソルの色を設定(設定例:紫)
-  highlight CursorIM guibg=Purple guifg=NONE
-  " 挿入モード・検索モードでのデフォルトのIME状態設定
-  set iminsert=0 imsearch=0
-  if has('xim') && has('GUI_GTK')
-    " XIMの入力開始キーを設定:
-    " 下記の s-space はShift+Spaceの意味でkinput2+canna用設定
-    "set imactivatekey=s-space
-  endif
-  " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
-  inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-endif
-
-
 
 set mouse=a
 set ttymouse=xterm2
-
 ""taglist
-set tags=tags
+set tags=./tags,tags
 
-set noexpandtab
+""srcexpl.vim
+let g:srcexpl_updatetags = 1
+let g:srcexpl_refreshtime = 0
+nnoremap <silent> <c-z> :srcexpltoggle<cr>
+let g:srcexpl_refreshmapkey = "<c-b>r"
+let g:srcexpl_gobackmapkey = "<c-b>b"
+
+""powerline
+"" let g:powerline_symbols = 'fancy'
 
 "inoremap <C-k> <Up>
 "inoremap <C-j> <down>
@@ -298,31 +361,26 @@ set noexpandtab
 inoremap <C-u> <BS>
 inoremap <C-f> <BS>
 inoremap <C-i> <Del>
-
 ""#現在行の下に空行入れたくなることってよくあるよね？
 inoremap <C-o> <ESC>o
 
+imap OA <Up>
+imap OB <Down>
+imap OC <Right>
+imap OD <Left>
+noremap ;; :
+
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nmap <C-c><C-c> :nohlsearch<CR><Esc>
 
 ""Taglist.vim
-"nnoremap <silent> <F8> :TlistToggle<CR>
+nnoremap <silent> <C-s> :TlistToggle<CR>
 
 ""Trinity.vim
 "nnoremap <silent> <C-l> :TrinityToggleAll<CR>
 
 ""Nerdtree
 nnoremap <silent> <C-e> :NERDTreeToggle<CR>
-
-""Unite.vim
-nnoremap [unite] <Nop>
-nmap <Space>f [unite]
-nmap <C-n> [unite]
-nmap ,u [unite]
-
-imap <C-;> <Plug>(neocomplcache_start_unite_complete)
-
-" set original Buffername 
-call unite#set_buffer_name_option('outline', 'ignorecase', 1)
-call unite#set_buffer_name_option('outline', 'smartcase',  1)
 
 " Unite Commands
 " File
@@ -384,57 +442,13 @@ command! UW Uw
 " snipmate
 command! Us Unite snippet
 command! US Us
+" snipmate
+command! Utw Unite tweetvim
+command! UTW Utw
 " all
 command! Ua UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file
 
 
-" バッファ一覧
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> <Space>b :<C-u>Unite buffer<CR>
-nnoremap <silent> <C-n>b :<C-u>Unite buffer<CR>
-" ファイル一覧
-nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file file/new bookmark <CR>
-nnoremap <silent> <Space>ff :<C-u>UniteWithBufferDir -buffer-name=files file file/new bookmark <CR>
-nnoremap <silent> <Space>fn :<C-u>Unite -buffer-name=files file file/new bookmark <CR>
-nnoremap <silent> <C-n>ff :<C-u>Unite -buffer-name=files file file/new bookmark <CR>
-" レジスタ一覧
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> <Space>r :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> <C-n>r :<C-u>Unite -buffer-name=register register<CR>
-" 最近使用したファイル一覧
-nnoremap <silent> [unite]fm :<C-u>Unite file_mru<CR>
-nnoremap <silent> <Space>fm :<C-u>Unite file_mru<CR>
-nnoremap <silent> <C-n>fm :<C-u>Unite file_mru<CR>
-" outline
-nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
-nnoremap <silent> <Space>oo :<C-u>Unite -buffer-name=outline outline <CR>
-nnoremap <silent> <Space>on :<C-u>Unite -no-quit -vertical -winwidth=30 -buffer-name=outline outline<CR>
-nnoremap <silent> <C-n>o :<C-u>Unite outline<CR>
-" line検索
-nnoremap <silent> [unite]ln :<C-u>UniteWithCursorWord line<CR>
-nnoremap <silent> <Space>ln :<C-u>UniteWithCursorWord line<CR>
-nnoremap <silent> <Space>ll :<C-u>Unite line<CR>
-nnoremap <silent> <C-n>ln :<C-u>UniteWithCursorWord line<CR>
-" line検索
-nnoremap <silent> [unite]g :<C-u>Unite grep<CR>
-nnoremap <silent> <Space>g :<C-u>Unite grep<CR>
-nnoremap <silent> <C-n>g :<C-u>Unite grep<CR>
-" tag検索
-nnoremap <silent> [unite]tt :<C-u>Unite tag<CR>
-nnoremap <silent> <Space>tt :<C-u>Unite tag<CR>
-nnoremap <silent> <C-n>tt :<C-u>Unite tag<CR>
-" tag検索
-nnoremap <silent> [unite]tf :<C-u>Unite tag/file<CR>
-nnoremap <silent> <Space>tf :<C-u>Unite tag/file<CR>
-nnoremap <silent> <C-n>tf :<C-u>Unite tag/file<CR>
-" tag検索
-nnoremap <silent> [unite]ti :<C-u>Unite tag/include<CR>
-nnoremap <silent> <Space>ti :<C-u>Unite tag/include<CR>
-nnoremap <silent> <C-n>ti :<C-u>Unite tag/include<CR>
-" 全部乗せ
-nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> <Space>a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> <C-n>a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 " 起動時にインサートモードで開始
 let g:unite_enable_start_insert = 1
 
@@ -443,10 +457,6 @@ function! s:unite_my_settings()
   " 単語単位からパス単位で削除するように変更
   imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 endfunction
-
-
-
-
 
 " カーソル行をハイライト
 set cursorline
@@ -462,17 +472,27 @@ highlight CursorLine ctermbg=white guibg=black
 
 ""colorscheme pyte
 
-
 ""Solarized
 syntax enable  
-let g:solarized_termcolors=256
-colorscheme solarized  
-set background=dark  
+""let g:solarized_termcolors=256
+""set background=dark  
 ""light にしたければ下  
-""set background=light  
+set background=light  
+if has("gui_running")
+else
+		let g:solarized_termcolors=256
+		set t_Co=16
+endif
+let g:solarized_degrade=0
+let g:solarized_bold=1
+let g:solarized_underline=1
+let g:solarized_italic=1
+let g:solarized_termtrans=0
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
 
-
-
+colorscheme lucius
+set background=dark
 
 ""tabでのcomp設定
 function! InsertTabWrapper()
@@ -489,31 +509,6 @@ function! InsertTabWrapper()
 	endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-
-
-set backupdir=~/vimfiles/tmp
-set directory=~/vimfiles/tmp
-
-
-
-if has("win32") || has("win64") 
-	""カレントディレクトリの移動、CDを定義
-	command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
-	function! s:ChangeCurrentDir(directory, bang)
-	    if a:directory == ''
-	        lcd %:p:h
-	    else
-	        execute 'lcd' . a:directory
-	    endif
-
-	    if a:bang == ''
-	        pwd
-	    endif
-	endfunction
-
-	" Change current directory.
-	nnoremap <silent> <Space>cd :<C-u>CD<CR>
-endif
 
 
 set fileformat=unix
@@ -543,4 +538,148 @@ nnoremap <C-c><C-c> :<C-u>nohlsearch<CR>
 "" au BufNewFile,BufRead *.xaml    setf xml
 "" au BufNewFile,BufRead *.xaml    setl omnifunc=xaml#complete
 
+
+""カレントディレクトリの移動
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
+function! s:ChangeCurrentDir(directory, bang)
+    if a:directory == ''
+        lcd %:p:h
+    else
+        execute 'lcd' . a:directory
+    endif
+
+    if a:bang == ''
+        pwd
+    endif
+endfunction
+
+" Change current directory.
+nnoremap <silent> <Space>cd :<C-u>CD<CR>
+
+
+ if !has('gui_running')
+    " MapFastKeycode: helper for fast keycode mappings
+    " makes use of unused vim keycodes <[S-]F15> to <[S-]F37>
+    function! <SID>MapFastKeycode(key, keycode)
+        if s:fast_i == 46
+            echohl WarningMsg
+            echomsg "Unable to map ".a:key.": out of spare keycodes"
+            echohl None
+            return
+        endif
+        let vkeycode = '<'.(s:fast_i/23==0 ? '' : 'S-').'F'.(15+s:fast_i%23).'>'
+        exec 'set '.vkeycode.'='.a:keycode
+        exec 'map '.vkeycode.' '.a:key
+        let s:fast_i += 1
+    endfunction
+    let s:fast_i = 0
+ 
+    call <SID>MapFastKeycode('<C-Tab>', "[27;5;9~")
+    call <SID>MapFastKeycode('<S-C-Tab>', "[27;6;9~")
+endif
+
+
+function! s:fwrap()
+if has("set nowrap?")
+	noremap <F5> wrap
+else 
+	set nowrap
+endif
+endfunction
+
+noremap <F5> :call s:fwrap()<CR>
+
+set notitle
+set nowrap
+"set listchars=tab:>\
+
+
+set nocursorline
+
+
+command! W w
+
+
+"" powerline
+""source ~/.vim/bundle/powerline/powerline/bindings/vim/plugin/powerline.vim
+"" python from powerline.bindings.vim import source_plugin; source_plugin()
+
+set directory=~/.vim_backup
+set backupdir=~/.vim_backup
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+""
+"" Vim-LaTeX
+""
+" filetype plugin on
+" filetype indent on
+set shellslash
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Imap_UsePlaceHolders = 1
+let g:Imap_DeleteEmptyPlaceHolders = 1
+let g:Imap_StickyPlaceHolders = 0
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_FormatDependency_ps = 'dvi,ps'
+let g:Tex_FormatDependency_pdf = 'dvi,pdf'
+"let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
+"let g:Tex_FormatDependency_pdf = 'pdf'
+let g:Tex_CompileRule_dvi = 'platex -synctex=1 -interaction=nonstopmode $*'
+"let g:Tex_CompileRule_dvi = 'uplatex -synctex=1 -interaction=nonstopmode $*'
+let g:Tex_CompileRule_ps = 'dvips -Ppdf -o $*.ps $*.dvi'
+let g:Tex_CompileRule_pdf = 'dvipdfmx $*.dvi'
+"let g:Tex_CompileRule_pdf = 'ps2pdf $*.ps'
+"let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 -interaction=nonstopmode $*'
+"let g:Tex_CompileRule_pdf = 'lualatex -synctex=1 -interaction=nonstopmode $*'
+"let g:Tex_CompileRule_pdf = 'luajitlatex -synctex=1 -interaction=nonstopmode $*'
+"let g:Tex_CompileRule_pdf = 'xelatex -synctex=1 -interaction=nonstopmode $*'
+let g:Tex_BibtexFlavor = 'pbibtex'
+"let g:Tex_BibtexFlavor = 'upbibtex'
+let g:Tex_MakeIndexFlavor = 'mendex $*.idx'
+let g:Tex_UseEditorSettingInDVIViewer = 1
+let g:Tex_ViewRule_dvi = 'pxdvi -watchfile 1'
+"let g:Tex_ViewRule_dvi = 'advi -watch-file 1'
+"let g:Tex_ViewRule_dvi = 'evince'
+"let g:Tex_ViewRule_dvi = 'okular --unique'
+"let g:Tex_ViewRule_dvi = 'wine ~/.wine/drive_c/w32tex/dviout/dviout.exe -1'
+let g:Tex_ViewRule_ps = 'gv --watch'
+"let g:Tex_ViewRule_ps = 'evince'
+"let g:Tex_ViewRule_ps = 'okular --unique'
+"let g:Tex_ViewRule_ps = 'zathura'
+"let g:Tex_ViewRule_pdf = 'texworks'
+let g:Tex_ViewRule_pdf = 'evince'
+"let g:Tex_ViewRule_pdf = 'okular --unique'
+"let g:Tex_ViewRule_pdf = 'zathura -s -x "vim --servername synctex -n --remote-silent +\%{line} \%{input}"'
+"let g:Tex_ViewRule_pdf = 'qpdfview --unique'
+"let g:Tex_ViewRule_pdf = 'pdfviewer'
+"let g:Tex_ViewRule_pdf = 'gv --watch'
+"let g:Tex_ViewRule_pdf = 'acroread'
+"let g:Tex_ViewRule_pdf = 'pdfopen -viewer ar9-tab'
+
+"" Tweetvim
+let g:tweetvim_display_icon = 1
+
+au InsertLeave * call ImDisable()
+
+function! ImDisable()
+""  echo 'disable called'
+""  let status = imstatusfunc()
+""  imactivatefunc(0)
+""  let status2 = imstatusfunc()
+""  echo 'imstatus B'
+""  echo status
+""  echo 'imstatus A'
+""  echo status2
+endfunction
+
+
+let $PATH= $PATH . ":" . $HOME . "/.cabal/bin"
+set t_vb=''
+
+"autocmd! rooter
+autocmd BufEnter *.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd :Rooter
+let g:rooter_use_lcd = 1
+let g:syntastic_ghdl_workdir = 'lib'
 

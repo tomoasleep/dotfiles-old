@@ -7,9 +7,55 @@ set background=light
 " UTF-8 環境でないとうまく表示されない
 set encoding=utf-8
 " フォントサイズはお好みで
-set guifont=consolas,VL\ Gothic\ for\ Powerline:h10,Ricty\ for\ Powerline:h12,Ricty:h12
+" set guifont=Ricty\ for\ Powerline\ 10,Ricty\ 10
+" set guifont=Inconsolata\ for\ Powerline\ 13,Ricty\ for\ Powerline\ 10,Ricty\ 10
+"set guifont=Inconsolata\ for\ Powerline:h13,Ricty\ for\ Powerline\ 10,Ricty\ 10
+set guifont=Ricty\ 10
 " こっちは日本語フォント
-set guifontwide=VL\ Gothic\ for\ Powerline:h10,Ricty:h12
+"set guifontwide=Ricty\ 10
 " `fancy' テーマに切り替え
-""let g:Powerline_symbols = 'fancy'
+" let g:Powerline_symbols = 'fancy'
 
+colorscheme solarized
+""set transparency=25 " 透過率25
+
+"/* -- 言語別設定(Java) -- */
+"Java言語の標準のクラス名をハイライト
+:let java_highlight_all=1
+
+"デバッグ文のハイライト
+:let java_highlight_debug=1
+
+"余分な空白に対してハイライト
+:let java_space_errors=1
+
+"メソッド宣言文をハイライト
+:let java_highlight_functions=1
+
+"コンパイラ設定(Java)
+au FileType java compiler javac
+
+"コンパイル
+function! CompileJava()
+:make %
+:cw
+endfunction
+
+au FileType java nmap <F5> :call CompileJava()<CR>
+
+"Vim JDE
+"au FileType java map <M-w> :VjdeNclass<CR> "クラス作成
+"au FileType java map <M-i> :VjdeNinte<CR> "インターフェース作成
+"au FileType java map <M-m> :VjdeNmain<CR> "main作成
+"au FileType java map <M-a> :VjdeNprop<CR> "アクセサ作成
+"au FileType java map <M-z> :VjdeWizard<CR> "ウィザード表示
+
+"JCommentWriterスクリプト用
+""au FileType java source $VIMRUNTIME/macros/jcommenter.vim
+""au FileType java map <C-c> :call JCommentWriter()<CR>
+
+"javaの辞書ファイルをセット
+au FileType java set dictionary=j2se14.dict
+
+let $PATH= $PATH . ":" . $HOME . "/.cabal/bin"
+set t_vb=

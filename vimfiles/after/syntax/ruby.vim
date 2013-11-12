@@ -1,1 +1,1 @@
-set ts=3 sw=3 expandtab
+set ts=2 sw=2 expandtab
