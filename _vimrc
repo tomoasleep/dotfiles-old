@@ -1,3 +1,7 @@
+" --- vundle.vim - プラグインの集中管理
+" doc/vundle.md
+" ＊filetype を一度offにして、Vundle の処理のあとでftpluginとindent を読み込むように指定。
+
 set nocompatible
 filetype off
  
@@ -16,7 +20,6 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle "fugitive.vim"
 NeoBundle "The-NERD-tree"
 NeoBundle "endwise.vim"
-NeoBundle 'TwitVim'
 NeoBundle 'neco-look'
 NeoBundle 'surround.vim'
 NeoBundle 'Quich-Filter'
@@ -27,6 +30,7 @@ NeoBundle 'ZenCoding.vim'
 NeoBundle 'pyte'
 "" Bundle 'java_getset.vim'
 NeoBundle 'matchit.zip'
+NeoBundle "project.tar.gz"
 "" Bundle "TagHighlight"
 
 "
@@ -49,12 +53,18 @@ NeoBundle 'thinca/vim-quickrun'
 "Bundle 'm2ym/rsense'
 "" Bundle 'Lokaltog/vim-powerline'
 NeoBundle 'Shougo/vimshell.git'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {
+  \ 'build': {
+  \     'windows' : 'make -f make_mingw32.mak', 
+  \     'mac' : 'make -f make_mac.mak', 
+  \     'unix' : 'make -f make_unix.mak', 
+  \     },
+  \ }
 NeoBundle 'Shougo/neosnippet'
 "" Bundle "Shougo/neocomplcache-snippets-complete"
 NeoBundle "scrooloose/syntastic"
 NeoBundle "kana/vim-smartchr"
-NeoBundle "h1mesuke/unite-outline"
+NeoBundle "Shougo/unite-outline"
 NeoBundle "tsukkee/unite-tag"
 "Bundle "tyru/eskk.vim"
 NeoBundle "Shougo/vinarise"
@@ -63,6 +73,7 @@ NeoBundle "gregsexton/gitv"
 "" Bundle "wesleyche/SrcExpl"
 NeoBundle "alpicola/vim-egison"
 NeoBundle "dag/vim2hs"
+NeoBundle "zenzike/vim-haskell"
 NeoBundle "eagletmt/ghcmod-vim"
 NeoBundle "ujihisa/neco-ghc"
 NeoBundle "kien/ctrlp.vim"
@@ -75,19 +86,35 @@ NeoBundle "w0ng/vim-hybrid"
 NeoBundle "kchmck/vim-coffee-script"
 NeoBundle "nathanaelkane/vim-indent-guides"
 NeoBundle "digitaltoad/vim-jade"
+NeoBundle "tyru/open-browser.vim"
+NeoBundle "mattn/webapi-vim"
+NeoBundle "mattn/favstar-vim"
+NeoBundle "basyura/twibill.vim"
+NeoBundle "basyura/bitly.vim"
+NeoBundle "basyura/TweetVim"
+NeoBundle "rbtnn/vimconsole.vim"
+NeoBundle "rainux/vim-vala"
+NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'airblade/vim-rooter'
 
 " github 以外のリポジトリ (3)
 "Bundle "git://git.wincent.com/command-t.git"
-	 
+
 filetype plugin indent on
 syntax on
 filetype on
 
+NeoBundleCheck
+
 set autoindent
+set expandtab
+set shiftwidth=4
 set number
 set splitbelow
 
 set expandtab
+set smarttab
 set tabstop=2
 set shiftwidth=2
 set laststatus=2
@@ -95,6 +122,31 @@ set hlsearch
 
 set runtimepath+=/path/to/vimdoc-ja
 set helplang=ja,en
+set updatetime=400
+set laststatus=2
+set hlsearch
+set imdisable
+set ignorecase
+"" not use left scroll bar to prevent from resizing when spliting varticaly
+set guioptions-=L
+
+if has("gui_running")
+else
+  set vb t_vb=
+endif
+
+set vb 
+set t_vb=''
+
+if has("win32") || has("win64") 
+		badd C:/Users/tomoya/dotfiles/_vimrc
+endif
+
+"" syntastic
+let g:syntastic_mode_map = { 'mode': 'active',
+	\ 'active_filetypes': ['c'],
+	\ 'passive_filetypes': ['ruby', 'php'] }
+
 
 if has('kaoriya')
 	let s:ruby_libruby = system('ruby -rrbconfig -e "print Config::CONFIG[\"libdir\"] + \"/\" + Config::CONFIG[\"LIBRUBY\"]"')
@@ -137,6 +189,40 @@ if !exists('g:neocomplcache_omni_patterns')
  let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+if !exists('g:neocomplcache_force_omni_patterns')
+		let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache_force_omni_patterns.c =
+						\ '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.cpp =
+						\ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplcache_force_omni_patterns.objc =
+						\ '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.objcpp =
+						\ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+"let g:clang_use_library = 1
+
+nnoremap <C-z> <C-w><C-z>
+let g:SrcExpl_winHeight = 4
+let g:SrcExpl_jumpKey = ""
+let g:SrcExpl_gobackKey = ""
+
+let g:clang_use_library=1
+let g:echodoc_enable_at_startup=1
+
+""let g:clang_debug=1
+
+
+
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
@@ -182,7 +268,8 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/vimfiles/snippets/'
 " For snippet_complete marker.
 if has('conceal')
 		set conceallevel=2 concealcursor=c
@@ -217,8 +304,6 @@ let g:eskk#no_default_mappings = 1
 nnoremap <A-j> <Plug>(eskk:enable)
 nnoremap <A-e> <Plug>(eskk:disable)
 
-
-
 """ ref.vim
 nmap ,ra :<C-u>Ref alc<Space>
 
@@ -233,7 +318,8 @@ set linespace=0
 set title
 set wildmenu
 set showcmd
-
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 "set notimeout          " don't timeout on mappings
 "set ttimeout           " do timeout on terminal key codes
@@ -252,47 +338,11 @@ nmap ,r :call Gather(expand("<cword>"), 0)<CR>:echo<CR>
 "---------------------------------------------------------------------------
 " 日本語入力に関する設定:
 "
-if has('multi_byte_ime') || has('xim')
-  " IME ON時のカーソルの色を設定(設定例:紫)
-  highlight CursorIM guibg=Purple guifg=NONE
-  " 挿入モード・検索モードでのデフォルトのIME状態設定
-  set iminsert=0 imsearch=0
-  if has('xim') && has('GUI_GTK')
-    " XIMの入力開始キーを設定:
-    " 下記の s-space はShift+Spaceの意味でkinput2+canna用設定
-    "set imactivatekey=s-space
-  endif
-  " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除 
-  	inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-	if has("gui_running")
-			inoremap <silent> <Esc> <Esc>:set noimdisable<CR>
-	endif
-endif
-
-
 
 set mouse=a
 set ttymouse=xterm2
-
-
-"行頭のスペースの連続をハイライトさせる
-"tab文字も区別されずにハイライトされるので、区別したいときはtab文字の表示を別に
-"設定する必要がある。
-"function! solspacehilight()
-""    syntax match solspace "^\s\+" display containedin=all
-""    highlight solspace term=underline ctermbg=lightgray
-""	set list
-""	set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-"endf
-"全角スペースをハイライトさせる。
-"function! jisx0208spacehilight()
-""    syntax match jisx0208space "　" display containedin=all
-""    highlight jisx0208space term=underline ctermbg=lightcyan
-"endf
-
 ""taglist
 set tags=./tags,tags
-
 
 ""srcexpl.vim
 let g:srcexpl_updatetags = 1
@@ -304,15 +354,17 @@ let g:srcexpl_gobackmapkey = "<c-b>b"
 ""powerline
 "" let g:powerline_symbols = 'fancy'
 
+"inoremap <C-k> <Up>
+"inoremap <C-j> <down>
+"inoremap <C-h> <Left>
+"inoremap <C-l> <Right>
 
 ""#BackSpaceもDeleteも遠すぎ。俺には押せない
 inoremap <C-u> <BS>
 inoremap <C-f> <BS>
 inoremap <C-i> <Del>
-
 ""#現在行の下に空行入れたくなることってよくあるよね？
 inoremap <C-o> <ESC>o
-
 
 imap OA <Up>
 imap OB <Down>
@@ -331,7 +383,6 @@ nnoremap <silent> <C-s> :TlistToggle<CR>
 
 ""Nerdtree
 nnoremap <silent> <C-e> :NERDTreeToggle<CR>
-
 
 " Unite Commands
 " File
@@ -393,6 +444,9 @@ command! UW Uw
 " snipmate
 command! Us Unite snippet
 command! US Us
+" snipmate
+command! Utw Unite tweetvim
+command! UTW Utw
 " all
 command! Ua UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file
 
@@ -400,17 +454,11 @@ command! Ua UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file
 " 起動時にインサートモードで開始
 let g:unite_enable_start_insert = 1
 
-
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
   " 単語単位からパス単位で削除するように変更
   imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 endfunction
-
-
-""twitvim
-let twitvim_login_b64 = "bmVtdW5lbXUzZGVzdTphc2xlZXAzMjk="
-let twitvim_count = 100
 
 " カーソル行をハイライト
 set cursorline
@@ -425,7 +473,6 @@ hi CursorLine gui=underline
 highlight CursorLine ctermbg=white guibg=black
 
 ""colorscheme pyte
-
 
 ""Solarized
 syntax enable  
@@ -464,6 +511,34 @@ function! InsertTabWrapper()
 	endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
+
+set fileformat=unix
+set fileformats=unix,dos
+
+function! s:set_fileformat()
+    try
+        setlocal fileformat=unix
+    catch
+    endtry
+endfunction
+autocmd BufRead * :call <SID>set_fileformat()
+
+command! W w
+nnoremap <ESC><ESC> :<C-u>nohlsearch<CR>
+nnoremap <C-c><C-c> :<C-u>nohlsearch<CR>
+
+"" filetype
+" XAML
+"" au BufNewFile,BufRead *.xaml	setf xml
+
+" dotnet complete
+"" au BufNewFile,BufRead *.cs      setl omnifunc=cs#complet
+"" au BufNewFile,BufRead *.cs      setl bexpr=cs#balloon()
+"" au BufNewFile,BufRead *.cs      setl ballooneval
+
+"" au BufNewFile,BufRead *.xaml    setf xml
+"" au BufNewFile,BufRead *.xaml    setl omnifunc=xaml#complete
 
 
 ""カレントディレクトリの移動
@@ -528,7 +603,7 @@ command! W w
 
 
 "" powerline
-source ~/.vim/bundle/powerline/powerline/bindings/vim/plugin/powerline.vim
+""source ~/.vim/bundle/powerline/powerline/bindings/vim/plugin/powerline.vim
 "" python from powerline.bindings.vim import source_plugin; source_plugin()
 
 set directory=~/.vim_backup
@@ -584,3 +659,29 @@ let g:Tex_ViewRule_pdf = 'evince'
 "let g:Tex_ViewRule_pdf = 'gv --watch'
 "let g:Tex_ViewRule_pdf = 'acroread'
 "let g:Tex_ViewRule_pdf = 'pdfopen -viewer ar9-tab'
+
+"" Tweetvim
+let g:tweetvim_display_icon = 1
+
+au InsertLeave * call ImDisable()
+
+function! ImDisable()
+""  echo 'disable called'
+""  let status = imstatusfunc()
+""  imactivatefunc(0)
+""  let status2 = imstatusfunc()
+""  echo 'imstatus B'
+""  echo status
+""  echo 'imstatus A'
+""  echo status2
+endfunction
+
+
+let $PATH= $PATH . ":" . $HOME . "/.cabal/bin"
+set t_vb=''
+
+"autocmd! rooter
+autocmd BufEnter *.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd :Rooter
+let g:rooter_use_lcd = 1
+let g:syntastic_ghdl_workdir = 'lib'
+

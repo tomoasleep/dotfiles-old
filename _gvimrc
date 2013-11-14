@@ -1,14 +1,16 @@
 set lines=60
 set columns=120
+set lsp=0
 
-
-
+colorscheme solarized
+set background=light
 " UTF-8 環境でないとうまく表示されない
 set encoding=utf-8
 " フォントサイズはお好みで
 " set guifont=Ricty\ for\ Powerline\ 10,Ricty\ 10
 " set guifont=Inconsolata\ for\ Powerline\ 13,Ricty\ for\ Powerline\ 10,Ricty\ 10
-set guifont=Inconsolata\ for\ Powerline:h13,Ricty\ for\ Powerline\ 10,Ricty\ 10
+"set guifont=Inconsolata\ for\ Powerline:h13,Ricty\ for\ Powerline\ 10,Ricty\ 10
+set guifont=Ricty\ 10
 " こっちは日本語フォント
 "set guifontwide=Ricty\ 10
 " `fancy' テーマに切り替え
@@ -55,4 +57,5 @@ au FileType java nmap <F5> :call CompileJava()<CR>
 "javaの辞書ファイルをセット
 au FileType java set dictionary=j2se14.dict
 
-set imdisable
+let $PATH= $PATH . ":" . $HOME . "/.cabal/bin"
+set t_vb=
