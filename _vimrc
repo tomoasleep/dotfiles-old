@@ -4,11 +4,11 @@
 
 set nocompatible
 filetype off
- 
+
 set rtp+=~/.vim/vundle.git/
 "" set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
-if has('vim_starting') 
+if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
   call neobundle#rc(expand('~/.vim/bundle'))
 endif
@@ -41,7 +41,7 @@ NeoBundle "Shougo/unite.vim"
 NeoBundle "thinca/vim-unite-history"
 NeoBundle "Sixeight/unite-grep"
 NeoBundle "tsukkee/unite-help"
-"" Bundle "tpope/vim-rails" 
+"" Bundle "tpope/vim-rails"
 "" Bundle "tpope/vim-fugitive"
 NeoBundle "thinca/vim-ref"
 NeoBundle "Shougo/neocomplcache"
@@ -54,12 +54,12 @@ NeoBundle 'thinca/vim-quickrun'
 "" Bundle 'Lokaltog/vim-powerline'
 NeoBundle 'Shougo/vimshell.git'
 NeoBundle 'Shougo/vimproc', {
-  \ 'build': {
-  \     'windows' : 'make -f make_mingw32.mak', 
-  \     'mac' : 'make -f make_mac.mak', 
-  \     'unix' : 'make -f make_unix.mak', 
-  \     },
-  \ }
+      \ 'build': {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \     },
+      \ }
 NeoBundle 'Shougo/neosnippet'
 "" Bundle "Shougo/neocomplcache-snippets-complete"
 NeoBundle "scrooloose/syntastic"
@@ -97,6 +97,9 @@ NeoBundle "rainux/vim-vala"
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'airblade/vim-rooter'
+"" NeoBundle 'alpaca-tc/alpaca_powertabline'
+"" NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+NeoBundle 'bling/vim-airline'
 
 " github 以外のリポジトリ (3)
 "Bundle "git://git.wincent.com/command-t.git"
@@ -135,24 +138,24 @@ else
   set vb t_vb=
 endif
 
-set vb 
+set vb
 set t_vb=''
 
-if has("win32") || has("win64") 
-		badd C:/Users/tomoya/dotfiles/_vimrc
+if has("win32") || has("win64")
+  badd C:/Users/tomoya/dotfiles/_vimrc
 endif
 
 "" syntastic
 let g:syntastic_mode_map = { 'mode': 'active',
-	\ 'active_filetypes': ['c'],
-	\ 'passive_filetypes': ['ruby', 'php'] }
+      \ 'active_filetypes': ['c'],
+      \ 'passive_filetypes': ['ruby', 'php'] }
 
 
 if has('kaoriya')
-	let s:ruby_libruby = system('ruby -rrbconfig -e "print Config::CONFIG[\"libdir\"] + \"/\" + Config::CONFIG[\"LIBRUBY\"]"')
-	if filereadable(s:ruby_libruby)
-		let $RUBY_DLL = s:ruby_libruby
-	endif
+  let s:ruby_libruby = system('ruby -rrbconfig -e "print Config::CONFIG[\"libdir\"] + \"/\" + Config::CONFIG[\"LIBRUBY\"]"')
+  if filereadable(s:ruby_libruby)
+    let $RUBY_DLL = s:ruby_libruby
+  endif
 endif
 
 
@@ -174,9 +177,9 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:NeoComplCache_MinSyntaxLength = 3
 " プラグイン毎の補完関数を呼び出す文字数
 let g:NeoComplCache_PluginCompletionLength = {
-  \ 'keyword_complete'  : 2,
-  \ 'syntax_complete'   : 2
-  \ }
+      \ 'keyword_complete'  : 2,
+      \ 'syntax_complete'   : 2
+      \ }
 
 ""let g:rsenseHome = '~/.vim/bundle/rsense'
 ""let g:rsenseUseOmniFunc = 1
@@ -186,7 +189,7 @@ let g:neocomplcache_enable_auto_close_preview = 0
 
 let g:neocomplcache#sources#rsense#home_directory = "/usr/local/bin"
 if !exists('g:neocomplcache_omni_patterns')
- let g:neocomplcache_omni_patterns = {}
+  let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 " Define keyword.
@@ -196,17 +199,17 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 if !exists('g:neocomplcache_force_omni_patterns')
-		let g:neocomplcache_force_omni_patterns = {}
+  let g:neocomplcache_force_omni_patterns = {}
 endif
 let g:neocomplcache_force_overwrite_completefunc = 1
 let g:neocomplcache_force_omni_patterns.c =
-						\ '[^.[:digit:] *\t]\%(\.\|->\)'
+      \ '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplcache_force_omni_patterns.cpp =
-						\ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplcache_force_omni_patterns.objc =
-						\ '[^.[:digit:] *\t]\%(\.\|->\)'
+      \ '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplcache_force_omni_patterns.objcpp =
-						\ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:clang_complete_auto = 0
 let g:clang_auto_select = 0
 "let g:clang_use_library = 1
@@ -235,13 +238,13 @@ if !exists('g:neocomplcache_force_omni_patterns')
 endif
 let g:neocomplcache_force_overwrite_completefunc = 1
 let g:neocomplcache_force_omni_patterns.c =
-  \ '[^.[:digit:] *\t]\%(\.\|->\)'
+      \ '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplcache_force_omni_patterns.cpp =
-  \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplcache_force_omni_patterns.objc =
-  \ '[^.[:digit:] *\t]\%(\.\|->\)'
+      \ '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplcache_force_omni_patterns.objcpp =
-  \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+      \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:clang_complete_auto = 0
 let g:clang_auto_select = 0
 
@@ -258,11 +261,11 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
@@ -272,7 +275,7 @@ endif
 let g:neosnippet#snippets_directory='~/vimfiles/snippets/'
 " For snippet_complete marker.
 if has('conceal')
-		set conceallevel=2 concealcursor=c
+  set conceallevel=2 concealcursor=c
 endif
 "" imap <C-m>    <Plug>(neocomplcache_snippets_expand)
 "" smap <C-m>    <Plug>(neocomplcache_snippets_expand)
@@ -329,7 +332,7 @@ set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 "Quich filter
 nnoremap ,f :call FilteringNew().addToParameter('alt', @/).run()<CR>
 if has('gui_running')
-	"nnoremap ,F :call FilteringNew().parseQuery(input('>'), '|').run()<CR>
+  "nnoremap ,F :call FilteringNew().parseQuery(input('>'), '|').run()<CR>
 endif
 nnoremap ,g :call FilteringGetForSource().return()<CR>
 " filtering.vimの機能を利用。カーソル下文字の検索
@@ -353,6 +356,8 @@ let g:srcexpl_gobackmapkey = "<c-b>b"
 
 ""powerline
 "" let g:powerline_symbols = 'fancy'
+
+let g:airline#extensions#tabline#enabled = 1
 
 "inoremap <C-k> <Up>
 "inoremap <C-j> <down>
@@ -386,7 +391,7 @@ nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 
 " Unite Commands
 " File
-command! Uf UniteWithBufferDir -buffer-name=files file bookmark file/new 
+command! Uf UniteWithBufferDir -buffer-name=files file bookmark file/new
 command! UF Uf
 " Buffer
 command! Ub Unite buffer
@@ -401,7 +406,7 @@ command! UBA Uba
 command! Ur Unite -buffer-name=register register
 command! UR Ur
 " outline
-command! Uo Unite -buffer-name=outline outline 
+command! Uo Unite -buffer-name=outline outline
 command! UO Uo
 command! Uov Unite -no-quit -toggle -vertical -winwidth=45 -buffer-name=outline outline
 command! Uovl Unite -no-quit -toggle -vertical -winwidth=80 -buffer-name=outline outline
@@ -418,7 +423,7 @@ command! Ul Unite line
 command! UL Ul
 command! Ulc UniteWithCursorWord line
 command! ULC Ulc
-" find 
+" find
 command! Ufi Unite find
 command! UFi Ufi
 " grep
@@ -432,7 +437,7 @@ command! UTF Utf
 command! Uti Unite tag/include
 command! UTI Uti
 " history
-command! Uhc Unite history/command 
+command! Uhc Unite history/command
 command! UHC Uhc
 command! Uhs Unite history/search
 command! UHS Uhs
@@ -464,26 +469,26 @@ endfunction
 set cursorline
 " " カレントウィンドウにのみ罫線を引く
 augroup cch
-autocmd! cch
-autocmd WinLeave * set nocursorline
-autocmd WinEnter,BufRead * set cursorline
+  autocmd! cch
+  autocmd WinLeave * set nocursorline
+  autocmd WinEnter,BufRead * set cursorline
 augroup END
 hi clear CursorLine
 hi CursorLine gui=underline
 highlight CursorLine ctermbg=white guibg=black
 
-""colorscheme pyte
 
 ""Solarized
-syntax enable  
+syntax enable
 ""let g:solarized_termcolors=256
-""set background=dark  
-""light にしたければ下  
-set background=light  
+""set background=dark
+""light にしたければ下
+colorscheme solarized
+set background=light
 if has("gui_running")
 else
-		let g:solarized_termcolors=256
-		set t_Co=16
+  let g:solarized_termcolors=256
+  set t_Co=16
 endif
 let g:solarized_degrade=0
 let g:solarized_bold=1
@@ -493,22 +498,20 @@ let g:solarized_termtrans=0
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 
-colorscheme lucius
-set background=dark
 
 ""tabでのcomp設定
 function! InsertTabWrapper()
-	if pumvisible()
-		return "\<c-n>"
-	endif
-	let col = col('.') - 1
-	if !col || getline('.')[col - 1] !~ '\k\|<\|/'
-		return "\<tab>"
-	elseif exists('&omnifunc') && &omnifunc == ''
-		return "\<c-n>"
-	else
-		return "\<c-x>\<c-o>"
-	endif
+  if pumvisible()
+    return "\<c-n>"
+  endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k\|<\|/'
+    return "\<tab>"
+  elseif exists('&omnifunc') && &omnifunc == ''
+    return "\<c-n>"
+  else
+    return "\<c-x>\<c-o>"
+  endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
@@ -517,10 +520,10 @@ set fileformat=unix
 set fileformats=unix,dos
 
 function! s:set_fileformat()
-    try
-        setlocal fileformat=unix
-    catch
-    endtry
+  try
+    setlocal fileformat=unix
+  catch
+  endtry
 endfunction
 autocmd BufRead * :call <SID>set_fileformat()
 
@@ -542,51 +545,51 @@ nnoremap <C-c><C-c> :<C-u>nohlsearch<CR>
 
 
 ""カレントディレクトリの移動
-command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>')
 function! s:ChangeCurrentDir(directory, bang)
-    if a:directory == ''
-        lcd %:p:h
-    else
-        execute 'lcd' . a:directory
-    endif
+  if a:directory == ''
+    lcd %:p:h
+  else
+    execute 'lcd' . a:directory
+  endif
 
-    if a:bang == ''
-        pwd
-    endif
+  if a:bang == ''
+    pwd
+  endif
 endfunction
 
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 
- if !has('gui_running')
-    " MapFastKeycode: helper for fast keycode mappings
-    " makes use of unused vim keycodes <[S-]F15> to <[S-]F37>
-    function! <SID>MapFastKeycode(key, keycode)
-        if s:fast_i == 46
-            echohl WarningMsg
-            echomsg "Unable to map ".a:key.": out of spare keycodes"
-            echohl None
-            return
-        endif
-        let vkeycode = '<'.(s:fast_i/23==0 ? '' : 'S-').'F'.(15+s:fast_i%23).'>'
-        exec 'set '.vkeycode.'='.a:keycode
-        exec 'map '.vkeycode.' '.a:key
-        let s:fast_i += 1
-    endfunction
-    let s:fast_i = 0
- 
-    call <SID>MapFastKeycode('<C-Tab>', "[27;5;9~")
-    call <SID>MapFastKeycode('<S-C-Tab>', "[27;6;9~")
+if !has('gui_running')
+  " MapFastKeycode: helper for fast keycode mappings
+  " makes use of unused vim keycodes <[S-]F15> to <[S-]F37>
+  function! <SID>MapFastKeycode(key, keycode)
+    if s:fast_i == 46
+      echohl WarningMsg
+      echomsg "Unable to map ".a:key.": out of spare keycodes"
+      echohl None
+      return
+    endif
+    let vkeycode = '<'.(s:fast_i/23==0 ? '' : 'S-').'F'.(15+s:fast_i%23).'>'
+    exec 'set '.vkeycode.'='.a:keycode
+    exec 'map '.vkeycode.' '.a:key
+    let s:fast_i += 1
+  endfunction
+  let s:fast_i = 0
+
+  call <SID>MapFastKeycode('<C-Tab>', "[27;5;9~")
+  call <SID>MapFastKeycode('<S-C-Tab>', "[27;6;9~")
 endif
 
 
 function! s:fwrap()
-if has("set nowrap?")
-	noremap <F5> wrap
-else 
-	set nowrap
-endif
+  if has("set nowrap?")
+    noremap <F5> wrap
+  else
+    set nowrap
+  endif
 endfunction
 
 noremap <F5> :call s:fwrap()<CR>
@@ -602,8 +605,8 @@ set nocursorline
 command! W w
 
 
-"" powerline
-""source ~/.vim/bundle/powerline/powerline/bindings/vim/plugin/powerline.vim
+""powerline
+"" source ~/.vim/bundle/powerline/powerline/bindings/vim/plugin/powerline.vim
 "" python from powerline.bindings.vim import source_plugin; source_plugin()
 
 set directory=~/.vim_backup
@@ -666,14 +669,14 @@ let g:tweetvim_display_icon = 1
 au InsertLeave * call ImDisable()
 
 function! ImDisable()
-""  echo 'disable called'
-""  let status = imstatusfunc()
-""  imactivatefunc(0)
-""  let status2 = imstatusfunc()
-""  echo 'imstatus B'
-""  echo status
-""  echo 'imstatus A'
-""  echo status2
+  ""  echo 'disable called'
+  ""  let status = imstatusfunc()
+  ""  imactivatefunc(0)
+  ""  let status2 = imstatusfunc()
+  ""  echo 'imstatus B'
+  ""  echo status
+  ""  echo 'imstatus A'
+  ""  echo status2
 endfunction
 
 
@@ -684,4 +687,8 @@ set t_vb=''
 autocmd BufEnter *.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd :Rooter
 let g:rooter_use_lcd = 1
 let g:syntastic_ghdl_workdir = 'lib'
+
+"" commit message length is less than 71
+autocmd FileType gitcommit  setlocal textwidth=69
+
 
