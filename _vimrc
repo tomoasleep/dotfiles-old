@@ -97,9 +97,9 @@ NeoBundle "rainux/vim-vala"
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'airblade/vim-rooter'
-"" NeoBundle 'alpaca-tc/alpaca_powertabline'
-"" NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+"" NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
+"" NeoBundle 'mhinz/vim-signfy'
 
 " github 以外のリポジトリ (3)
 "Bundle "git://git.wincent.com/command-t.git"
@@ -389,7 +389,14 @@ nnoremap <silent> <C-s> :TlistToggle<CR>
 ""Nerdtree
 nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 
+nnoremap mh :<C-u>help 
 " Unite Commands
+nnoremap mm :<C-u>Unite 
+nnoremap mb :<C-u>UniteWithBufferDir 
+nnoremap mf :<C-u>UniteWithBufferDir -buffer-name=files 
+nnoremap mi :<C-u>UniteWithInput 
+nnoremap mc :<C-u>UniteWithCursorWord 
+
 " File
 command! Uf UniteWithBufferDir -buffer-name=files file bookmark file/new
 command! UF Uf
@@ -514,6 +521,10 @@ function! InsertTabWrapper()
   endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
+nnoremap tt :<C-u>tabnew<CR>
+nnoremap tn :<C-u>tabnext<CR>
+nnoremap tp :<C-u>tabprevious<CR>
 
 
 set fileformat=unix
