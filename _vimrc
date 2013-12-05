@@ -99,6 +99,7 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'airblade/vim-rooter'
 "" NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'briancollins/vim-jst'
 "" NeoBundle 'mhinz/vim-signfy'
 
 " github 以外のリポジトリ (3)
