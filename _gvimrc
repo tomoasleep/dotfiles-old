@@ -10,8 +10,11 @@ set encoding=utf-8
 " set guifont=Ricty\ for\ Powerline\ 10,Ricty\ 10
 " set guifont=Inconsolata\ for\ Powerline\ 13,Ricty\ for\ Powerline\ 10,Ricty\ 10
 "set guifont=Inconsolata\ for\ Powerline:h13,Ricty\ for\ Powerline\ 10,Ricty\ 10
-""set guifont=Consolas\ for\ Powerline:h11,Ricty\ 10,Ricty:h10
-set guifont=Ricty\ 10,Ricty:h10
+if has("mac")
+  set guifont=Consolas\ for\ Powerline:h11,Ricty\ 10,Ricty:h10
+elseif
+  set guifont=Ricty\ 10,Ricty:h10
+endif
 " こっちは日本語フォント
 "set guifontwide=Ricty\ 10
 " `fancy' テーマに切り替え
