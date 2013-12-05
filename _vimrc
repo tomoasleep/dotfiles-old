@@ -100,6 +100,7 @@ NeoBundle 'airblade/vim-rooter'
 "" NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'briancollins/vim-jst'
+NeoBundle 'tpope/vim-unimpaired'
 "" NeoBundle 'mhinz/vim-signfy'
 
 " github 以外のリポジトリ (3)
@@ -539,6 +540,14 @@ autocmd BufRead * :call <SID>set_fileformat()
 command! W w
 nnoremap <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-c><C-c> :<C-u>nohlsearch<CR>
+
+
+"" open quickfix window auto
+augroup Search
+    autocmd!
+    autocmd QuickFixCmdPost *grep cwindow
+augroup END
+
 
 "" filetype
 " XAML
