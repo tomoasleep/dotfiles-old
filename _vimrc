@@ -44,10 +44,10 @@ NeoBundle "tsukkee/unite-help"
 NeoBundle "tpope/vim-rails"
 "" Bundle "tpope/vim-fugitive"
 NeoBundle "thinca/vim-ref"
-NeoBundle "Shougo/neocomplcache"
+NeoBundle "Shougo/neocomplete"
 "" Bundle 'othree/eregex.vim'
 "" Bundle 'vim-ruby/vim-ruby'
-NeoBundle "Shougo/neocomplcache-rsense.vim"
+"" NeoBundle "Shougo/neocomplete-rsense.vim"
 NeoBundle "tsaleh/vim-matchit"
 NeoBundle 'thinca/vim-quickrun'
 "Bundle 'm2ym/rsense'
@@ -61,7 +61,7 @@ NeoBundle 'Shougo/vimproc', {
       \     },
       \ }
 NeoBundle 'Shougo/neosnippet'
-"" Bundle "Shougo/neocomplcache-snippets-complete"
+"" Bundle "Shougo/neocomplete-snippets-complete"
 NeoBundle "scrooloose/syntastic"
 NeoBundle "kana/vim-smartchr"
 NeoBundle "Shougo/unite-outline"
@@ -163,20 +163,17 @@ badd ~/.vimrc
 
 
 
-" neocomplcache
-let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
-let g:NeoComplCache_SmartCase = 1
-let g:neocomplcache_enable_smart_case = 1
+" neocomplete
+let g:neocomplete#enable_at_startup = 1 " 起動時に有効化
+let g:neocomplete#enable_smart_case = 1
 " キャメルケース補完を有効にする
-let g:NeoComplCache_EnableCamelCaseCompletion = 1
-let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplete#enable_camel_case_completion = 1
 " アンダーバー補完を有効にする
-let g:NeoComplCache_EnableUnderbarCompletion = 1
-let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplete#enable_underbar_completion = 1
 " シンタックスファイルの補完対象キーワードとする最小の長さ
-let g:NeoComplCache_MinSyntaxLength = 3
+let g:neocomplete#MinSyntaxLength = 3
 " プラグイン毎の補完関数を呼び出す文字数
-let g:NeoComplCache_PluginCompletionLength = {
+let g:neocomplete#PluginCompletionLength = {
       \ 'keyword_complete'  : 2,
       \ 'syntax_complete'   : 2
       \ }
@@ -185,31 +182,31 @@ let g:NeoComplCache_PluginCompletionLength = {
 ""let g:rsenseUseOmniFunc = 1
 
 "" do not close preview window automatically
-let g:neocomplcache_enable_auto_close_preview = 0
+let g:neocomplete#enable_auto_close_preview = 0
 
-let g:neocomplcache#sources#rsense#home_directory = "/usr/local/bin"
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
+let g:neocomplete#sources#rsense#home_directory = "/usr/local/bin"
+if !exists('g:neocomplete#omni_patterns')
+  let g:neocomplete#omni_patterns = {}
 endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+"" let g:neocomplete#omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 " Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
 endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns = {}
+if !exists('g:neocomplete#force_omni_patterns')
+  let g:neocomplete#force_omni_patterns = {}
 endif
-let g:neocomplcache_force_overwrite_completefunc = 1
-let g:neocomplcache_force_omni_patterns.c =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_force_omni_patterns.cpp =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplcache_force_omni_patterns.objc =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_force_omni_patterns.objcpp =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"" let g:neocomplete#force_overwrite_completefunc = 1
+"" let g:neocomplete#force_omni_patterns.c =
+""       \ '[^.[:digit:] *\t]\%(\.\|->\)'
+"" let g:neocomplete#force_omni_patterns.cpp =
+""       \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"" let g:neocomplete#force_omni_patterns.objc =
+""       \ '[^.[:digit:] *\t]\%(\.\|->\)'
+"" let g:neocomplete#force_omni_patterns.objcpp =
+""       \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:clang_complete_auto = 0
 let g:clang_auto_select = 0
 "let g:clang_use_library = 1
@@ -228,31 +225,31 @@ let g:echodoc_enable_at_startup=1
 
 
 " Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
 endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns = {}
+if !exists('g:neocomplete#force_omni_patterns')
+  let g:neocomplete#force_omni_patterns = {}
 endif
-let g:neocomplcache_force_overwrite_completefunc = 1
-let g:neocomplcache_force_omni_patterns.c =
+let g:neocomplete#force_overwrite_completefunc = 1
+let g:neocomplete#force_omni_patterns.c =
       \ '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_force_omni_patterns.cpp =
+let g:neocomplete#force_omni_patterns.cpp =
       \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplcache_force_omni_patterns.objc =
+let g:neocomplete#force_omni_patterns.objc =
       \ '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_force_omni_patterns.objcpp =
+let g:neocomplete#force_omni_patterns.objcpp =
       \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:clang_complete_auto = 0
 let g:clang_auto_select = 0
 
 " 補完をキャンセル
-inoremap <expr><C-e>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplete#close_popup()
 
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -277,14 +274,14 @@ let g:neosnippet#snippets_directory='~/vimfiles/snippets/'
 if has('conceal')
   set conceallevel=2 concealcursor=c
 endif
-"" imap <C-m>    <Plug>(neocomplcache_snippets_expand)
-"" smap <C-m>    <Plug>(neocomplcache_snippets_expand)
+"" imap <C-m>    <Plug>(neocomplete#snippets_expand)
+"" smap <C-m>    <Plug>(neocomplete#snippets_expand)
 
 
-imap <C-s>  <Plug>(neocomplcache_start_unite_snippet)
-imap <C-q>  <Plug>(neocomplcache_start_unite_quick_match)
+imap <C-s>  <Plug>(neocomplete#start_unite_snippet)
+imap <C-q>  <Plug>(neocomplete#start_unite_quick_match)
 
-noremap es :<C-u>NeoComplCacheEditSnippets<CR>
+noremap es :<C-u>neocompleteEditSnippets<CR>
 
 
 " surround.vim
