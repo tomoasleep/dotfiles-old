@@ -385,6 +385,7 @@ nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 nnoremap mh :<C-u>help 
 " Unite Commands
 nnoremap mm :<C-u>Unite 
+nnoremap mg :<C-u>Ggrep 
 nnoremap mb :<C-u>UniteWithBufferDir 
 nnoremap mf :<C-u>UniteWithBufferDir -buffer-name=files 
 nnoremap mi :<C-u>UniteWithInput 
