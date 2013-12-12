@@ -42,12 +42,8 @@ NeoBundle "thinca/vim-unite-history"
 NeoBundle "Sixeight/unite-grep"
 NeoBundle "tsukkee/unite-help"
 NeoBundle "tpope/vim-rails"
-"" Bundle "tpope/vim-fugitive"
 NeoBundle "thinca/vim-ref"
 NeoBundle "Shougo/neocomplete"
-"" Bundle 'othree/eregex.vim'
-"" Bundle 'vim-ruby/vim-ruby'
-"" NeoBundle "Shougo/neocomplete-rsense.vim"
 NeoBundle "tsaleh/vim-matchit"
 NeoBundle 'thinca/vim-quickrun'
 "Bundle 'm2ym/rsense'
@@ -61,7 +57,6 @@ NeoBundle 'Shougo/vimproc', {
       \     },
       \ }
 NeoBundle 'Shougo/neosnippet'
-"" Bundle "Shougo/neocomplete-snippets-complete"
 NeoBundle "scrooloose/syntastic"
 NeoBundle "kana/vim-smartchr"
 NeoBundle "Shougo/unite-outline"
@@ -101,7 +96,6 @@ NeoBundle 'airblade/vim-rooter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'briancollins/vim-jst'
 NeoBundle 'tpope/vim-unimpaired'
-"" NeoBundle 'mhinz/vim-signfy'
 
 " github 以外のリポジトリ (3)
 "Bundle "git://git.wincent.com/command-t.git"
