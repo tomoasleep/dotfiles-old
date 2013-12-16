@@ -148,10 +148,10 @@ if has("win32") || has("win64")
 endif
 
 "" syntastic
-let g:syntastic_mode_map = { 'mode': 'passive',
-            \ 'active_filetypes': ['C'] }
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_quiet_warnings = 0
+"let g:syntastic_mode_map = { 'mode': 'passive',
+"            \ 'active_filetypes': ['C', 'VHDL'] }
+"let g:syntastic_ruby_checkers = ['rubocop']
+"let g:syntastic_quiet_warnings = 0
 
 if has('kaoriya')
   let s:ruby_libruby = system('ruby -rrbconfig -e "print Config::CONFIG[\"libdir\"] + \"/\" + Config::CONFIG[\"LIBRUBY\"]"')
