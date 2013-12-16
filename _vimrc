@@ -741,4 +741,11 @@ let g:syntastic_ghdl_workdir = 'lib'
 "" commit message length is less than 71
 autocmd FileType gitcommit  setlocal textwidth=69
 
+augroup vimshell_cmd
+  autocmd!
+  autocmd FileType vimshell :nnoremap <buffer> <C-c> <C-c>
+  autocmd FileType vimshell :inoremap <buffer> <C-c> <C-c>
+  autocmd FileType vimshell :nmap <buffer> <C-x> <Plug>(vimshell_hangup)
+  autocmd FileType vimshell :imap <buffer> <C-x> <Plug>(vimshell_interrupt)
+augroup END
 
