@@ -95,6 +95,7 @@ NeoBundle 'airblade/vim-rooter'
 "" NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'briancollins/vim-jst'
+NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'tpope/vim-unimpaired'
 
 " github 以外のリポジトリ (3)
