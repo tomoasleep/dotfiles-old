@@ -143,10 +143,10 @@ if has("win32") || has("win64")
 endif
 
 "" syntastic
-let g:syntastic_mode_map = { 'mode': 'passive',
-            \ 'active_filetypes': ['C'] }
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_quiet_warnings = 0
+"let g:syntastic_mode_map = { 'mode': 'passive',
+"            \ 'active_filetypes': ['C', 'VHDL'] }
+"let g:syntastic_ruby_checkers = ['rubocop']
+"let g:syntastic_quiet_warnings = 0
 
 if has('kaoriya')
   let s:ruby_libruby = system('ruby -rrbconfig -e "print Config::CONFIG[\"libdir\"] + \"/\" + Config::CONFIG[\"LIBRUBY\"]"')
@@ -742,4 +742,11 @@ let g:syntastic_ghdl_workdir = 'lib'
 "" commit message length is less than 71
 autocmd FileType gitcommit  setlocal textwidth=69
 
+augroup vimshell_cmd
+  autocmd!
+  autocmd FileType vimshell :nnoremap <buffer> <C-c> <C-c>
+  autocmd FileType vimshell :inoremap <buffer> <C-c> <C-c>
+  autocmd FileType vimshell :nmap <buffer> <C-x> <Plug>(vimshell_hangup)
+  autocmd FileType vimshell :imap <buffer> <C-x> <Plug>(vimshell_interrupt)
+augroup END
 
