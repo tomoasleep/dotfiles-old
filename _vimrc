@@ -95,6 +95,7 @@ NeoBundle 'airblade/vim-rooter'
 "" NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'briancollins/vim-jst'
+NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tyru/restart.vim'
 NeoBundle 'osyo-manga/vim-precious'
@@ -745,6 +746,8 @@ let g:syntastic_ghdl_workdir = 'lib'
 "" commit message length is less than 71
 autocmd FileType gitcommit  setlocal textwidth=69
 
+"" vimshell
+
 augroup vimshell_cmd
   autocmd!
   autocmd FileType vimshell :nnoremap <buffer> <C-c> <C-c>
@@ -753,10 +756,12 @@ augroup vimshell_cmd
   autocmd FileType vimshell :imap <buffer> <C-x> <Plug>(vimshell_interrupt)
 augroup END
 
-
 " vim-quickhl
 nmap <Space>m <Plug>(quickhl-manual-this)
 xmap <Space>m <Plug>(quickhl-manual-this)
 nmap <Space>M <Plug>(quickhl-manual-reset)
 xmap <Space>M <Plug>(quickhl-manual-reset)
+let g:vimshell_prompt_expr = 'getcwd()." > "'
+let g:vimshell_prompt_pattern = '^\f\+ > '
+
 
