@@ -74,7 +74,7 @@ NeoBundle "ujihisa/neco-ghc"
 NeoBundle "kien/ctrlp.vim"
 NeoBundle "jcf/vim-latex"
 NeoBundle "jonathanfilip/vim-lucius"
-NeoBundle "Rip-Rip/clang_complete"
+"" NeoBundle "Rip-Rip/clang_complete"
 NeoBundle "eagletmt/unite-haddock"
 NeoBundle "w0ng/vim-hybrid"
 ""Bundle "Shougo/vinarise.vim"
@@ -96,6 +96,9 @@ NeoBundle 'airblade/vim-rooter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'briancollins/vim-jst'
 NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tyru/restart.vim'
+NeoBundle 'osyo-manga/vim-precious'
+NeoBundle 't9md/vim-quickhl'
 
 " github 以外のリポジトリ (3)
 "Bundle "git://git.wincent.com/command-t.git"
@@ -128,6 +131,7 @@ set imdisable
 set ignorecase
 "" not use left scroll bar to prevent from resizing when spliting varticaly
 set guioptions-=L
+set backspace=indent,eol,start
 
 if has("gui_running")
 else
@@ -748,4 +752,11 @@ augroup vimshell_cmd
   autocmd FileType vimshell :nmap <buffer> <C-x> <Plug>(vimshell_hangup)
   autocmd FileType vimshell :imap <buffer> <C-x> <Plug>(vimshell_interrupt)
 augroup END
+
+
+" vim-quickhl
+nmap <Space>m <Plug>(quickhl-manual-this)
+xmap <Space>m <Plug>(quickhl-manual-this)
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
 
