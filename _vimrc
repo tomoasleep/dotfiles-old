@@ -99,6 +99,7 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tyru/restart.vim'
 NeoBundle 'osyo-manga/vim-precious'
+NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 't9md/vim-quickhl'
 
 " github 以外のリポジトリ (3)
