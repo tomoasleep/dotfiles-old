@@ -765,4 +765,7 @@ xmap <Space>M <Plug>(quickhl-manual-reset)
 let g:vimshell_prompt_expr = 'getcwd()." > "'
 let g:vimshell_prompt_pattern = '^\f\+ > '
 
+" restart
+let g:restart_sessionoptions
+    \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 
