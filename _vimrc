@@ -1,7 +1,3 @@
-" --- vundle.vim - プラグインの集中管理
-" doc/vundle.md
-" ＊filetype を一度offにして、Vundle の処理のあとでftpluginとindent を読み込むように指定。
-
 set nocompatible
 filetype off
 
@@ -14,7 +10,8 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
-runtime! settings/neocomplete_settings.vim
+"" runtime! settings/neocomplete_settings.vim
+runtime! settings/you_complete_me_settings.vim
 runtime! settings/unite_settings.vim
 
 runtime! settings/ft_settings.vim
