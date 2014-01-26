@@ -163,3 +163,15 @@ function! s:ChangeCurrentDir(directory, bang)
   endif
 endfunction
 
+nnoremap <C-z> <C-w><C-z>
+
+function! s:fwrap()
+  if has("set nowrap?")
+    noremap <F5> wrap
+  else
+    set nowrap
+  endif
+endfunction
+
+noremap <F5> :call s:fwrap()<CR>
+

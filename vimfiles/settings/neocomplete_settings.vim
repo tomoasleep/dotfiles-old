@@ -1,5 +1,6 @@
 
 NeoBundle "Shougo/neocomplete"
+NeoBundle 'neco-look'
 
 " neocomplete
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!

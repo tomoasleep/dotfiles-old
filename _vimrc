@@ -16,36 +16,28 @@ endif
 
 runtime! settings/neocomplete_settings.vim
 runtime! settings/unite_settings.vim
+
+runtime! settings/ft_settings.vim
 runtime! settings/vimshell_settings.vim
 runtime! settings/look_settings.vim
 
 " vim-scripts リポジトリ (1)
-""Bundle 'css_color.vim'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle "fugitive.vim"
 NeoBundle "The-NERD-tree"
 NeoBundle "endwise.vim"
-NeoBundle 'neco-look'
 NeoBundle 'surround.vim'
-NeoBundle 'Quich-Filter'
 NeoBundle 'trinity.vim'
 NeoBundle 'taglist.vim'
 NeoBundle 'Align'
-NeoBundle 'ZenCoding.vim'
-"" Bundle 'java_getset.vim'
 NeoBundle 'matchit.zip'
 NeoBundle "project.tar.gz"
 
 "
 " github の任意のリポジトリ (2)"
-NeoBundle "tpope/vim-rvm"
-NeoBundle "tpope/vim-rails"
 NeoBundle "thinca/vim-ref"
-
 NeoBundle "tsaleh/vim-matchit"
 NeoBundle 'thinca/vim-quickrun'
-"Bundle 'm2ym/rsense'
-"" Bundle 'Lokaltog/vim-powerline'
 NeoBundle 'Shougo/vimproc', {
       \ 'build': {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -56,23 +48,10 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/neosnippet'
 NeoBundle "scrooloose/syntastic"
 NeoBundle "kana/vim-smartchr"
-"Bundle "tyru/eskk.vim"
 NeoBundle "Shougo/vinarise"
-"Bundle "kana/vim-textobj-indent"
 NeoBundle "gregsexton/gitv"
-"" Bundle "wesleyche/SrcExpl"
-NeoBundle "alpicola/vim-egison"
-NeoBundle "dag/vim2hs"
-"" NeoBundle "zenzike/vim-haskell"
-NeoBundle "eagletmt/ghcmod-vim"
-NeoBundle "eagletmt/neco-ghc"
 NeoBundle "kien/ctrlp.vim"
-NeoBundle "jcf/vim-latex"
-"" NeoBundle "Rip-Rip/clang_complete"
-""Bundle "Shougo/vinarise.vim"
-NeoBundle "kchmck/vim-coffee-script"
 NeoBundle "nathanaelkane/vim-indent-guides"
-NeoBundle "digitaltoad/vim-jade"
 NeoBundle "tyru/open-browser.vim"
 NeoBundle "mattn/webapi-vim"
 NeoBundle "mattn/favstar-vim"
@@ -80,13 +59,8 @@ NeoBundle "basyura/twibill.vim"
 NeoBundle "basyura/bitly.vim"
 NeoBundle "basyura/TweetVim"
 NeoBundle "rbtnn/vimconsole.vim"
-NeoBundle "rainux/vim-vala"
-NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'airblade/vim-rooter'
-"" NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'briancollins/vim-jst'
-NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tyru/restart.vim'
 NeoBundle 'Shougo/context_filetype.vim'
@@ -101,8 +75,6 @@ syntax on
 filetype on
 
 NeoBundleCheck
-
-set hlsearch
 
 set runtimepath+=/path/to/vimdoc-ja
 set helplang=ja,en
@@ -189,23 +161,6 @@ nnoremap <silent> <c-z> :srcexpltoggle<cr>
 let g:srcexpl_refreshmapkey = "<c-b>r"
 let g:srcexpl_gobackmapkey = "<c-b>b"
 
-" 起動時にインサートモードで開始
-let g:unite_enable_start_insert = 1
-
-if has("gui_running")
-else
-  let g:solarized_termcolors=256
-  set t_Co=16
-endif
-let g:solarized_degrade=0
-let g:solarized_bold=1
-let g:solarized_underline=1
-let g:solarized_italic=1
-let g:solarized_termtrans=0
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-
-
 set fileformat=unix
 set fileformats=unix,dos
 
@@ -215,7 +170,10 @@ function! s:set_fileformat()
   catch
   endtry
 endfunction
-autocmd BufRead * :call <SID>set_fileformat()
+
+augroup fileformat
+  autocmd BufRead * :call <SID>set_fileformat()
+augroup END
 
 command! W w
 
@@ -225,18 +183,6 @@ augroup Search
     autocmd QuickFixCmdPost *grep cwindow
 augroup END
 
-
-"" filetype
-" XAML
-"" au BufNewFile,BufRead *.xaml	setf xml
-
-" dotnet complete
-"" au BufNewFile,BufRead *.cs      setl omnifunc=cs#complet
-"" au BufNewFile,BufRead *.cs      setl bexpr=cs#balloon()
-"" au BufNewFile,BufRead *.cs      setl ballooneval
-
-"" au BufNewFile,BufRead *.xaml    setf xml
-"" au BufNewFile,BufRead *.xaml    setl omnifunc=xaml#complete
 
 if !has('gui_running')
   " MapFastKeycode: helper for fast keycode mappings
@@ -259,22 +205,7 @@ if !has('gui_running')
   call <SID>MapFastKeycode('<S-C-Tab>', "[27;6;9~")
 endif
 
-
-function! s:fwrap()
-  if has("set nowrap?")
-    noremap <F5> wrap
-  else
-    set nowrap
-  endif
-endfunction
-
-noremap <F5> :call s:fwrap()<CR>
-
 command! W w
-
-""powerline
-"" source ~/.vim/bundle/powerline/powerline/bindings/vim/plugin/powerline.vim
-"" python from powerline.bindings.vim import source_plugin; source_plugin()
 
 set directory=~/.vim_backup
 set backupdir=~/.vim_backup
@@ -282,64 +213,9 @@ set backupdir=~/.vim_backup
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-""
-"" Vim-LaTeX
-""
-" filetype plugin on
-" filetype indent on
-set shellslash
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-let g:Imap_UsePlaceHolders = 1
-let g:Imap_DeleteEmptyPlaceHolders = 1
-let g:Imap_StickyPlaceHolders = 0
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_FormatDependency_ps = 'dvi,ps'
-let g:Tex_FormatDependency_pdf = 'dvi,pdf'
-"let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
-"let g:Tex_FormatDependency_pdf = 'pdf'
-let g:Tex_CompileRule_dvi = 'platex -synctex=1 -interaction=nonstopmode $*'
-"let g:Tex_CompileRule_dvi = 'uplatex -synctex=1 -interaction=nonstopmode $*'
-let g:Tex_CompileRule_ps = 'dvips -Ppdf -o $*.ps $*.dvi'
-let g:Tex_CompileRule_pdf = 'dvipdfmx $*.dvi'
-"let g:Tex_CompileRule_pdf = 'ps2pdf $*.ps'
-"let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 -interaction=nonstopmode $*'
-"let g:Tex_CompileRule_pdf = 'lualatex -synctex=1 -interaction=nonstopmode $*'
-"let g:Tex_CompileRule_pdf = 'luajitlatex -synctex=1 -interaction=nonstopmode $*'
-"let g:Tex_CompileRule_pdf = 'xelatex -synctex=1 -interaction=nonstopmode $*'
-let g:Tex_BibtexFlavor = 'pbibtex'
-"let g:Tex_BibtexFlavor = 'upbibtex'
-let g:Tex_MakeIndexFlavor = 'mendex $*.idx'
-let g:Tex_UseEditorSettingInDVIViewer = 1
-let g:Tex_ViewRule_dvi = 'pxdvi -watchfile 1'
-"let g:Tex_ViewRule_dvi = 'advi -watch-file 1'
-"let g:Tex_ViewRule_dvi = 'evince'
-"let g:Tex_ViewRule_dvi = 'okular --unique'
-"let g:Tex_ViewRule_dvi = 'wine ~/.wine/drive_c/w32tex/dviout/dviout.exe -1'
-let g:Tex_ViewRule_ps = 'gv --watch'
-"let g:Tex_ViewRule_ps = 'evince'
-"let g:Tex_ViewRule_ps = 'okular --unique'
-"let g:Tex_ViewRule_ps = 'zathura'
-"let g:Tex_ViewRule_pdf = 'texworks'
-let g:Tex_ViewRule_pdf = 'evince'
-"let g:Tex_ViewRule_pdf = 'okular --unique'
-"let g:Tex_ViewRule_pdf = 'zathura -s -x "vim --servername synctex -n --remote-silent +\%{line} \%{input}"'
-"let g:Tex_ViewRule_pdf = 'qpdfview --unique'
-"let g:Tex_ViewRule_pdf = 'pdfviewer'
-"let g:Tex_ViewRule_pdf = 'gv --watch'
-"let g:Tex_ViewRule_pdf = 'acroread'
-"let g:Tex_ViewRule_pdf = 'pdfopen -viewer ar9-tab'
 
 "" Tweetvim
 let g:tweetvim_display_icon = 1
-
-let $PATH= $PATH . ":" . $HOME . "/.cabal/bin"
-"autocmd! rooter
-autocmd BufEnter *.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd :Rooter
-let g:rooter_use_lcd = 1
-let g:syntastic_ghdl_workdir = 'lib'
-
-autocmd BufRead *.lhs :set syntax=haskell
 
 "" commit message length is less than 71
 autocmd FileType gitcommit  setlocal textwidth=69

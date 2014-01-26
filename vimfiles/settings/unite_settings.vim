@@ -5,7 +5,6 @@ NeoBundle "Sixeight/unite-grep"
 NeoBundle "tsukkee/unite-help"
 NeoBundle "Shougo/unite-outline"
 NeoBundle "tsukkee/unite-tag"
-NeoBundle "eagletmt/unite-haddock"
 
 " File
 command! Uf UniteWithBufferDir -buffer-name=files file bookmark file/new
@@ -80,4 +79,7 @@ augroup unite_dw
     imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
   endfunction
 augroup END
+
+" 起動時にインサートモードで開始
+let g:unite_enable_start_insert = 1
 

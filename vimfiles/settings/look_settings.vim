@@ -28,6 +28,7 @@ hi clear CursorLine
 hi CursorLine gui=underline
 highlight CursorLine ctermbg=white guibg=black
 
+set hlsearch
 set autoindent
 set expandtab
 set shiftwidth=4
@@ -67,3 +68,17 @@ syntax enable
 ""light にしたければ下
 colorscheme solarized
 set background=light
+
+if has("gui_running")
+else
+  let g:solarized_termcolors=256
+  set t_Co=16
+endif
+let g:solarized_degrade=0
+let g:solarized_bold=1
+let g:solarized_underline=1
+let g:solarized_italic=1
+let g:solarized_termtrans=0
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+
