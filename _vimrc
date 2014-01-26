@@ -27,13 +27,11 @@ NeoBundle "fugitive.vim"
 NeoBundle "The-NERD-tree"
 NeoBundle "endwise.vim"
 NeoBundle 'surround.vim'
-NeoBundle 'trinity.vim'
-NeoBundle 'taglist.vim'
+"" NeoBundle 'trinity.vim'
+"" NeoBundle 'taglist.vim'
 NeoBundle 'Align'
 NeoBundle 'matchit.zip'
-NeoBundle "project.tar.gz"
 
-"
 " github の任意のリポジトリ (2)"
 NeoBundle "thinca/vim-ref"
 NeoBundle "tsaleh/vim-matchit"
