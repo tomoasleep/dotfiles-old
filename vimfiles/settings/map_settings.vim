@@ -9,7 +9,7 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <C-c><C-c> :nohlsearch<CR><Esc>
 
 "" neocomplete.vim
-if g:use_neocomplete == 1
+if neobundle#is_sourced('neocomplete')
   " cancel complete
   inoremap <expr><C-e>  neocomplete#close_popup()
 

@@ -1,6 +1,5 @@
 
 NeoBundle "Shougo/neocomplete"
-let g:use_neocomplete = 1
 
 " neocomplete
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
