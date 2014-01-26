@@ -16,6 +16,7 @@ endif
 
 runtime! settings/neocomplete_settings.vim
 runtime! settings/unite_settings.vim
+runtime! settings/vimshell_settings.vim
 
 " vim-scripts リポジトリ (1)
 ""Bundle 'css_color.vim'
@@ -47,7 +48,6 @@ NeoBundle "tsaleh/vim-matchit"
 NeoBundle 'thinca/vim-quickrun'
 "Bundle 'm2ym/rsense'
 "" Bundle 'Lokaltog/vim-powerline'
-NeoBundle 'Shougo/vimshell.git'
 NeoBundle 'Shougo/vimproc', {
       \ 'build': {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -436,16 +436,6 @@ autocmd BufRead *.lhs :set syntax=haskell
 
 "" commit message length is less than 71
 autocmd FileType gitcommit  setlocal textwidth=69
-
-"" vimshell
-
-augroup vimshell_cmd
-  autocmd!
-  autocmd FileType vimshell :nnoremap <buffer> <C-c> <C-c>
-  autocmd FileType vimshell :inoremap <buffer> <C-c> <C-c>
-  autocmd FileType vimshell :nmap <buffer> <C-x> <Plug>(vimshell_hangup)
-  autocmd FileType vimshell :imap <buffer> <C-x> <Plug>(vimshell_interrupt)
-augroup END
 
 " restart
 let g:restart_sessionoptions
