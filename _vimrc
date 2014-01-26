@@ -740,7 +740,7 @@ let $PATH= $PATH . ":" . $HOME . "/.cabal/bin"
 set t_vb=''
 
 "autocmd! rooter
-autocmd BufEnter *.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd :Rooter
+autocmd BufEnter *.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd :Rooter
 let g:rooter_use_lcd = 1
 let g:syntastic_ghdl_workdir = 'lib'
 
