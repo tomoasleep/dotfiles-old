@@ -17,6 +17,7 @@ endif
 runtime! settings/neocomplete_settings.vim
 runtime! settings/unite_settings.vim
 runtime! settings/vimshell_settings.vim
+runtime! settings/look_settings.vim
 
 " vim-scripts リポジトリ (1)
 ""Bundle 'css_color.vim'
@@ -31,16 +32,13 @@ NeoBundle 'trinity.vim'
 NeoBundle 'taglist.vim'
 NeoBundle 'Align'
 NeoBundle 'ZenCoding.vim'
-NeoBundle 'pyte'
 "" Bundle 'java_getset.vim'
 NeoBundle 'matchit.zip'
 NeoBundle "project.tar.gz"
-"" Bundle "TagHighlight"
 
 "
 " github の任意のリポジトリ (2)"
 NeoBundle "tpope/vim-rvm"
-NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle "tpope/vim-rails"
 NeoBundle "thinca/vim-ref"
 
@@ -70,9 +68,7 @@ NeoBundle "eagletmt/ghcmod-vim"
 NeoBundle "eagletmt/neco-ghc"
 NeoBundle "kien/ctrlp.vim"
 NeoBundle "jcf/vim-latex"
-NeoBundle "jonathanfilip/vim-lucius"
 "" NeoBundle "Rip-Rip/clang_complete"
-NeoBundle "w0ng/vim-hybrid"
 ""Bundle "Shougo/vinarise.vim"
 NeoBundle "kchmck/vim-coffee-script"
 NeoBundle "nathanaelkane/vim-indent-guides"
@@ -89,14 +85,11 @@ NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'airblade/vim-rooter'
 "" NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'bling/vim-airline'
 NeoBundle 'briancollins/vim-jst'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tyru/restart.vim'
-NeoBundle 'osyo-manga/vim-precious'
 NeoBundle 'Shougo/context_filetype.vim'
-NeoBundle 't9md/vim-quickhl'
 
 " github 以外のリポジトリ (3)
 "Bundle "git://git.wincent.com/command-t.git"
@@ -109,37 +102,16 @@ filetype on
 
 NeoBundleCheck
 
-set autoindent
-set expandtab
-set shiftwidth=4
-set number
-set splitbelow
-
-set expandtab
-set smarttab
-set tabstop=2
-set shiftwidth=2
-set laststatus=2
 set hlsearch
 
 set runtimepath+=/path/to/vimdoc-ja
 set helplang=ja,en
 set updatetime=400
-set laststatus=2
-set hlsearch
 set imdisable
 set ignorecase
 "" not use left scroll bar to prevent from resizing when spliting varticaly
 set guioptions-=L
 set backspace=indent,eol,start
-
-if has("gui_running")
-else
-  set vb t_vb=
-endif
-
-set vb
-set t_vb=''
 
 if has("win32") || has("win64")
   badd C:/Users/tomoya/dotfiles/_vimrc
@@ -161,8 +133,6 @@ endif
 
 badd ~/.vimrc
 
-
-nnoremap <C-z> <C-w><C-z>
 let g:SrcExpl_winHeight = 4
 let g:SrcExpl_jumpKey = ""
 let g:SrcExpl_gobackKey = ""
@@ -171,8 +141,6 @@ let g:clang_use_library=1
 let g:echodoc_enable_at_startup=1
 
 ""let g:clang_debug=1
-
-
 
 " For snippet_complete marker.
 if has('conceal')
@@ -205,21 +173,9 @@ let g:ref_refe_cmd = "/Users/kamadoinc/Documents/Reference/ruby-refm-1.9.2-dynam
 let g:ref_alc_start_linenumber = 39 " 表示する行数
 let g:ref_phpmanual_path = "/Users/kamadoinc/Documents/Reference/php-chunked-xhtml"
 
-set linespace=0
-set title
-set wildmenu
-set showcmd
-set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-
 "set notimeout          " don't timeout on mappings
 "set ttimeout           " do timeout on terminal key codes
 "set timeoutlen=100     " timeout after 100 msec"
-
-
-"---------------------------------------------------------------------------
-" 日本語入力に関する設定:
-"
 
 set mouse=a
 set ttymouse=xterm2
@@ -233,34 +189,9 @@ nnoremap <silent> <c-z> :srcexpltoggle<cr>
 let g:srcexpl_refreshmapkey = "<c-b>r"
 let g:srcexpl_gobackmapkey = "<c-b>b"
 
-""powerline
-"" let g:powerline_symbols = 'fancy'
-
-let g:airline#extensions#tabline#enabled = 1
-
 " 起動時にインサートモードで開始
 let g:unite_enable_start_insert = 1
 
-" カーソル行をハイライト
-set cursorline
-" " カレントウィンドウにのみ罫線を引く
-augroup cch
-  autocmd! cch
-  autocmd WinLeave * set nocursorline
-  autocmd WinEnter,BufRead * set cursorline
-augroup END
-hi clear CursorLine
-hi CursorLine gui=underline
-highlight CursorLine ctermbg=white guibg=black
-
-
-""Solarized
-syntax enable
-""let g:solarized_termcolors=256
-""set background=dark
-""light にしたければ下
-colorscheme solarized
-set background=light
 if has("gui_running")
 else
   let g:solarized_termcolors=256
@@ -307,8 +238,6 @@ augroup END
 "" au BufNewFile,BufRead *.xaml    setf xml
 "" au BufNewFile,BufRead *.xaml    setl omnifunc=xaml#complete
 
-
-
 if !has('gui_running')
   " MapFastKeycode: helper for fast keycode mappings
   " makes use of unused vim keycodes <[S-]F15> to <[S-]F37>
@@ -340,12 +269,6 @@ function! s:fwrap()
 endfunction
 
 noremap <F5> :call s:fwrap()<CR>
-
-set notitle
-set nowrap
-"set listchars=tab:>\
-
-set nocursorline
 
 command! W w
 
@@ -410,23 +333,7 @@ let g:Tex_ViewRule_pdf = 'evince'
 "" Tweetvim
 let g:tweetvim_display_icon = 1
 
-au InsertLeave * call ImDisable()
-
-function! ImDisable()
-  ""  echo 'disable called'
-  ""  let status = imstatusfunc()
-  ""  imactivatefunc(0)
-  ""  let status2 = imstatusfunc()
-  ""  echo 'imstatus B'
-  ""  echo status
-  ""  echo 'imstatus A'
-  ""  echo status2
-endfunction
-
-
 let $PATH= $PATH . ":" . $HOME . "/.cabal/bin"
-set t_vb=''
-
 "autocmd! rooter
 autocmd BufEnter *.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd :Rooter
 let g:rooter_use_lcd = 1
