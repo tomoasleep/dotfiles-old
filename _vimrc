@@ -103,10 +103,6 @@ endif
 
 badd ~/.vimrc
 
-let g:SrcExpl_winHeight = 4
-let g:SrcExpl_jumpKey = ""
-let g:SrcExpl_gobackKey = ""
-
 let g:clang_use_library=1
 let g:echodoc_enable_at_startup=1
 
@@ -152,6 +148,10 @@ set ttymouse=xterm2
 ""taglist
 set tags=./tags,tags
 
+let g:SrcExpl_winHeight = 4
+let g:SrcExpl_jumpKey = ""
+let g:SrcExpl_gobackKey = ""
+
 ""srcexpl.vim
 let g:srcexpl_updatetags = 1
 let g:srcexpl_refreshtime = 0
@@ -180,7 +180,6 @@ augroup Search
     autocmd!
     autocmd QuickFixCmdPost *grep cwindow
 augroup END
-
 
 if !has('gui_running')
   " MapFastKeycode: helper for fast keycode mappings
@@ -211,12 +210,8 @@ set backupdir=~/.vim_backup
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-
 "" Tweetvim
 let g:tweetvim_display_icon = 1
-
-"" commit message length is less than 71
-autocmd FileType gitcommit  setlocal textwidth=69
 
 " restart
 let g:restart_sessionoptions

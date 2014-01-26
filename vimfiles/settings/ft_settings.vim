@@ -99,3 +99,9 @@ let g:Tex_ViewRule_pdf = 'evince'
 "" au BufNewFile,BufRead *.xaml    setf xml
 "" au BufNewFile,BufRead *.xaml    setl omnifunc=xaml#complete
 
+"" commit message length is less than 71
+augroup commit_length
+  autocmd! commit_length
+  autocmd FileType gitcommit  setlocal textwidth=69
+augroup END
+
