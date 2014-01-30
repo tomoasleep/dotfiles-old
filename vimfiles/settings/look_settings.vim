@@ -11,6 +11,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 "" look utils
 NeoBundle 't9md/vim-quickhl'
+NeoBundle "nathanaelkane/vim-indent-guides"
 "" Bundle "TagHighlight"
 
 NeoBundle 'osyo-manga/vim-precious',
@@ -28,20 +29,19 @@ hi clear CursorLine
 hi CursorLine gui=underline
 highlight CursorLine ctermbg=white guibg=black
 
-set hlsearch
 set autoindent
 set expandtab
-set shiftwidth=4
-set number
-set splitbelow
-set laststatus=2
-set hlsearch
-
-set expandtab
 set smarttab
+
+set laststatus=2
 set tabstop=2
 set shiftwidth=2
 set linespace=0
+
+set number
+set splitbelow
+set hlsearch
+
 set title
 set wildmenu
 set showcmd
