@@ -23,7 +23,7 @@ let $PATH= $PATH . ":" . $HOME . "/.cabal/bin"
 "" javascript
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload': {'filetypes': ['javascript']}}
 NeoBundleLazy 'briancollins/vim-jst', {'autoload': {'filetypes': ['javascript']}}
-NeoBundleLazy "kchmck/vim-coffee-script", {'autoload': {'filetypes': ['coffeescript']}}
+NeoBundleLazy "kchmck/vim-coffee-script", {'autoload': {'filetypes': ['coffee']}}
 
 "" other filetypes
 NeoBundle "digitaltoad/vim-jade"
