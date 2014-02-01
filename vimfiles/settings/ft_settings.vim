@@ -105,3 +105,8 @@ augroup commit_length
   autocmd FileType gitcommit  setlocal textwidth=69
 augroup END
 
+augroup cap_ft
+  autocmd! cap_ft
+  autocmd BufRead *.cap :set syntax=ruby
+augroup END
+
