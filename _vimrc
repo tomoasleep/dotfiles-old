@@ -78,6 +78,8 @@ set ignorecase
 "" not use left scroll bar to prevent from resizing when spliting varticaly
 set guioptions-=L
 set backspace=indent,eol,start
+set foldmethod=marker
+set autoread
 
 if has("win32") || has("win64")
   badd C:/Users/tomoya/dotfiles/_vimrc
