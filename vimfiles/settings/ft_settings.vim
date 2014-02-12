@@ -34,7 +34,7 @@ NeoBundle "alpicola/vim-egison"
 NeoBundle 'ZenCoding.vim'
 
 "" autocmd! rooter
-autocmd BufEnter *.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd :Rooter
+autocmd BufEnter *.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd,*.vim :Rooter
 let g:rooter_use_lcd = 1
 
 let g:syntastic_ghdl_workdir = 'lib'
