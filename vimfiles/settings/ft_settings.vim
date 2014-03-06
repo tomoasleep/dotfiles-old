@@ -3,6 +3,14 @@
 NeoBundleLazy "tpope/vim-rvm", {'autoload': {'filetypes': ['ruby']}}
 NeoBundleLazy "tpope/vim-rails", {'autoload': {'filetypes': ['ruby']}}
 
+"" rdoc
+NeoBundleLazy "depuracao/vim-rdoc", {'autoload': {'filetypes': ['rdoc']}}
+augroup rdoc_detection
+  "" detect rdoc filetype manually
+  "" TODO: remove it when lazy loading without ftdetect implemented to NeoBundle
+  autocmd BufNewFile,BufRead *.{rd,rdoc} set filetype=rdoc
+augroup END
+
 "" haskell
 if neobundle#is_sourced('neocomplete')
   NeoBundleLazy "eagletmt/neco-ghc", {'autoload': {'filetypes': ['haskell']}}
