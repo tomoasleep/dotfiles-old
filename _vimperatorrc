@@ -1,0 +1,30 @@
+"3.7 (created: 2013/04/03 18:20:07)
+
+source! /Users/kamado/.vimperatorrc.local
+
+" vim: set ft=vimperator:
+
+set gui=nobookmarks,nomenu
+"" ,noaddons
+
+set autocomplete=true
+set complete=sl
+
+" jの移動量3倍
+noremap j 3<C-e>
+
+" kの移動量3倍
+noremap k 3<C-y>
+
+" hで戻る
+noremap h <A-Left>
+
+" lで進む
+noremap l <A-Right>
+
+" 矢印キーや，C-n, C-pでも補完を選択できるように
+cmap <Down> <TAB>
+cmap <Up> <S-TAB>
+cmap <C-n> <TAB>
+cmap <C-p> <S-TAB>
+
