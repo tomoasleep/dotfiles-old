@@ -5,6 +5,7 @@ NeoBundle "Sixeight/unite-grep"
 NeoBundle "tsukkee/unite-help"
 NeoBundle "Shougo/unite-outline"
 NeoBundle "tsukkee/unite-tag"
+NeoBundle 'kmnk/vim-unite-giti'
 
 " File
 command! Uf UniteWithBufferDir -buffer-name=files file bookmark file/new
