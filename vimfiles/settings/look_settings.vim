@@ -82,3 +82,9 @@ let g:solarized_termtrans=0
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 
+
+"" airline.vim
+" * enable/disable fugitive/lawrencium integration
+let g:airline#extensions#branch#enabled = 1
+" * change the text for when no branch is detected
+let g:airline#extensions#branch#empty_message = ''

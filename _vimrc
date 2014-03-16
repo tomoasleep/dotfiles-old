@@ -58,6 +58,8 @@ NeoBundle 'airblade/vim-rooter'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tyru/restart.vim'
 NeoBundle 'Shougo/context_filetype.vim'
+NeoBundle 'xolox/vim-session'
+NeoBundle 'xolox/vim-misc'
 
 " github 以外のリポジトリ (3)
 "Bundle "git://git.wincent.com/command-t.git"
