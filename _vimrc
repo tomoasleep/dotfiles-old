@@ -214,4 +214,5 @@ let g:tweetvim_display_icon = 1
 " restart
 let g:restart_sessionoptions
     \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
+let g:restart_save_window_values = 0
 
