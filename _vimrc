@@ -10,8 +10,8 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
-"" runtime! settings/neocomplete_settings.vim
-runtime! settings/you_complete_me_settings.vim
+runtime! settings/neocomplete_settings.vim
+"" runtime! settings/you_complete_me_settings.vim
 runtime! settings/unite_settings.vim
 
 runtime! settings/ft_settings.vim
