@@ -53,6 +53,9 @@ NeoBundle "jcf/vim-latex"
 NeoBundle "alpicola/vim-egison"
 NeoBundle 'ZenCoding.vim'
 
+"" Markdown
+NeoBundleLazy "greyblake/vim-preview", {'autoload': {'filetypes': ['rdoc', 'ruby', 'modula2']}}
+
 "" autocmd! rooter
 autocmd BufEnter *.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd,*.vim :Rooter
 let g:rooter_use_lcd = 1
