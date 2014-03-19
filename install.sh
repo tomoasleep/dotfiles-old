@@ -5,6 +5,7 @@ files=(
   vimperatorrc
   zshrc
   zshenv
+  tmux.conf
 )
 
 for i in $files
