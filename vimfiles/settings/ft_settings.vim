@@ -11,6 +11,18 @@ augroup rdoc_detection
   autocmd BufNewFile,BufRead *.{rd,rdoc} set filetype=rdoc
 augroup END
 
+"" rspec
+NeoBundleLazy "thoughtbot/vim-rspec", {
+      \ 'depends': 'tpope/vim-dispatch',
+      \ 'autoload': {'filetypes': ['ruby']}
+      \ }
+
+let s:bundle = neobundle#get('vim-rspec')
+function! s:bundle.hooks.on_source(bundle)
+   let g:rspec_command = 'Dispatch rspec {spec}'
+   let g:rspec_runner = 'os_x_iterm'
+endfunction
+
 "" haskell
 if neobundle#is_sourced('neocomplete')
   NeoBundleLazy "eagletmt/neco-ghc", {'autoload': {'filetypes': ['haskell']}}
@@ -40,6 +52,9 @@ NeoBundle 'derekwyatt/vim-scala'
 NeoBundle "jcf/vim-latex"
 NeoBundle "alpicola/vim-egison"
 NeoBundle 'ZenCoding.vim'
+
+"" Markdown
+NeoBundleLazy "greyblake/vim-preview", {'autoload': {'filetypes': ['rdoc', 'ruby', 'modula2']}}
 
 "" autocmd! rooter
 autocmd BufEnter *.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd,*.vim :Rooter
