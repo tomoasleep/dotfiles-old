@@ -122,4 +122,9 @@ function _git_co {
 export PATH=$ENV_PATH:$PATH
 typeset -U PATH
 
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+
+autoload -U compinit
+compinit -u
+
 # vim: filetype=zsh :
