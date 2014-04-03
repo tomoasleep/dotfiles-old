@@ -19,4 +19,4 @@ do
 done
 
 ln -s ${HOME}/dotfiles/vimfiles ${HOME}/.vim
-ln -s ${HOME}/dotfiles/dotjs ${HOME}/.js
+ln -s ${HOME}/dotfiles/dotjs/js ${HOME}/.js
