@@ -10,8 +10,8 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
-"" runtime! settings/neocomplete_settings.vim
-runtime! settings/you_complete_me_settings.vim
+runtime! settings/neocomplete_settings.vim
+"" runtime! settings/you_complete_me_settings.vim
 runtime! settings/unite_settings.vim
 
 runtime! settings/ft_settings.vim
@@ -216,4 +216,5 @@ let g:tweetvim_display_icon = 1
 " restart
 let g:restart_sessionoptions
     \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
+let g:restart_save_window_values = 0
 
