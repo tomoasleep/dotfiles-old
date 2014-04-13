@@ -45,6 +45,12 @@ NeoBundleLazy 'pangloss/vim-javascript', {'autoload': {'filetypes': ['javascript
 NeoBundleLazy 'briancollins/vim-jst', {'autoload': {'filetypes': ['javascript']}}
 NeoBundleLazy "kchmck/vim-coffee-script", {'autoload': {'filetypes': ['coffee']}}
 
+augroup js_settings
+  autocmd! js_settings
+  autocmd BufRead *.coffee :set syntax=coffee
+  autocmd BufRead *.js :set syntax=javascript
+augroup END
+
 "" other filetypes
 NeoBundle "digitaltoad/vim-jade"
 NeoBundle "rainux/vim-vala"
