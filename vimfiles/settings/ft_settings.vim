@@ -51,6 +51,12 @@ augroup js_settings
   autocmd BufRead *.js :set syntax=javascript
 augroup END
 
+"" groovy
+augroup groovy_settings
+  autocmd! groovy_settings
+  au BufRead,BufNewFile *.gradle set filetype=groovy
+augroup END
+
 "" other filetypes
 NeoBundle "digitaltoad/vim-jade"
 NeoBundle "rainux/vim-vala"
