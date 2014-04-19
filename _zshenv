@@ -1,3 +1,5 @@
+[[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv"
+
 export DOTFILES_ZSHENV=true
 
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
