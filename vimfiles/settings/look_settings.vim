@@ -4,6 +4,9 @@ NeoBundle 'pyte'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle "w0ng/vim-hybrid"
 NeoBundle "jonathanfilip/vim-lucius"
+NeoBundle "morhetz/gruvbox"
+NeoBundle "vim-scripts/github-theme"
+NeoBundle "chriskempson/vim-tomorrow-theme"
 
 "" airline
 NeoBundle 'bling/vim-airline'
