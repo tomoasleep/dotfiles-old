@@ -8,6 +8,7 @@ NeoBundleLazy "depuracao/vim-rdoc", {'autoload': {'filetypes': ['rdoc']}}
 augroup rdoc_detection
   "" detect rdoc filetype manually
   "" TODO: remove it when lazy loading without ftdetect implemented to NeoBundle
+  autocmd! rdoc_detection
   autocmd BufNewFile,BufRead *.{rd,rdoc} set filetype=rdoc
 augroup END
 
@@ -57,7 +58,10 @@ NeoBundle 'ZenCoding.vim'
 NeoBundleLazy "greyblake/vim-preview", {'autoload': {'filetypes': ['rdoc', 'ruby', 'modula2']}}
 
 "" autocmd! rooter
-autocmd BufEnter *.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd,*.vim :Rooter
+augroup rooter
+  autocmd! rooter
+  autocmd BufEnter *.c,*.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd,*.vim :Rooter
+augroup END
 let g:rooter_use_lcd = 1
 
 let g:syntastic_ghdl_workdir = 'lib'
