@@ -8,6 +8,11 @@ NeoBundle "morhetz/gruvbox"
 NeoBundle "vim-scripts/github-theme"
 NeoBundle "chriskempson/vim-tomorrow-theme"
 
+"" startify
+NeoBundle 'mhinz/vim-startify'
+
+let g:startify_custom_header = readfile($HOME . '/.vim/custom_header')
+
 "" airline
 NeoBundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
