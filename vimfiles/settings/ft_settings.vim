@@ -69,6 +69,14 @@ NeoBundle 'ZenCoding.vim'
 "" Markdown
 NeoBundleLazy "greyblake/vim-preview", {'autoload': {'filetypes': ['rdoc', 'ruby', 'modula2']}}
 
+"" slim
+NeoBundleLazy 'slim-template/vim-slim', {'autoload': {'filetypes': ['slim']}}
+augroup slim_settings
+  autocmd! slim_settings
+  au BufRead,BufNewFile *.slim set filetype=slim
+augroup END
+
+
 "" autocmd! rooter
 augroup rooter
   autocmd! rooter
