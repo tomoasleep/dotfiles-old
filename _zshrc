@@ -48,6 +48,17 @@ alias du="du -h"
 alias df="df -h"
 alias su="su -l"
 
+case ${OSTYPE} in
+  darwin*)
+    [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+    fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+    ;;
+  linux*)
+    alias vi=vim
+    alias tmux='tmux -2'
+    alias open='gnome-open'
+esac
+
 if [ -n "$TMUX" ]; then
     alias pbcopy="reattach-to-user-namespace pbcopy"
 fi
@@ -73,18 +84,21 @@ function _git_co {
   _git_checkout $*
 }
 
+function gi {
+  curl http://www.gitignore.io/api/$@ ;
+}
+
 # powerline
 # . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 #. $HOME/dotfiles/powerline_setting.sh
 
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
 [[ -z $DOTFILES_ZSHENV ]] && source .zshenv
 
 # move env_path to head
 export PATH=$ENV_PATH:$PATH
 typeset -U PATH
 
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
 autoload -U compinit
 compinit -u
