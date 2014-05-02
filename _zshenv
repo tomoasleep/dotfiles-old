@@ -16,3 +16,4 @@ export NODE_PATH=/opt/boxen/nodenv/versions/v0.10.13/lib/node_modules/
 [[ -z $ENV_PATH ]] && export ENV_PATH=$PATH
 
 # vim: set filetype=zsh :
+export PATH=$HOME/.nodebrew/current/bin:$PATH
