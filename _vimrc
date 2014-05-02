@@ -56,10 +56,20 @@ NeoBundle "rbtnn/vimconsole.vim"
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'airblade/vim-rooter'
 NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tyru/restart.vim'
+
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'xolox/vim-misc'
+
+"" define a command `Restart` to restart vim (linux, windows)
+NeoBundle 'tyru/restart.vim'
+
+"" google translate plugin
+NeoBundle 'mattn/googletranslate-vim'
+
+"" excite translate plugin
+NeoBundle 'mattn/excitetranslate-vim', {
+      \ 'depends': 'mattn/webapi-vim' }
 
 " github 以外のリポジトリ (3)
 "Bundle "git://git.wincent.com/command-t.git"
