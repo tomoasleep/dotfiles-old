@@ -3,6 +3,9 @@
 NeoBundleLazy "tpope/vim-rvm", {'autoload': {'filetypes': ['ruby']}}
 NeoBundleLazy "tpope/vim-rails", {'autoload': {'filetypes': ['ruby']}}
 
+""" highlight local variables
+NeoBundleLazy "todesking/ruby_hl_lvar.vim", {'autoload': {'filetypes': ['ruby']}}
+
 "" rdoc
 NeoBundleLazy "depuracao/vim-rdoc", {'autoload': {'filetypes': ['rdoc']}}
 augroup rdoc_detection
@@ -23,6 +26,16 @@ function! s:bundle.hooks.on_source(bundle)
    let g:rspec_command = 'Dispatch rspec {spec}'
    let g:rspec_runner = 'os_x_iterm'
 endfunction
+
+"" slim
+NeoBundleLazy "slim-template/vim-slim", {'autoload': {'filetypes': ['slim']}}
+
+augroup slim_detection
+  "" detect slim filetype manually
+  "" TODO: remove it when lazy loading without ftdetect implemented to NeoBundle
+  autocmd! slim_detection
+  autocmd BufNewFile,BufRead *.slim :set filetype=slim
+augroup END
 
 "" haskell
 if neobundle#is_sourced('neocomplete')
