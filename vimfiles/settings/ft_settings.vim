@@ -52,6 +52,12 @@ augroup js_settings
   autocmd BufRead *.js :set syntax=javascript
 augroup END
 
+"" groovy
+augroup groovy_settings
+  autocmd! groovy_settings
+  au BufRead,BufNewFile *.gradle set filetype=groovy
+augroup END
+
 "" other filetypes
 NeoBundle "digitaltoad/vim-jade"
 NeoBundle "rainux/vim-vala"
@@ -62,6 +68,14 @@ NeoBundle 'ZenCoding.vim'
 
 "" Markdown
 NeoBundleLazy "greyblake/vim-preview", {'autoload': {'filetypes': ['rdoc', 'ruby', 'modula2']}}
+
+"" slim
+NeoBundleLazy 'slim-template/vim-slim', {'autoload': {'filetypes': ['slim']}}
+augroup slim_settings
+  autocmd! slim_settings
+  au BufRead,BufNewFile *.slim set filetype=slim
+augroup END
+
 
 "" autocmd! rooter
 augroup rooter
