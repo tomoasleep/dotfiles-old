@@ -95,6 +95,7 @@ alias bundle='nocorrect bundle'
 alias tmux='tmux -2'
 alias ocaml='rlwrap ocaml'
 alias javac="javac -J-Dfile.encoding=UTF8"
+alias vi='vim'
 alias gvimr="gvim --remote-tab-silent"
 
 autoload -U compinit && compinit
