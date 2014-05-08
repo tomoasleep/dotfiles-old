@@ -2,8 +2,6 @@
 
 export DOTFILES_ZSHENV=true
 
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-
 # export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -11,6 +9,8 @@ export PATH=$PATH:/opt/bin
 
 export NODE_PATH=/opt/boxen/nodenv/versions/v0.10.13/lib/node_modules/npm/node_modules
 export NODE_PATH=/opt/boxen/nodenv/versions/v0.10.13/lib/node_modules/
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # restore PATH
 [[ -z $ENV_PATH ]] && export ENV_PATH=$PATH

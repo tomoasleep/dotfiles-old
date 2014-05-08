@@ -4,7 +4,9 @@ source! /Users/kamado/.vimperatorrc.local
 
 " vim: set ft=vimperator:
 
-set gui=nobookmarks,nomenu
+set gui=nobookmarks,nomenu,tabs,navigation
+set ignorecase
+set focuscontent
 "" ,noaddons
 
 set autocomplete=true
@@ -28,3 +30,8 @@ cmap <Up> <S-TAB>
 cmap <C-n> <TAB>
 cmap <C-p> <S-TAB>
 
+let g:plugin_loader_roots="~/dotfiles/vimperator-plugins"
+let g:plugin_loader_plugins="epub-reader"
+
+let g:epub_reader_map_next = 'l >';
+let g:epub_reader_map_prev = 'h <';
