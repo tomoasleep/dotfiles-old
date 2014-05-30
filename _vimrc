@@ -19,7 +19,7 @@ runtime! settings/vimshell_settings.vim
 runtime! settings/look_settings.vim
 
 " vim-scripts リポジトリ (1)
-NeoBundle 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle "fugitive.vim"
 NeoBundle "The-NERD-tree"
 NeoBundle "endwise.vim"
