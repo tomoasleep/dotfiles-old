@@ -24,6 +24,19 @@ function! s:bundle.hooks.on_source(bundle)
    let g:rspec_runner = 'os_x_iterm'
 endfunction
 
+"" vagrant
+NeoBundle "https://github.com/markcornick/vim-vagrant.git"
+
+"" slim
+NeoBundleLazy "slim-template/vim-slim", {'autoload': {'filetypes': ['slim']}}
+
+augroup slim_detection
+  "" detect slim filetype manually
+  "" TODO: remove it when lazy loading without ftdetect implemented to NeoBundle
+  autocmd! slim_detection
+  autocmd BufNewFile,BufRead *.slim :set filetype=slim
+augroup END
+
 "" haskell
 if neobundle#is_sourced('neocomplete')
   NeoBundleLazy "eagletmt/neco-ghc", {'autoload': {'filetypes': ['haskell']}}
