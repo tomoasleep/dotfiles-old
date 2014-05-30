@@ -52,6 +52,11 @@ augroup haskell_settings
   autocmd BufRead *.lhs :set syntax=haskell
 augroup END
 
+augroup purescript_settings
+  autocmd! purescript_settings
+  autocmd BufRead *.purs :set syntax=haskell
+augroup END
+
 let $PATH= $PATH . ":" . $HOME . "/.cabal/bin"
 
 "" javascript

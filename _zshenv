@@ -1,6 +1,7 @@
 [[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv"
 
 export DOTFILES_ZSHENV=true
+
 export EDITOR=vim
 
 ## android
