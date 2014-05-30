@@ -27,6 +27,9 @@ function! s:bundle.hooks.on_source(bundle)
    let g:rspec_runner = 'os_x_iterm'
 endfunction
 
+"" vagrant
+NeoBundle "https://github.com/markcornick/vim-vagrant.git"
+
 "" slim
 NeoBundleLazy "slim-template/vim-slim", {'autoload': {'filetypes': ['slim']}}
 
@@ -50,6 +53,11 @@ NeoBundleLazy "eagletmt/ghcmod-vim", {'autoload': {'filetypes': ['haskell']}}
 augroup haskell_settings
   autocmd! haskell_settings
   autocmd BufRead *.lhs :set syntax=haskell
+augroup END
+
+augroup purescript_settings
+  autocmd! purescript_settings
+  autocmd BufRead *.purs :set syntax=haskell
 augroup END
 
 let $PATH= $PATH . ":" . $HOME . "/.cabal/bin"

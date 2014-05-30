@@ -2,15 +2,35 @@
 
 export DOTFILES_ZSHENV=true
 
+export EDITOR=vim
+
+## android
+export PATH=/opt/android-sdk/tools/:$PATH
+export PATH=/opt/android-sdk/platform-tools/:$PATH
+
+## nodenv
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
+
+## rbenv
 # export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-export PATH=$PATH:/opt/bin
+## pyenv
+export PYENV_ROOT="${HOME}/.pyenv"
+if [ -d "${PYENV_ROOT}" ]; then
+  export PATH="${PYENV_ROOT}/bin:${PATH}"
+  eval "$(pyenv init -)"
+fi
 
+export PATH=$PATH:/opt/bin
 export NODE_PATH=/opt/boxen/nodenv/versions/v0.10.13/lib/node_modules/npm/node_modules
 export NODE_PATH=/opt/boxen/nodenv/versions/v0.10.13/lib/node_modules/
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+export PYENV_ROOT=/usr/local/opt/pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # restore PATH
 [[ -z $ENV_PATH ]] && export ENV_PATH=$PATH
