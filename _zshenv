@@ -23,10 +23,10 @@ if [ -d "${PYENV_ROOT}" ]; then
   eval "$(pyenv init -)"
 fi
 
-export PATH=$PATH:/opt/bin
 export NODE_PATH=/opt/boxen/nodenv/versions/v0.10.13/lib/node_modules/npm/node_modules
 export NODE_PATH=/opt/boxen/nodenv/versions/v0.10.13/lib/node_modules/
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH=$PATH:/opt/bin
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 export PYENV_ROOT=/usr/local/opt/pyenv
