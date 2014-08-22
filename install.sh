@@ -1,14 +1,15 @@
-files=(
+files_to_copy=(
   vimrc
   gvimrc
   tigrc
   vimperatorrc
   zshrc
   zshenv
+  zpreztorc
   tmux.conf
 )
 
-for i in $files
+for i in ${files_to_copy[@]}
 do
   scorefile=${HOME}/dotfiles/_${i}
   dotfile=${HOME}/.${i}

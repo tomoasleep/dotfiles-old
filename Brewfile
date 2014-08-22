@@ -4,7 +4,6 @@ tap homebrew/binary
 tap tomoasleep/homebrew-tomoasleep
 tap phinze/homebrew-cask
 
-install anyenv
 install autojump
 install ctags
 install dnsmasq
@@ -17,8 +16,8 @@ install tig
 install tmux
 install wget
 
-install macvim-tomoasleep
-install vim-tomoasleep
+install macvim-tomoasleep --with-lua --with-luajit
+install vim-tomoasleep --with-lua --with-luajit
 
 install brew-cask
 
@@ -30,14 +29,19 @@ cask install google-chrome
 cask install google-japanese-ime
 cask install hipchat
 cask install iterm2
+cask install keepassx
 cask install keyremap4macbook
 cask install kobito
 cask install mou
 cask install opera
+cask install pckeyboardhack
+cask install pivotalbooster
 cask install sequel-pro
+cask install spectacle
 cask install vagrant
-cask install virtual-box
+cask install virtualbox
 
 linkapps
 
 cleanup
+tap homebrew/science

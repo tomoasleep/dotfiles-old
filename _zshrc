@@ -1,5 +1,7 @@
 [[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshrc" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshrc"
 
+export EDITOR=vim
+
 # ディレクトリを水色にする｡
 export LS_COLORS='di=01;36'
 
@@ -47,6 +49,7 @@ alias ll="ls -l"
 alias du="du -h"
 alias df="df -h"
 alias su="su -l"
+alias vimr="gvim --remote-tab-silent"
 
 case ${OSTYPE} in
   darwin*)
