@@ -11,8 +11,12 @@ let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#sources#syntax#min_keyword_length = 4
+let g:neocomplete#auto_completion_start_length = 4
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Shorten auto completation time
+let g:neocomplete#skip_auto_completion_time = '0.1'
 
 " Note: Must patch https://gist.githubusercontent.com/Shougo/5654189/raw
 let g:neocomplete#enable_complete_select = 1
@@ -71,3 +75,29 @@ let g:neocomplete#force_omni_patterns.objcpp =
 let g:clang_complete_auto = 0
 let g:clang_auto_select = 0
 
+"" ----------------------------------------------------------
+"" -- neosnippet
+"" ----------------------------------------------------------
+
+" snipet plugin
+NeoBundle 'Shougo/neosnippet'
+" default snippets
+NeoBundle 'Shougo/neosnippet-snippets'
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
