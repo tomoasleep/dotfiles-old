@@ -31,7 +31,7 @@ NeoBundle 'matchit.zip'
 
 " github の任意のリポジトリ (2)"
 NeoBundle "thinca/vim-ref"
-NeoBundle "tsaleh/vim-matchit"
+" NeoBundle "tsaleh/vim-matchit"
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/vimproc', {
       \ 'build': {
@@ -60,6 +60,16 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'xolox/vim-misc'
+
+"" label code and manage easily
+NeoBundleLocal 'tomoasleep/codelabel.vim'
+" , { 'type': 'no-sync' }
+
+"" Utility for vimscript
+NeoBundle 'vim-jp/vital.vim'
+
+"" write and management simple memos
+NeoBundle 'glidenote/memolist.vim'
 
 "" define a command `Restart` to restart vim (linux, windows)
 NeoBundle 'tyru/restart.vim'
