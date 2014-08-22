@@ -4,7 +4,7 @@ NeoBundleLazy "tpope/vim-rvm", {'autoload': {'filetypes': ['ruby']}}
 NeoBundleLazy "tpope/vim-rails", {'autoload': {'filetypes': ['ruby']}}
 
 """ highlight local variables
-NeoBundleLazy "todesking/ruby_hl_lvar.vim", {'autoload': {'filetypes': ['ruby']}}
+"" NeoBundleLazy "todesking/ruby_hl_lvar.vim", {'autoload': {'filetypes': ['ruby']}}
 
 "" rdoc
 NeoBundleLazy "depuracao/vim-rdoc", {'autoload': {'filetypes': ['rdoc']}}
@@ -28,7 +28,7 @@ function! s:bundle.hooks.on_source(bundle)
 endfunction
 
 "" vagrant
-NeoBundle "https://github.com/markcornick/vim-vagrant.git"
+NeoBundle "markcornick/vim-vagrant"
 
 "" slim
 NeoBundleLazy "slim-template/vim-slim", {'autoload': {'filetypes': ['slim']}}
@@ -71,6 +71,7 @@ augroup js_settings
   autocmd! js_settings
   autocmd BufRead *.coffee :set syntax=coffee
   autocmd BufRead *.js :set syntax=javascript
+  au BufNewFile,BufRead *.ect :set filetype=html
 augroup END
 
 "" groovy
@@ -83,12 +84,15 @@ augroup END
 NeoBundle "digitaltoad/vim-jade"
 NeoBundle "rainux/vim-vala"
 NeoBundle 'derekwyatt/vim-scala'
-NeoBundle "jcf/vim-latex"
+"" NeoBundle "jcf/vim-latex"
 NeoBundle "alpicola/vim-egison"
 NeoBundle 'ZenCoding.vim'
 
 "" Markdown
 NeoBundleLazy "greyblake/vim-preview", {'autoload': {'filetypes': ['rdoc', 'ruby', 'modula2']}}
+
+"" jsx
+NeoBundle "jsx/jsx.vim"
 
 "" slim
 NeoBundleLazy 'slim-template/vim-slim', {'autoload': {'filetypes': ['slim']}}
@@ -97,63 +101,185 @@ augroup slim_settings
   au BufRead,BufNewFile *.slim set filetype=slim
 augroup END
 
+"" gitcommit
+augroup gitcommit_dictionary
+  autocmd! gitcommit_dictionary
+  autocmd FileType gitcommit :set dictionary=~/.vim/dictionary/github_user.dict
+augroup END
 
 "" autocmd! rooter
 augroup rooter
   autocmd! rooter
-  autocmd BufEnter *.c,*.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd,*.vim :Rooter
+  autocmd BufEnter *.c,*.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd,*.vim,*.hs :Rooter
 augroup END
 let g:rooter_use_lcd = 1
 
 let g:syntastic_ghdl_workdir = 'lib'
 
+" emmet
+NeoBundle 'mattn/emmet-vim'
+let g:user_emmet_settings = { 
+\   'tex' : { 
+\       'indentation' : '  ',
+\       'snippets' : { 
+\           'align'       : "\\begin{align}\n|\n\\end{align}\n",
+\           'aligns'      : "\\begin{align*}\n|\n\\end{align*}\n",
+\           'enumerate'   : "\\begin{enumerate}\n\\item |\n\\end{enumerate}\n",
+\           'itemize'     : "\\begin{itemize}\n\\item |\n\\end{itemize}\n",
+\           'description' : "\\begin{description}\n\\item |\n\\end{description}\n",
+\           'array'       : "\\begin{array}{|}\n\\end{array}",
+\           'table'       : "\\begin{table}[htbp]\n"
+\               ."\\begin{center}\n"
+\               ."\\caption{|}\n"
+\               ."\\label{}\n"
+\               ."\\begin{tabular}{}\n"
+\               ."\\end{tabular}\n"
+\               ."\\end{center}\n"
+\               ."\\end{table}\n",
+\           'figure'      : "\\begin{figure}[htbp]\n"
+\               ."\\begin{center}\n"
+\               ."\\includegraphics[width=0.7\textwidth]{}\n"
+\               ."\\caption{|}\n"
+\               ."\\label{}\n"
+\               ."\\end{center}\n"
+\               ."\\end{figure}\n",
+\           'jsart'       : "\\documentclass{jsarticle}\n"
+\               ."\\usepackage{amsmath,amssymb}\n"
+\               ."\\usepackage[dvipdfmx]{graphicx}\n\n"
+\               ."\\renewcommand{\\theequation}{\\thesection.\\arabic{equation}}\n"
+\               ."\\makeatletter\n"
+\               ."\\@addtoreset{equation}{section}\n"
+\               ."\\makeatother\n\n"
+\               ."\\title{|}\n"
+\               ."\\author{}\n"
+\               ."\\date{}\n\n"
+\               ."\\begin{document}\n"
+\               ."\\maketitle\n\n"
+\               ."\\section{}\n\n\n"
+\               ."\\begin{thebibliography}{99}\n"
+\               ."\\bibitem{}\n\n"
+\               ."\\end{thebibliography}\n\n"
+\               ."\\end{document}\n",
+\           'jart'        : "\\documentclass{jarticle}\n"
+\               ."\\usepackage{amsmath,amssymb}\n"
+\               ."\\usepackage[dvipdfmx]{graphicx}\n\n"
+\               ."\\renewcommand{\\theequation}{\\thesection.\\arabic{equation}}\n"
+\               ."\\makeatletter\n"
+\               ."\\@addtoreset{equation}{section}\n"
+\               ."\\makeatother\n\n"
+\               ."\\title{|}\n"
+\               ."\\author{}\n"
+\               ."\\date{}\n\n"
+\               ."\\begin{document}\n"
+\               ."\\maketitle\n\n"
+\               ."\\section{}\n\n\n"
+\               ."\\begin{thebibliography}{99}\n"
+\               ."\\bibitem{}\n\n"
+\               ."\\end{thebibliography}\n\n"
+\               ."\\end{document}\n",
+\       }
+\   },
+\   'plaintex' : {
+\       'extends' : 'tex'
+\   }
+\}
+
+" latex
+let g:quickrun_config = {}
+let g:quickrun_config['tex'] = {
+            \   'command' : 'latexmk',
+            \   'outputter' : 'error',
+            \   'outputter/error/error' : 'quickfix',
+            \   'cmdopt': '-pdfdvi',
+            \   'exec': ['%c %o %s']
+            \ }
+
+augroup myLaTeXQuickrun
+    au!
+    au BufEnter *.tex call <SID>SetLaTeXMainSource()
+    au BufEnter *.tex nnoremap <Leader>v :call <SID>TexPdfView() <CR>
+augroup END
+function! s:SetLaTeXMainSource()
+    let currentFileDirectory = expand('%:p:h').'/'
+    let latexmain = glob(currentFileDirectory.'*.latexmain')
+    let g:quickrun_config['tex']['srcfile'] = fnamemodify(latexmain, ':r')
+    echo latexmain
+    if latexmain == ''
+        unlet g:quickrun_config['tex']['srcfile']
+    endif
+endfunction
+function! s:TexPdfView()
+    let texPdfFilename = expand('%')
+    if exists("g:quickrun_config['tex']['srcfile']")
+        let texPdfFilename = fnamemodify(g:quickrun_config['tex']['srcfile'], ':.:r') . '.pdf'
+    endif
+    if has('win32')
+        let g:TexPdfViewCommand = '!start '.
+                    \             '"C:/Program Files (x86)/SumatraPDF/SumatraPDF.exe" -reuse-instance '.
+                    \             texPdfFilename
+    endif
+    if has('mac')
+        let g:TexPdfViewCommand = '! '.
+                    \             'open -a preview '.
+                    \             texPdfFilename
+    elseif has('unix')
+        let g:TexPdfViewCommand = '! '.
+                    \             'evince '.
+                    \             texPdfFilename
+    endif
+    execute g:TexPdfViewCommand
+endfunction
+
+let g:syntastic_tex_checkers = ['chktex']
+
+
 ""
 "" Vim-LaTeX
 ""
-" filetype plugin on
-" filetype indent on
-set shellslash
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-let g:Imap_UsePlaceHolders = 1
-let g:Imap_DeleteEmptyPlaceHolders = 1
-let g:Imap_StickyPlaceHolders = 0
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_FormatDependency_ps = 'dvi,ps'
-let g:Tex_FormatDependency_pdf = 'dvi,pdf'
-"let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
-"let g:Tex_FormatDependency_pdf = 'pdf'
-let g:Tex_CompileRule_dvi = 'platex -synctex=1 -interaction=nonstopmode $*'
-"let g:Tex_CompileRule_dvi = 'uplatex -synctex=1 -interaction=nonstopmode $*'
-let g:Tex_CompileRule_ps = 'dvips -Ppdf -o $*.ps $*.dvi'
-let g:Tex_CompileRule_pdf = 'dvipdfmx $*.dvi'
-"let g:Tex_CompileRule_pdf = 'ps2pdf $*.ps'
-"let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 -interaction=nonstopmode $*'
-"let g:Tex_CompileRule_pdf = 'lualatex -synctex=1 -interaction=nonstopmode $*'
-"let g:Tex_CompileRule_pdf = 'luajitlatex -synctex=1 -interaction=nonstopmode $*'
-"let g:Tex_CompileRule_pdf = 'xelatex -synctex=1 -interaction=nonstopmode $*'
-let g:Tex_BibtexFlavor = 'pbibtex'
-"let g:Tex_BibtexFlavor = 'upbibtex'
-let g:Tex_MakeIndexFlavor = 'mendex $*.idx'
-let g:Tex_UseEditorSettingInDVIViewer = 1
-let g:Tex_ViewRule_dvi = 'pxdvi -watchfile 1'
-"let g:Tex_ViewRule_dvi = 'advi -watch-file 1'
-"let g:Tex_ViewRule_dvi = 'evince'
-"let g:Tex_ViewRule_dvi = 'okular --unique'
-"let g:Tex_ViewRule_dvi = 'wine ~/.wine/drive_c/w32tex/dviout/dviout.exe -1'
-let g:Tex_ViewRule_ps = 'gv --watch'
-"let g:Tex_ViewRule_ps = 'evince'
-"let g:Tex_ViewRule_ps = 'okular --unique'
-"let g:Tex_ViewRule_ps = 'zathura'
-"let g:Tex_ViewRule_pdf = 'texworks'
-let g:Tex_ViewRule_pdf = 'evince'
-"let g:Tex_ViewRule_pdf = 'okular --unique'
-"let g:Tex_ViewRule_pdf = 'zathura -s -x "vim --servername synctex -n --remote-silent +\%{line} \%{input}"'
-"let g:Tex_ViewRule_pdf = 'qpdfview --unique'
-"let g:Tex_ViewRule_pdf = 'pdfviewer'
-"let g:Tex_ViewRule_pdf = 'gv --watch'
-"let g:Tex_ViewRule_pdf = 'acroread'
-"let g:Tex_ViewRule_pdf = 'pdfopen -viewer ar9-tab'
+"" " filetype plugin on
+"" " filetype indent on
+"" set shellslash
+"" set grepprg=grep\ -nH\ $*
+"" let g:tex_flavor='latex'
+"" let g:Imap_UsePlaceHolders = 1
+"" let g:Imap_DeleteEmptyPlaceHolders = 1
+"" let g:Imap_StickyPlaceHolders = 0
+"" let g:Tex_DefaultTargetFormat = 'pdf'
+"" let g:Tex_FormatDependency_ps = 'dvi,ps'
+"" let g:Tex_FormatDependency_pdf = 'dvi,pdf'
+"" "let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
+"" "let g:Tex_FormatDependency_pdf = 'pdf'
+"" let g:Tex_CompileRule_dvi = 'platex -synctex=1 -interaction=nonstopmode $*'
+"" "let g:Tex_CompileRule_dvi = 'uplatex -synctex=1 -interaction=nonstopmode $*'
+"" let g:Tex_CompileRule_ps = 'dvips -Ppdf -o $*.ps $*.dvi'
+"" let g:Tex_CompileRule_pdf = 'dvipdfmx $*.dvi'
+"" "let g:Tex_CompileRule_pdf = 'ps2pdf $*.ps'
+"" "let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 -interaction=nonstopmode $*'
+"" "let g:Tex_CompileRule_pdf = 'lualatex -synctex=1 -interaction=nonstopmode $*'
+"" "let g:Tex_CompileRule_pdf = 'luajitlatex -synctex=1 -interaction=nonstopmode $*'
+"" "let g:Tex_CompileRule_pdf = 'xelatex -synctex=1 -interaction=nonstopmode $*'
+"" let g:Tex_BibtexFlavor = 'pbibtex'
+"" "let g:Tex_BibtexFlavor = 'upbibtex'
+"" let g:Tex_MakeIndexFlavor = 'mendex $*.idx'
+"" let g:Tex_UseEditorSettingInDVIViewer = 1
+"" let g:Tex_ViewRule_dvi = 'pxdvi -watchfile 1'
+"" "let g:Tex_ViewRule_dvi = 'advi -watch-file 1'
+"" "let g:Tex_ViewRule_dvi = 'evince'
+"" "let g:Tex_ViewRule_dvi = 'okular --unique'
+"" "let g:Tex_ViewRule_dvi = 'wine ~/.wine/drive_c/w32tex/dviout/dviout.exe -1'
+"" let g:Tex_ViewRule_ps = 'gv --watch'
+"" "let g:Tex_ViewRule_ps = 'evince'
+"" "let g:Tex_ViewRule_ps = 'okular --unique'
+"" "let g:Tex_ViewRule_ps = 'zathura'
+"" "let g:Tex_ViewRule_pdf = 'texworks'
+"" let g:Tex_ViewRule_pdf = 'evince'
+"" "let g:Tex_ViewRule_pdf = 'okular --unique'
+"" "let g:Tex_ViewRule_pdf = 'zathura -s -x "vim --servername synctex -n --remote-silent +\%{line} \%{input}"'
+"" "let g:Tex_ViewRule_pdf = 'qpdfview --unique'
+"" "let g:Tex_ViewRule_pdf = 'pdfviewer'
+"" "let g:Tex_ViewRule_pdf = 'gv --watch'
+"" "let g:Tex_ViewRule_pdf = 'acroread'
+"" "let g:Tex_ViewRule_pdf = 'pdfopen -viewer ar9-tab'
 
 "" filetype
 " XAML
