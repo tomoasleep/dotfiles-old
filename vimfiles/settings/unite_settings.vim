@@ -1,5 +1,5 @@
 
-NeoBundle "Shougo/unite.vim"
+NeoBundle "Shougo/unite.vim", { 'rev': 'ver.6.0' }
 NeoBundle "thinca/vim-unite-history"
 NeoBundle "Sixeight/unite-grep"
 NeoBundle "tsukkee/unite-help"
