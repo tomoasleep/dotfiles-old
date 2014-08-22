@@ -6,10 +6,11 @@ NeoBundle "tsukkee/unite-help"
 NeoBundle "Shougo/unite-outline"
 NeoBundle "tsukkee/unite-tag"
 NeoBundle 'kmnk/vim-unite-giti'
+NeoBundle 'tacroe/unite-mark'
 
 " File
-command! Uf UniteWithBufferDir -buffer-name=files file bookmark file/new
-command! UF Uf
+command! -nargs=* Uf UniteWithBufferDir -buffer-name=files file bookmark file/new
+command! -nargs=* UF Uf
 " Buffer
 command! Ub Unite buffer
 command! UB Ub
