@@ -62,6 +62,14 @@ augroup END
 
 let $PATH= $PATH . ":" . $HOME . "/.cabal/bin"
 
+"" alex
+NeoBundle 'alex.vim'
+
+augroup alex_settings
+  autocmd! alex_settings
+  autocmd BufNewFile,BufRead *.x :set syntax=alex
+augroup END
+
 "" javascript
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload': {'filetypes': ['javascript']}}
 NeoBundleLazy 'briancollins/vim-jst', {'autoload': {'filetypes': ['javascript']}}
