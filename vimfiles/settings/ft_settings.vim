@@ -82,6 +82,14 @@ augroup js_settings
   au BufNewFile,BufRead *.ect :set filetype=html
 augroup END
 
+"" typescript
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'clausreinke/typescript-tools'
+
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+let g:syntastic_typescript_checkers = ['tsc']
+
 "" groovy
 augroup groovy_settings
   autocmd! groovy_settings
