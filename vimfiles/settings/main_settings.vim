@@ -81,6 +81,13 @@ NeoBundle 'mattn/googletranslate-vim'
 NeoBundle 'mattn/excitetranslate-vim', {
       \ 'depends': 'mattn/webapi-vim' }
 
+"" show a git diff in the gutter (sign column) and stages/reverts hunks
+NeoBundle 'airblade/vim-gitgutter', {
+      \ 'gui' : 1,
+      \ }
+
+let g:gitgutter_eager=0
+
 " github 以外のリポジトリ (3)
 "Bundle "git://git.wincent.com/command-t.git"
 "
