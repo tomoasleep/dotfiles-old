@@ -1,0 +1,18 @@
+'editor':
+  'fontSize': 11
+  'fontFamily': 'consolas for Powerline'
+  'showIndentGuide': true
+'core':
+  'themes': [
+    'atom-dark-ui'
+    'atom-dark-syntax'
+  ]
+  'useReactEditor': true
+'exception-reporting':
+  'userId': 'f7c49878-7953-c447-e2fb-508c8235b791'
+'welcome':
+  'showOnStartup': false
+'metrics':
+  'userId': '510449863e687d7f8cefb99b4c6d94cb1aea854a'
+'git-diff':
+  'showIconsInEditorGutter': true
