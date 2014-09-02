@@ -57,7 +57,7 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'airblade/vim-rooter'
 NeoBundle 'tpope/vim-unimpaired'
 
-NeoBundle 'Shougo/context_filetype.vim'
+" NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'xolox/vim-misc'
 

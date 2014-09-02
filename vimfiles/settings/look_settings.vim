@@ -22,8 +22,8 @@ NeoBundle 't9md/vim-quickhl'
 NeoBundle "nathanaelkane/vim-indent-guides"
 "" Bundle "TagHighlight"
 
-NeoBundle 'osyo-manga/vim-precious',
-  \ {'depends': 'Shougo/context_filetype.vim' }
+"" NeoBundle 'osyo-manga/vim-precious',
+""   \ {'depends': 'Shougo/context_filetype.vim' }
 
 " カーソル行をハイライト
 set cursorline
