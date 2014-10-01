@@ -38,6 +38,13 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH=/usr/texbin:$PATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 
+case ${OSTYPE} in
+  darwin*)
+    export ATOM_PATH=$HOME/Applications
+    ;;
+  linux*)
+esac
+
 # restore PATH
 [[ -z $ENV_PATH ]] && export ENV_PATH=$PATH
 
