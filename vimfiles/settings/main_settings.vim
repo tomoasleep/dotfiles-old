@@ -62,7 +62,7 @@ NeoBundle 'xolox/vim-session'
 NeoBundle 'xolox/vim-misc'
 
 "" label code and manage easily
-NeoBundleLocal 'tomoasleep/codelabel.vim'
+NeoBundle 'tomoasleep/codelabel.vim'
 " , { 'type': 'no-sync' }
 
 "" Utility for vimscript
@@ -85,6 +85,8 @@ NeoBundle 'mattn/excitetranslate-vim', {
 NeoBundle 'airblade/vim-gitgutter', {
       \ 'gui' : 1,
       \ }
+
+" NeoBundle 'bartman/git-wip', { 'rtp': 'vim' }
 
 let g:gitgutter_eager=0
 

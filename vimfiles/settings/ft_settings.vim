@@ -27,6 +27,11 @@ function! s:bundle.hooks.on_source(bundle)
    let g:rspec_runner = 'os_x_iterm'
 endfunction
 
+augroup cap_detection
+  autocmd! cap_detection
+  autocmd BufNewFile,BufRead *.cap :set filetype=ruby
+augroup END
+
 "" vagrant
 NeoBundle "markcornick/vim-vagrant"
 
@@ -96,6 +101,9 @@ augroup groovy_settings
   au BufRead,BufNewFile *.gradle set filetype=groovy
 augroup END
 
+"" go
+NeoBundle "fatih/vim-go"
+
 "" other filetypes
 NeoBundle "digitaltoad/vim-jade"
 NeoBundle "rainux/vim-vala"
@@ -109,6 +117,12 @@ NeoBundleLazy "greyblake/vim-preview", {'autoload': {'filetypes': ['rdoc', 'ruby
 
 "" jsx
 NeoBundle "jsx/jsx.vim"
+
+"" coq
+NeoBundle "jvoorhis/coq.vim"
+
+"" patched to 'vim-scripts/CoqIDE' (for compatibility with v8.4pl3)
+NeoBundle "tauli/CoqIDE", "patch-1", { 'gui' : 1 }
 
 "" slim
 NeoBundleLazy 'slim-template/vim-slim', {'autoload': {'filetypes': ['slim']}}
