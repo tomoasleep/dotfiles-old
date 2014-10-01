@@ -2,12 +2,16 @@
   'fontSize': 11
   'fontFamily': 'consolas for Powerline'
   'showIndentGuide': true
+  'invisibles': {}
 'core':
   'themes': [
-    'atom-dark-ui'
+    'seti-ui'
     'atom-dark-syntax'
   ]
   'useReactEditor': true
+  'disabledPackages': [
+    'symbols-view'
+  ]
 'exception-reporting':
   'userId': 'f7c49878-7953-c447-e2fb-508c8235b791'
 'welcome':
@@ -16,3 +20,7 @@
   'userId': '510449863e687d7f8cefb99b4c6d94cb1aea854a'
 'git-diff':
   'showIconsInEditorGutter': true
+'recent-files':
+  'updated': false
+'tree-view':
+  'hideVcsIgnoredFiles': true

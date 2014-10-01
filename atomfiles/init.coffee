@@ -12,3 +12,11 @@
 #   editor = editorView.getEditor()
 #   if path.extname(editor.getPath()) is '.md'
 #     editor.setSoftWrap(true)
+
+exec = require('child_process').exec
+
+atom.workspace.observeTextEditors (editor) ->
+  editor.getBuffer()?.onDidSave (event) ->
+    command = "git wip save \"WIP from atom (#{event.path})\" --editor -- #{event.path}"
+    exec command, cwd: atom.project.path
+
