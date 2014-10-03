@@ -1,0 +1,24 @@
+#!/bin/sh
+apm install atom-ctags
+apm install auto-indent
+apm install autocomplete-plus
+apm install coffee-lint
+apm install command-logger
+apm install git-log
+apm install git-plus
+apm install hogepiyo
+apm install japanese-wrap
+apm install language-coq
+apm install linter
+apm install minimap
+apm install minimap-git-diff
+apm install monokai
+apm install pain-split
+apm install project-manager
+apm install recent-files
+apm install ruby-slim
+apm install run-command
+apm install seti-syntax
+apm install seti-ui
+apm install solarized-light-ui
+apm install vim-mode
