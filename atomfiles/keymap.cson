@@ -9,22 +9,69 @@
 #
 # Here's an example taken from Atom's built-in keymap:
 #
-# '.editor':
+# 'atom-text-editor':
 #   'enter': 'editor:newline'
 #
 # '.workspace':
 #   'ctrl-P': 'core:move-up'
 #   'ctrl-p': 'core:move-down'
 #
-'.editor.vim-mode:not(.insert-mode)':
-  ':': 'command-palette:toggle'
+'atom-text-editor.vim-mode:not(.insert-mode)':
+#  ':': 'user:vim-command:toggle'
   't n': 'pane:show-next-item'
   't p': 'pane:show-previous-item'
   'ctrl-w t': 'tree-view:toggle-focus'
-
-'.platform-darwin, .platform-darwin .command-palette .editor':
-  'ctrl+c': 'command-palette:toggle'
-  'ctrl+[': 'command-palette:toggle'
+  'cmd-shift-v': 'user:vim-command:toggle'
+  '/': 'find-and-replace:show'
+  'n': 'find-and-replace:select-next'
+  'N': 'find-and-replace:select-undo'
 
 '.platform-darwin .tree-view':
   'ctrl-w t': 'tree-view:toggle-focus'
+  'q': 'tree-view:toggle'
+
+'body':
+  'ctrl-p': 'unset!'
+  'ctrl-n': 'unset!'
+
+'.workspace':
+  'ctrl-p': 'unset!'
+
+'.select-list atom-text-editor':
+  'escape': 'core:cancel'
+  'ctrl-c': 'core:cancel' # Vimっぽくキャンセルしたい
+  'ctrl-[': 'core:cancel'
+  'ctrl-n': 'core:move-down'
+  'ctrl-p': 'core:move-up'
+  'tab': 'core:move-down' # Tab, Shift-Tabで順送り逆送りしたい
+  'shift-tab': 'core:move-up'
+  'ctrl-w': 'user:delete-to-slash'
+
+'.find-and-replace, .project-find':
+  'escape': 'core:cancel'
+  'ctrl-c': 'core:cancel'
+  'ctrl-[': 'core:cancel'
+
+'.atom-make-runner':
+  'escape': 'atom-make-runner:toggle'
+  'q': 'atom-make-runner:toggle'
+
+'atom-text-editor:not(mini) .autocomplete-plus.autocomplete-suggestion-list':
+  'ctrl-p': 'autocomplete-plus:select-previous'
+  'ctrl-n': 'autocomplete-plus:select-next'
+
+'.command-mode-input atom-text-editor':
+  'escape': 'core:cancel'
+  'ctrl-c': 'core:cancel'
+  'ctrl-[': 'core:cancel'
+
+'.silver-bullet.editor-container atom-text-editor':
+  'ctrl-w': 'user:delete-to-slash'
+
+'atom-text-editor.autocomplete-active':
+  'down': 'core:move-down'
+  'ctrl-n': 'core:move-down'
+  'up': 'core:move-up'
+  'ctrl-p': 'core:move-up'
+  # 'tab': 'autocomplete-plus:confirm'
+  'escape': 'autocomplete-plus:cancel'

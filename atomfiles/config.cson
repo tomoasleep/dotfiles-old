@@ -1,26 +1,129 @@
-'editor':
-  'fontSize': 11
-  'fontFamily': 'consolas for Powerline'
-  'showIndentGuide': true
-  'invisibles': {}
-'core':
-  'themes': [
-    'seti-ui'
-    'atom-dark-syntax'
-  ]
-  'useReactEditor': true
-  'disabledPackages': [
-    'symbols-view'
-  ]
-'exception-reporting':
-  'userId': 'f7c49878-7953-c447-e2fb-508c8235b791'
-'welcome':
-  'showOnStartup': false
-'metrics':
-  'userId': '510449863e687d7f8cefb99b4c6d94cb1aea854a'
-'git-diff':
-  'showIconsInEditorGutter': true
-'recent-files':
-  'updated': false
-'tree-view':
-  'hideVcsIgnoredFiles': true
+"*":
+  "recent-files":
+    updated: false
+  core:
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "Thumbs.db"
+      ".o"
+      ".cmo"
+      ".cmx"
+      ".cmi"
+      ".a"
+      ".cma"
+      ".cmxa"
+      ".opt"
+      ".run"
+    ]
+    followSymlinks: true
+    disabledPackages: [
+      "symbols-view"
+      "autocomplete-plus-async"
+      "language-typescript"
+      "tab-switcher"
+      "powerline"
+      "ex-mode"
+    ]
+    themes: [
+      "one-dark-ui"
+      "solarized-light-syntax"
+    ]
+  "exception-reporting":
+    userId: "82d47670-14ea-f3b0-2b84-5cf67f58c243"
+  welcome:
+    showOnStartup: false
+  minimap:
+    plugins:
+      "git-diff": true
+  editor:
+    showInvisibles: true
+    softWrap: true
+    useShadowDOM: true
+    invisibles: {}
+    fontFamily: "Consolas for Powerline, Ricty"
+    showIndentGuide: true
+    preferredLineLength: 100
+    fontSize: 11
+  "tree-view":
+    hideIgnoredNames: true
+  "autocomplete-plus":
+    includeCompletionsFromAllBuffers: true
+    navigateCompletions: "ctrl-p,ctrl-n"
+    defaultProvider: "Symbol"
+  linter: {}
+  "make-runner":
+    hidePane: true
+  notifications:
+    showErrorsInDevMode: true
+  "find-and-replace":
+    openProjectFindResultsInRightPane: true
+  "fuzzy-finder":
+    ignoredNames: [
+      "node_modules"
+    ]
+  tabs: {}
+  user:
+    maxPaneLength: 20
+  term2:
+    colors:
+      normalBlack: "#073642"
+      normalRed: "#dc322f"
+      normalGreen: "#859900"
+      normalYellow: "#b58900"
+      normalBlue: "#268bd2"
+      normalPurple: "#d33682"
+      normalCyan: "#2aa198"
+      normalWhite: "#3338d5"
+      brightBlack: "#002b36"
+      brightRed: "#cb4b16"
+      brightGreen: "#586e75"
+      brightYellow: "#657b83"
+      brightBlue: "#839496"
+      brightPurple: "#6c71c4"
+      brightCyan: "#93a1a1"
+      brightWhite: "#fdf6e3"
+      background: "#fdf6e3"
+      foreground: "#93a1a1"
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
+  "bracket-matcher":
+    autocompleteBrackets: false
+    autocompleteSmartQuotes: false
+  "atom-typescript": {}
+".camlp4.ocaml.source":
+  editor:
+    preferredLineLength: 100
+".erb.html.text":
+  editor:
+    preferredLineLength: 100
+".ocamllex.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 2
+".menhir.source":
+  editor:
+    preferredLineLength: 100
+".cpp.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 8
+".ruby.source":
+  editor:
+    preferredLineLength: 100
+".clojure.source":
+  editor:
+    preferredLineLength: 100
+".c.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 8
+".alloy.source":
+  editor:
+    preferredLineLength: 100
+".ocaml.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 2

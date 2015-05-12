@@ -3,4 +3,6 @@ compile-cache
 dev
 packages
 .npm
+.apm
 .node-gyp
+project.cson
