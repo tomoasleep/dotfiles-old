@@ -2,8 +2,8 @@ set lines=60
 set columns=120
 set lsp=0
 
-colorscheme hybrid
-set background=dark
+colorscheme solarized
+set background=light
 " UTF-8 環境でないとうまく表示されない
 set encoding=utf-8
 " フォントサイズはお好みで

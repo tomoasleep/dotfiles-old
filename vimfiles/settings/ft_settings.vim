@@ -89,11 +89,14 @@ augroup END
 
 "" typescript
 NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'clausreinke/typescript-tools'
+"" NeoBundle 'clausreinke/typescript-tools'
 
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 let g:syntastic_typescript_checkers = ['tsc']
+
+"" less
+NeoBundle 'groenewege/vim-less'
 
 "" groovy
 augroup groovy_settings
@@ -113,7 +116,13 @@ NeoBundle "alpicola/vim-egison"
 NeoBundle 'ZenCoding.vim'
 
 "" Markdown
-NeoBundleLazy "greyblake/vim-preview", {'autoload': {'filetypes': ['rdoc', 'ruby', 'modula2']}}
+NeoBundleLazy "greyblake/vim-preview", {'autoload': {'filetypes': ['rdoc', 'ruby', 'markdown']}}
+
+" md as markdown, instead of modula2
+augroup markdown_ft
+  autocmd! markdown_ft
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
 
 "" jsx
 NeoBundle "jsx/jsx.vim"
@@ -140,7 +149,7 @@ augroup END
 "" autocmd! rooter
 augroup rooter
   autocmd! rooter
-  autocmd BufEnter *.c,*.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd,*.vim,*.hs :Rooter
+  autocmd BufEnter *.c,*.hs,*.coffee,*.rb,*.html,*.haml,*.erb,*.rjs,*.css,*.js,*.vhd,*.vim,*.hs,*.ml :Rooter
 augroup END
 let g:rooter_use_lcd = 1
 
@@ -261,6 +270,17 @@ function! s:TexPdfView()
 endfunction
 
 let g:syntastic_tex_checkers = ['chktex']
+let g:tex_conceal=""
+
+"" why3
+"" NeoBundle 'https://gforge.inria.fr/git/why3/why3.git', { 'script_type': 'ftplugin', 'rtp': 'share/vim' }
+
+if !empty(glob("$HOME/.vim/ftplugin/why3.vim"))
+  augroup why3
+    au!
+    au BufEnter *.why :set filetype=why3
+  augroup END
+endif
 
 
 ""

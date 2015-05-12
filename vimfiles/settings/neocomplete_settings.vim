@@ -2,6 +2,9 @@
 NeoBundle "Shougo/neocomplete"
 NeoBundle 'neco-look'
 
+NeoBundle 'sousu/neco-googlesuggest'
+let g:googlesuggest_language = 'en'
+
 " neocomplete
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.

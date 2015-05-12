@@ -1,14 +1,18 @@
-set nocompatible
 filetype off
 
-set rtp+=~/.vim/vundle.git/
-set rtp+=~/.vim/
+if !1 | finish | endif
+
+set runtimepath+=~/.vim/
 "" set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
 if has('vim_starting')
+  set nocompatible
   set runtimepath+=~/.vim/bundle/neobundle.vim
   call neobundle#rc(expand('~/.vim/bundle'))
 endif
+
+
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 runtime! settings/neocomplete_settings.vim
 "" runtime! settings/you_complete_me_settings.vim
@@ -17,9 +21,9 @@ runtime! settings/unite_settings.vim
 runtime! settings/ft_settings.vim
 runtime! settings/vimshell_settings.vim
 runtime! settings/look_settings.vim
+runtime! settings/operator_settings.vim
 
 " vim-scripts リポジトリ (1)
-NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle "fugitive.vim"
 NeoBundle "The-NERD-tree"
 NeoBundle "endwise.vim"
@@ -42,10 +46,23 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 NeoBundle 'Shougo/neosnippet'
 NeoBundle "scrooloose/syntastic"
+
+let g:EditorConfig_core_mode="python_external"
+NeoBundle "editorconfig/editorconfig-vim"
+
+let g:syntastic_mode_map = { "mode": "passive",
+                           \ "active_filetypes": [],
+                           \ "passive_filetypes": ["coffee"] }
+
 NeoBundle "kana/vim-smartchr"
 NeoBundle "Shougo/vinarise"
 NeoBundle "gregsexton/gitv"
-NeoBundle "kien/ctrlp.vim"
+
+"" Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
+"" http://ctrlpvim.github.com/ctrlp.vim
+NeoBundle "ctrlpvim/ctrlp.vim"
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.aux
+
 NeoBundle "tyru/open-browser.vim"
 NeoBundle "mattn/webapi-vim"
 NeoBundle "mattn/favstar-vim"
@@ -86,6 +103,15 @@ NeoBundle 'airblade/vim-gitgutter', {
       \ 'gui' : 1,
       \ }
 
+"" make benchmark result of your vimrc http://mattn.kaoriya.net/
+NeoBundle 'mattn/benchvimrc-vim'
+
+"" measure laptime
+NeoBundle 'LeafCage/laptime.vim'
+
+"" Perform the replacement in quickfix.
+NeoBundle 'thinca/vim-qfreplace'
+
 " NeoBundle 'bartman/git-wip', { 'rtp': 'vim' }
 
 let g:gitgutter_eager=0
@@ -95,13 +121,15 @@ let g:gitgutter_eager=0
 "
 runtime! settings/map_settings.vim
 
+" call neobundle#end()
+
 filetype plugin indent on
 syntax on
 filetype on
 
 NeoBundleCheck
 
-set runtimepath+=/path/to/vimdoc-ja
+"" set runtimepath+=/path/to/vimdoc-ja
 set helplang=ja,en
 set updatetime=400
 set imdisable
@@ -188,7 +216,7 @@ nnoremap <silent> <c-z> :srcexpltoggle<cr>
 let g:srcexpl_refreshmapkey = "<c-b>r"
 let g:srcexpl_gobackmapkey = "<c-b>b"
 
-set fileformat=unix
+" set fileformat=unix
 set fileformats=unix,dos
 
 function! s:set_fileformat()

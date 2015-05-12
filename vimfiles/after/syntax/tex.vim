@@ -1,1 +1,2 @@
-set cocu-=i
+setlocal cocu-=i
+setlocal spell

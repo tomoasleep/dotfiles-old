@@ -3,7 +3,11 @@ imap OA <Up>
 imap OB <Down>
 imap OC <Right>
 imap OD <Left>
-noremap ;; :
+
+nnoremap ;; :
+"" swap : and ; for US KeyBoard
+" nnoremap ; :
+" nnoremap : ;
 
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <C-c><C-c> :nohlsearch<CR><Esc>
