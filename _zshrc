@@ -50,6 +50,7 @@ alias du="du -h"
 alias df="df -h"
 alias su="su -l"
 alias vimr="gvim --remote-tab-silent"
+alias attach="tmux attach-session -t"
 
 case ${OSTYPE} in
   darwin*)
@@ -73,6 +74,12 @@ alias ocaml='rlwrap ocaml'
 alias javac="javac -J-Dfile.encoding=UTF8"
 alias vi='vim'
 alias gvimr="gvim --remote-tab-silent"
+alias gulp="gulp --require coffee-script"
+
+function local-bundle {
+  local GITROOT=$(git rev-parse --show-toplevel)
+  BUNDLE_GEMFILE=$GITROOT/Gemfile.local bundle $*
+}
 
 autoload -U compinit && compinit
 
@@ -92,12 +99,15 @@ function gi {
   curl http://www.gitignore.io/api/$@ ;
 }
 
+compdef mosh=ssh
+
 # powerline
 # . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 #. $HOME/dotfiles/powerline_setting.sh
 
 
 [[ -z $DOTFILES_ZSHENV ]] && source .zshenv
+[[ -z ~/.zshrc.opam ]] && source ~/.zshrc.opam
 
 # move env_path to head
 export PATH=$ENV_PATH:$PATH

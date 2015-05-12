@@ -16,7 +16,8 @@
 zstyle ':prezto:*:*' color 'yes'
 
 # Set theme
-zstyle ':prezto:module:prompt' theme 'peepcode'
+fpath+=( "$HOME/dotfiles/preztofiles/prompt/functions" )
+zstyle ':prezto:module:prompt' theme 'nemunemu'
 
 # Set the Zsh modules to load (man zshmodules).
 # zstyle ':prezto:load' zmodule 'attr' 'stat'

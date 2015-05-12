@@ -45,6 +45,8 @@ case ${OSTYPE} in
   linux*)
 esac
 
+eval $(opam config env)
+
 # restore PATH
 [[ -z $ENV_PATH ]] && export ENV_PATH=$PATH
 

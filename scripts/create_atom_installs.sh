@@ -1,6 +1,13 @@
 #!/bin/sh
 apmlist=$(apm list)
-apmline=$(echo "$apmlist" | grep /Users/tomoya/.atom/packages -n | cut -d ':' -f1)
+apmline=$(echo "$apmlist" | grep $HOME/.atom/packages -n | cut -d ':' -f1)
+packages=$(echo "$apmlist" | sed -e 1,${apmline}d | grep -o -e '─ .*@' | sed -e 's/─ \(.*\)@/\1/')
 
-echo "#!/bin/sh"
-echo "$apmlist" | sed -e 1,${apmline}d | grep -o -e '─ .*@' | sed -e 's/─ \(.*\)@/apm install \1/'
+cat <<EOS
+#!/bin/sh
+EOS
+
+for package in $packages
+do
+  echo "apm install ${package}"
+done

@@ -1,24 +1,45 @@
 #!/bin/sh
 apm install atom-ctags
+apm install atom-html-preview
+apm install atom-lint
 apm install auto-indent
+apm install autocomplete-emojis
+apm install autocomplete-paths
 apm install autocomplete-plus
+apm install autocomplete-plus-async
 apm install coffee-lint
 apm install command-logger
+apm install dark-flat-ui
+apm install flanderized-ui
 apm install git-log
 apm install git-plus
-apm install hogepiyo
+# apm install hogepiyo
 apm install japanese-wrap
 apm install language-coq
+apm install language-jade
+apm install language-latex
+apm install language-lua
+apm install language-ocaml
+apm install language-typescript
+apm install latex
 apm install linter
+apm install make-runner
+apm install merge-conflicts
 apm install minimap
 apm install minimap-git-diff
 apm install monokai
+apm install open-vim
 apm install pain-split
+apm install pdf-view
+apm install powerline
 apm install project-manager
 apm install recent-files
+apm install regex-railroad-diagram
 apm install ruby-slim
 apm install run-command
 apm install seti-syntax
 apm install seti-ui
 apm install solarized-light-ui
+apm install trailing-spaces
 apm install vim-mode
+# apm install vim-cmdline-mode
