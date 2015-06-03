@@ -3,10 +3,10 @@
 NeoBundle 'pyte'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle "w0ng/vim-hybrid"
-NeoBundle "jonathanfilip/vim-lucius"
-NeoBundle "morhetz/gruvbox"
-NeoBundle "vim-scripts/github-theme"
-NeoBundle "chriskempson/vim-tomorrow-theme"
+"" NeoBundle "jonathanfilip/vim-lucius"
+"" NeoBundle "morhetz/gruvbox"
+"" NeoBundle "vim-scripts/github-theme"
+"" NeoBundle "chriskempson/vim-tomorrow-theme"
 
 "" startify
 NeoBundle 'mhinz/vim-startify'
@@ -18,7 +18,7 @@ NeoBundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 
 "" look utils
-NeoBundle 't9md/vim-quickhl'
+"" NeoBundle 't9md/vim-quickhl'
 NeoBundle "nathanaelkane/vim-indent-guides"
 "" Bundle "TagHighlight"
 
@@ -70,12 +70,14 @@ set vb
 set t_vb=''
 
 ""Solarized
-syntax enable
 ""let g:solarized_termcolors=256
 ""set background=dark
 ""light にしたければ下
-colorscheme solarized
-set background=light
+function! g:MyStartUpFunc.syntax()
+  syntax enable
+  colorscheme solarized
+  set background=light
+endfunction
 
 if has("gui_running")
 else

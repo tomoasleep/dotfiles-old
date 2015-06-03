@@ -51,6 +51,8 @@ alias df="df -h"
 alias su="su -l"
 alias vimr="gvim --remote-tab-silent"
 alias attach="tmux attach-session -t"
+alias javac='javac -J-Dfile.encoding=UTF-8 -J-Duser.language=en'
+alias java='java -Dfile.encoding=UTF-8 -Duser.language=en'
 
 case ${OSTYPE} in
   darwin*)

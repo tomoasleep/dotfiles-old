@@ -1,31 +1,31 @@
 
 "" ruby
-NeoBundleLazy "tpope/vim-rvm", {'autoload': {'filetypes': ['ruby']}}
-NeoBundleLazy "tpope/vim-rails", {'autoload': {'filetypes': ['ruby']}}
+"" NeoBundleLazy "tpope/vim-rvm", {'autoload': {'filetypes': ['ruby']}}
+"" NeoBundleLazy "tpope/vim-rails", {'autoload': {'filetypes': ['ruby']}}
 
 """ highlight local variables
 "" NeoBundleLazy "todesking/ruby_hl_lvar.vim", {'autoload': {'filetypes': ['ruby']}}
 
 "" rdoc
-NeoBundleLazy "depuracao/vim-rdoc", {'autoload': {'filetypes': ['rdoc']}}
-augroup rdoc_detection
-  "" detect rdoc filetype manually
-  "" TODO: remove it when lazy loading without ftdetect implemented to NeoBundle
-  autocmd! rdoc_detection
-  autocmd BufNewFile,BufRead *.{rd,rdoc} set filetype=rdoc
-augroup END
+"" NeoBundleLazy "depuracao/vim-rdoc", {'autoload': {'filetypes': ['rdoc']}}
+"" augroup rdoc_detection
+""   "" detect rdoc filetype manually
+""   "" TODO: remove it when lazy loading without ftdetect implemented to NeoBundle
+""   autocmd! rdoc_detection
+""   autocmd BufNewFile,BufRead *.{rd,rdoc} set filetype=rdoc
+"" augroup END
 
 "" rspec
-NeoBundleLazy "thoughtbot/vim-rspec", {
-      \ 'depends': 'tpope/vim-dispatch',
-      \ 'autoload': {'filetypes': ['ruby']}
-      \ }
+"" NeoBundleLazy "thoughtbot/vim-rspec", {
+""       \ 'depends': 'tpope/vim-dispatch',
+""       \ 'autoload': {'filetypes': ['ruby']}
+""       \ }
 
-let s:bundle = neobundle#get('vim-rspec')
-function! s:bundle.hooks.on_source(bundle)
-   let g:rspec_command = 'Dispatch rspec {spec}'
-   let g:rspec_runner = 'os_x_iterm'
-endfunction
+"" let s:bundle = neobundle#get('vim-rspec')
+"" function! s:bundle.hooks.on_source(bundle)
+""    let g:rspec_command = 'Dispatch rspec {spec}'
+""    let g:rspec_runner = 'os_x_iterm'
+"" endfunction
 
 augroup cap_detection
   autocmd! cap_detection
@@ -46,14 +46,14 @@ augroup slim_detection
 augroup END
 
 "" haskell
-if neobundle#is_sourced('neocomplete')
-  NeoBundleLazy "eagletmt/neco-ghc", {'autoload': {'filetypes': ['haskell']}}
-endif
-if neobundle#is_sourced('unite.vim')
-  NeoBundleLazy "eagletmt/unite-haddock", {'autoload': {'filetypes': ['haskell']}}
-endif
-NeoBundleLazy "dag/vim2hs", {'autoload': {'filetypes': ['haskell']}}
-NeoBundleLazy "eagletmt/ghcmod-vim", {'autoload': {'filetypes': ['haskell']}}
+"" if neobundle#is_sourced('neocomplete')
+""   NeoBundleLazy "eagletmt/neco-ghc", {'autoload': {'filetypes': ['haskell']}}
+"" endif
+"" if neobundle#is_sourced('unite.vim')
+""   NeoBundleLazy "eagletmt/unite-haddock", {'autoload': {'filetypes': ['haskell']}}
+"" endif
+"" NeoBundleLazy "dag/vim2hs", {'autoload': {'filetypes': ['haskell']}}
+"" NeoBundleLazy "eagletmt/ghcmod-vim", {'autoload': {'filetypes': ['haskell']}}
 
 augroup haskell_settings
   autocmd! haskell_settings
@@ -156,118 +156,117 @@ let g:rooter_use_lcd = 1
 let g:syntastic_ghdl_workdir = 'lib'
 
 " emmet
-NeoBundle 'mattn/emmet-vim'
-let g:user_emmet_settings = { 
-\   'tex' : { 
-\       'indentation' : '  ',
-\       'snippets' : { 
-\           'align'       : "\\begin{align}\n|\n\\end{align}\n",
-\           'aligns'      : "\\begin{align*}\n|\n\\end{align*}\n",
-\           'enumerate'   : "\\begin{enumerate}\n\\item |\n\\end{enumerate}\n",
-\           'itemize'     : "\\begin{itemize}\n\\item |\n\\end{itemize}\n",
-\           'description' : "\\begin{description}\n\\item |\n\\end{description}\n",
-\           'array'       : "\\begin{array}{|}\n\\end{array}",
-\           'table'       : "\\begin{table}[htbp]\n"
-\               ."\\begin{center}\n"
-\               ."\\caption{|}\n"
-\               ."\\label{}\n"
-\               ."\\begin{tabular}{}\n"
-\               ."\\end{tabular}\n"
-\               ."\\end{center}\n"
-\               ."\\end{table}\n",
-\           'figure'      : "\\begin{figure}[htbp]\n"
-\               ."\\begin{center}\n"
-\               ."\\includegraphics[width=0.7\textwidth]{}\n"
-\               ."\\caption{|}\n"
-\               ."\\label{}\n"
-\               ."\\end{center}\n"
-\               ."\\end{figure}\n",
-\           'jsart'       : "\\documentclass{jsarticle}\n"
-\               ."\\usepackage{amsmath,amssymb}\n"
-\               ."\\usepackage[dvipdfmx]{graphicx}\n\n"
-\               ."\\renewcommand{\\theequation}{\\thesection.\\arabic{equation}}\n"
-\               ."\\makeatletter\n"
-\               ."\\@addtoreset{equation}{section}\n"
-\               ."\\makeatother\n\n"
-\               ."\\title{|}\n"
-\               ."\\author{}\n"
-\               ."\\date{}\n\n"
-\               ."\\begin{document}\n"
-\               ."\\maketitle\n\n"
-\               ."\\section{}\n\n\n"
-\               ."\\begin{thebibliography}{99}\n"
-\               ."\\bibitem{}\n\n"
-\               ."\\end{thebibliography}\n\n"
-\               ."\\end{document}\n",
-\           'jart'        : "\\documentclass{jarticle}\n"
-\               ."\\usepackage{amsmath,amssymb}\n"
-\               ."\\usepackage[dvipdfmx]{graphicx}\n\n"
-\               ."\\renewcommand{\\theequation}{\\thesection.\\arabic{equation}}\n"
-\               ."\\makeatletter\n"
-\               ."\\@addtoreset{equation}{section}\n"
-\               ."\\makeatother\n\n"
-\               ."\\title{|}\n"
-\               ."\\author{}\n"
-\               ."\\date{}\n\n"
-\               ."\\begin{document}\n"
-\               ."\\maketitle\n\n"
-\               ."\\section{}\n\n\n"
-\               ."\\begin{thebibliography}{99}\n"
-\               ."\\bibitem{}\n\n"
-\               ."\\end{thebibliography}\n\n"
-\               ."\\end{document}\n",
-\       }
-\   },
-\   'plaintex' : {
-\       'extends' : 'tex'
-\   }
-\}
+"" NeoBundle 'mattn/emmet-vim'
+"" let g:user_emmet_settings = { 
+"" \   'tex' : { 
+"" \       'indentation' : '  ',
+"" \       'snippets' : { 
+"" \           'align'       : "\\begin{align}\n|\n\\end{align}\n",
+"" \           'aligns'      : "\\begin{align*}\n|\n\\end{align*}\n",
+"" \           'enumerate'   : "\\begin{enumerate}\n\\item |\n\\end{enumerate}\n",
+"" \           'itemize'     : "\\begin{itemize}\n\\item |\n\\end{itemize}\n",
+"" \           'description' : "\\begin{description}\n\\item |\n\\end{description}\n",
+"" \           'array'       : "\\begin{array}{|}\n\\end{array}",
+"" \           'table'       : "\\begin{table}[htbp]\n"
+"" \               ."\\begin{center}\n"
+"" \               ."\\caption{|}\n"
+"" \               ."\\label{}\n"
+"" \               ."\\begin{tabular}{}\n"
+"" \               ."\\end{tabular}\n"
+"" \               ."\\end{center}\n"
+"" \               ."\\end{table}\n",
+"" \           'figure'      : "\\begin{figure}[htbp]\n"
+"" \               ."\\begin{center}\n"
+"" \               ."\\includegraphics[width=0.7\textwidth]{}\n"
+"" \               ."\\caption{|}\n"
+"" \               ."\\label{}\n"
+"" \               ."\\end{center}\n"
+"" \               ."\\end{figure}\n",
+"" \           'jsart'       : "\\documentclass{jsarticle}\n"
+"" \               ."\\usepackage{amsmath,amssymb}\n"
+"" \               ."\\usepackage[dvipdfmx]{graphicx}\n\n"
+"" \               ."\\renewcommand{\\theequation}{\\thesection.\\arabic{equation}}\n"
+"" \               ."\\makeatletter\n"
+"" \               ."\\@addtoreset{equation}{section}\n"
+"" \               ."\\makeatother\n\n"
+"" \               ."\\title{|}\n"
+"" \               ."\\author{}\n"
+"" \               ."\\date{}\n\n"
+"" \               ."\\begin{document}\n"
+"" \               ."\\maketitle\n\n"
+"" \               ."\\section{}\n\n\n"
+"" \               ."\\begin{thebibliography}{99}\n"
+"" \               ."\\bibitem{}\n\n"
+"" \               ."\\end{thebibliography}\n\n"
+"" \               ."\\end{document}\n",
+"" \           'jart'        : "\\documentclass{jarticle}\n"
+"" \               ."\\usepackage{amsmath,amssymb}\n"
+"" \               ."\\usepackage[dvipdfmx]{graphicx}\n\n"
+"" \               ."\\renewcommand{\\theequation}{\\thesection.\\arabic{equation}}\n"
+"" \               ."\\makeatletter\n"
+"" \               ."\\@addtoreset{equation}{section}\n"
+"" \               ."\\makeatother\n\n"
+"" \               ."\\title{|}\n"
+"" \               ."\\author{}\n"
+"" \               ."\\date{}\n\n"
+"" \               ."\\begin{document}\n"
+"" \               ."\\maketitle\n\n"
+"" \               ."\\section{}\n\n\n"
+"" \               ."\\begin{thebibliography}{99}\n"
+"" \               ."\\bibitem{}\n\n"
+"" \               ."\\end{thebibliography}\n\n"
+"" \               ."\\end{document}\n",
+"" \       }
+"" \   },
+"" \   'plaintex' : {
+"" \       'extends' : 'tex'
+"" \   }
+"" \}
 
 " latex
-let g:quickrun_config = {}
-let g:quickrun_config['tex'] = {
-            \   'command' : 'latexmk',
-            \   'outputter' : 'error',
-            \   'outputter/error/error' : 'quickfix',
-            \   'cmdopt': '-pdfdvi',
-            \   'exec': ['%c %o %s']
-            \ }
-
-augroup myLaTeXQuickrun
-    au!
-    au BufEnter *.tex call <SID>SetLaTeXMainSource()
-    au BufEnter *.tex nnoremap <Leader>v :call <SID>TexPdfView() <CR>
-augroup END
-function! s:SetLaTeXMainSource()
-    let currentFileDirectory = expand('%:p:h').'/'
-    let latexmain = glob(currentFileDirectory.'*.latexmain')
-    let g:quickrun_config['tex']['srcfile'] = fnamemodify(latexmain, ':r')
-    echo latexmain
-    if latexmain == ''
-        unlet g:quickrun_config['tex']['srcfile']
-    endif
-endfunction
-function! s:TexPdfView()
-    let texPdfFilename = expand('%')
-    if exists("g:quickrun_config['tex']['srcfile']")
-        let texPdfFilename = fnamemodify(g:quickrun_config['tex']['srcfile'], ':.:r') . '.pdf'
-    endif
-    if has('win32')
-        let g:TexPdfViewCommand = '!start '.
-                    \             '"C:/Program Files (x86)/SumatraPDF/SumatraPDF.exe" -reuse-instance '.
-                    \             texPdfFilename
-    endif
-    if has('mac')
-        let g:TexPdfViewCommand = '! '.
-                    \             'open -a preview '.
-                    \             texPdfFilename
-    elseif has('unix')
-        let g:TexPdfViewCommand = '! '.
-                    \             'evince '.
-                    \             texPdfFilename
-    endif
-    execute g:TexPdfViewCommand
-endfunction
+"" let g:quickrun_config = {}
+"" let g:quickrun_config['tex'] = {
+""             \   'command' : 'latexmk',
+""             \   'outputter' : 'error',
+""             \   'outputter/error/error' : 'quickfix',
+""             \   'cmdopt': '-pdfdvi',
+""             \   'exec': ['%c %o %s']
+""             \ }
+"" augroup myLaTeXQuickrun
+""     au!
+""     au BufEnter *.tex call <SID>SetLaTeXMainSource()
+""     au BufEnter *.tex nnoremap <Leader>v :call <SID>TexPdfView() <CR>
+"" augroup END
+"" function! s:SetLaTeXMainSource()
+""     let currentFileDirectory = expand('%:p:h').'/'
+""     let latexmain = glob(currentFileDirectory.'*.latexmain')
+""     let g:quickrun_config['tex']['srcfile'] = fnamemodify(latexmain, ':r')
+""     echo latexmain
+""     if latexmain == ''
+""         unlet g:quickrun_config['tex']['srcfile']
+""     endif
+"" endfunction
+"" function! s:TexPdfView()
+""     let texPdfFilename = expand('%')
+""     if exists("g:quickrun_config['tex']['srcfile']")
+""         let texPdfFilename = fnamemodify(g:quickrun_config['tex']['srcfile'], ':.:r') . '.pdf'
+""     endif
+""     if has('win32')
+""         let g:TexPdfViewCommand = '!start '.
+""                     \             '"C:/Program Files (x86)/SumatraPDF/SumatraPDF.exe" -reuse-instance '.
+""                     \             texPdfFilename
+""     endif
+""     if has('mac')
+""         let g:TexPdfViewCommand = '! '.
+""                     \             'open -a preview '.
+""                     \             texPdfFilename
+""     elseif has('unix')
+""         let g:TexPdfViewCommand = '! '.
+""                     \             'evince '.
+""                     \             texPdfFilename
+""     endif
+""     execute g:TexPdfViewCommand
+"" endfunction
 
 let g:syntastic_tex_checkers = ['chktex']
 let g:tex_conceal=""
@@ -354,3 +353,9 @@ augroup cap_ft
   autocmd BufRead *.cap :set syntax=ruby
 augroup END
 
+"" clojure
+augroup cljc
+  autocmd! cljc
+  autocmd BufNewFile,BufRead *.cljc :set filetype=clojure
+  autocmd BufNewFile,BufRead *.cljs :set filetype=clojure
+augroup END

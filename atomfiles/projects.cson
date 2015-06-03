@@ -61,3 +61,8 @@
     '/Users/tomoya/Sources/passifox'
     '/Users/tomoya/Sources/keepasshttp'
   ]
+'ice':
+  'title': 'ice'
+  'paths': [
+    '/Users/tomoya/Projects/functional-ice'
+  ]

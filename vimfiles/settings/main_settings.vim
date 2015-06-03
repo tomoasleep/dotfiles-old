@@ -1,17 +1,17 @@
-filetype off
-
 if !1 | finish | endif
 
-set runtimepath+=~/.vim/
-"" set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+let g:MyStartUpFunc = {}
 
+set runtimepath+=~/.vim
 if has('vim_starting')
-  set nocompatible
+  if &compatible
+    set nocompatible
+  endif
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle'))
+  "" call neobundle#rc()
 endif
 
-
+call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 runtime! settings/neocomplete_settings.vim
@@ -24,19 +24,19 @@ runtime! settings/look_settings.vim
 runtime! settings/operator_settings.vim
 
 " vim-scripts リポジトリ (1)
-NeoBundle "fugitive.vim"
+NeoBundle "tpope/vim-fugitive"
 NeoBundle "The-NERD-tree"
 NeoBundle "endwise.vim"
 NeoBundle 'surround.vim'
 "" NeoBundle 'trinity.vim'
 "" NeoBundle 'taglist.vim'
-NeoBundle 'Align'
+"" NeoBundle 'Align'
 NeoBundle 'matchit.zip'
 
 " github の任意のリポジトリ (2)"
-NeoBundle "thinca/vim-ref"
-" NeoBundle "tsaleh/vim-matchit"
-NeoBundle 'thinca/vim-quickrun'
+"" NeoBundle "thinca/vim-ref"
+"" NeoBundle "tsaleh/vim-matchit"
+"" NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/vimproc', {
       \ 'build': {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -47,32 +47,32 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/neosnippet'
 NeoBundle "scrooloose/syntastic"
 
-let g:EditorConfig_core_mode="python_external"
-NeoBundle "editorconfig/editorconfig-vim"
+"" let g:EditorConfig_core_mode="python_external"
+"" NeoBundle "editorconfig/editorconfig-vim"
 
 let g:syntastic_mode_map = { "mode": "passive",
                            \ "active_filetypes": [],
                            \ "passive_filetypes": ["coffee"] }
 
-NeoBundle "kana/vim-smartchr"
+"" NeoBundle "kana/vim-smartchr"
 NeoBundle "Shougo/vinarise"
-NeoBundle "gregsexton/gitv"
+"" NeoBundle "gregsexton/gitv"
 
 "" Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
 "" http://ctrlpvim.github.com/ctrlp.vim
 NeoBundle "ctrlpvim/ctrlp.vim"
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.aux
 
-NeoBundle "tyru/open-browser.vim"
-NeoBundle "mattn/webapi-vim"
-NeoBundle "mattn/favstar-vim"
-NeoBundle "basyura/twibill.vim"
-NeoBundle "basyura/bitly.vim"
-NeoBundle "basyura/TweetVim"
-NeoBundle "rbtnn/vimconsole.vim"
+"" NeoBundle "tyru/open-browser.vim"
+"" NeoBundle "mattn/webapi-vim"
+"" NeoBundle "mattn/favstar-vim"
+"" NeoBundle "basyura/twibill.vim"
+"" NeoBundle "basyura/bitly.vim"
+"" NeoBundle "basyura/TweetVim"
+"" NeoBundle "rbtnn/vimconsole.vim"
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'airblade/vim-rooter'
-NeoBundle 'tpope/vim-unimpaired'
+"" NeoBundle 'tpope/vim-unimpaired'
 
 " NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'xolox/vim-session'
@@ -86,17 +86,17 @@ NeoBundle 'tomoasleep/codelabel.vim'
 NeoBundle 'vim-jp/vital.vim'
 
 "" write and management simple memos
-NeoBundle 'glidenote/memolist.vim'
+"" NeoBundle 'glidenote/memolist.vim'
 
 "" define a command `Restart` to restart vim (linux, windows)
 NeoBundle 'tyru/restart.vim'
 
 "" google translate plugin
-NeoBundle 'mattn/googletranslate-vim'
+"" NeoBundle 'mattn/googletranslate-vim'
 
 "" excite translate plugin
-NeoBundle 'mattn/excitetranslate-vim', {
-      \ 'depends': 'mattn/webapi-vim' }
+"" NeoBundle 'mattn/excitetranslate-vim', {
+""       \ 'depends': 'mattn/webapi-vim' }
 
 "" show a git diff in the gutter (sign column) and stages/reverts hunks
 NeoBundle 'airblade/vim-gitgutter', {
@@ -110,24 +110,35 @@ NeoBundle 'mattn/benchvimrc-vim'
 NeoBundle 'LeafCage/laptime.vim'
 
 "" Perform the replacement in quickfix.
-NeoBundle 'thinca/vim-qfreplace'
+"" NeoBundle 'thinca/vim-qfreplace'
 
 " NeoBundle 'bartman/git-wip', { 'rtp': 'vim' }
 
 let g:gitgutter_eager=0
 
 " github 以外のリポジトリ (3)
-"Bundle "git://git.wincent.com/command-t.git"
+"" Bundle "git://git.wincent.com/command-t.git"
 "
 runtime! settings/map_settings.vim
 
-" call neobundle#end()
+call neobundle#end()
 
 filetype plugin indent on
 syntax on
 filetype on
 
 NeoBundleCheck
+
+if !has('vim_starting')
+  call neobundle#call_hook('on_source')
+endif
+
+"" call all startup functions
+for e in keys(g:MyStartUpFunc)
+  call g:MyStartUpFunc[e]()
+endfor
+unlet g:MyStartUpFunc
+
 
 "" set runtimepath+=/path/to/vimdoc-ja
 set helplang=ja,en
