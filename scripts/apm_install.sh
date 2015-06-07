@@ -1,26 +1,41 @@
 #!/bin/sh
 apm install atom-ctags
-apm install atom-html-preview
 apm install atom-lint
+apm install atom-typescript
 apm install auto-indent
 apm install autocomplete-emojis
+apm install autocomplete-haskell
 apm install autocomplete-paths
-apm install autocomplete-plus
 apm install autocomplete-plus-async
+apm install autocomplete-ruby
+apm install block-selection-mode
+apm install build
 apm install coffee-lint
 apm install command-logger
 apm install dark-flat-ui
+apm install docs-on-atom
+apm install ex-mode
 apm install flanderized-ui
+apm install git-control
 apm install git-log
 apm install git-plus
-# apm install hogepiyo
+apm install gulp-control
+apm install haskell-ghc-mod
+apm install hogepiyo
+apm install ide-haskell
+apm install isotope-light-ui
+apm install isotope-ui
 apm install japanese-wrap
+apm install language-alloy
 apm install language-coq
+apm install language-haskell
 apm install language-jade
+apm install language-javascript-better
 apm install language-latex
 apm install language-lua
 apm install language-ocaml
 apm install language-typescript
+apm install language-vhdl
 apm install latex
 apm install linter
 apm install make-runner
@@ -39,7 +54,9 @@ apm install ruby-slim
 apm install run-command
 apm install seti-syntax
 apm install seti-ui
+apm install silver-bullet
 apm install solarized-light-ui
+apm install term2
 apm install trailing-spaces
+apm install vim-cmdline-mode
 apm install vim-mode
-# apm install vim-cmdline-mode
