@@ -26,6 +26,8 @@
       "tab-switcher"
       "powerline"
       "ex-mode"
+      "recent-files"
+      "regex-railroad-diagram"
     ]
     themes: [
       "one-dark-ui"
@@ -54,6 +56,7 @@
     includeCompletionsFromAllBuffers: true
     navigateCompletions: "ctrl-p,ctrl-n"
     defaultProvider: "Symbol"
+    confirmCompletion: "tab"
   linter:
     {}
   "make-runner":
@@ -100,6 +103,7 @@
   build:
     buildOnSave: true
     autoFocusOnBuildPanel: false
+    saveOnBuild: true
   "haskell-ghc-mod":
     {}
   "ide-haskell":
