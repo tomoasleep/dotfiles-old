@@ -1,0 +1,74 @@
+function prompt_nemunemu_precmd {
+  # Get Git repository information.
+  if (( $+functions[git-info] )); then
+    git-info
+  fi
+
+  # Get Ruby information.
+  if (( $+functions[ruby-info] )); then
+    ruby-info
+  fi
+}
+
+function prompt_nemunemu_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+
+  # Load required functions.
+  autoload -Uz add-zsh-hook
+  autoload -Uz vcs_info
+
+  # Add a hook for calling info functions before each command.
+  add-zsh-hook precmd prompt_nemunemu_precmd
+
+  # Set git-info parameters.
+  zstyle ':prezto:module:git:info' verbose 'no'
+  zstyle ':prezto:module:git:info:action' format ' +%s'
+  zstyle ':prezto:module:git:info:branch' format ' %F{8}%b%f'
+  zstyle ':prezto:module:git:info:commit' format ' %F{white}%.7c%f'
+  zstyle ':prezto:module:git:info:indexed' format ' '
+  zstyle ':prezto:module:git:info:unindexed' format ' '
+  zstyle ':prezto:module:git:info:untracked' format ' '
+  zstyle ':prezto:module:git:info:dirty' format ' %F{8}✗%f'
+  zstyle ':prezto:module:git:info:keys' format 'rprompt' '%b%c%s%D'
+
+  # Set ruby-info parameters.
+  zstyle ':prezto:module:ruby:info:version' format ' %F{white}%v%f'
+
+  # Define prompts.
+  PROMPT="
+%~
+%(?.%F{green}${1:-(ρ _-)ノ}%f.%F{red}${1:-_(:3」[＿]}%f) "
+RPROMPT='${ruby_info[version]}${git_info[rprompt]}'
+
+}
+
+function prompt_nemunemu_help {
+  cat <<EOH
+This prompt's last command exit status symbol is customizable:
+
+  prompt nemunemu [<symbol>]
+
+If this option is not provided, the symbol defaults to ☻.
+EOH
+}
+
+function prompt_nemunemu_preview {
+  local +h PROMPT='%# '
+  local +h RPROMPT=''
+  local +h SPROMPT=''
+
+  if (( $# > 0 )); then
+    prompt_preview_theme 'nemunemu' "$@"
+  else
+    prompt_preview_theme 'nemunemu'
+    print
+    prompt_preview_theme 'nemunemu' "❯"
+    print
+    prompt_preview_theme 'nemunemu' "$"
+  fi
+}
+
+prompt_nemunemu_setup "$@"
+# vim: set ft=zsh:
