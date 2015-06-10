@@ -32,5 +32,6 @@ atom.commands.add 'atom-text-editor',
     editor.selectToBufferPosition(beginning)
     editor.mutateSelectedText (selection) -> selection.deleteSelectedText()
 
-atom.workspaceView.command 'user:debug', ->
-  debugger
+atom.commands.add 'atom-text-editor',
+  'user:debug', ->
+    debugger

@@ -26,7 +26,13 @@
   'n': 'find-and-replace:select-next'
   'N': 'find-and-replace:select-undo'
 
-'.platform-darwin .tree-view':
+'atom-text-editor.vim-mode.insert-mode':
+  'ctrl-h': 'core:backspace'
+
+'atom-text-editor.mini':
+  'ctrl-h': 'core:backspace'
+
+'.tree-view':
   'ctrl-w t': 'tree-view:toggle-focus'
   'q': 'tree-view:toggle'
 
@@ -56,9 +62,9 @@
   'escape': 'atom-make-runner:toggle'
   'q': 'atom-make-runner:toggle'
 
-'atom-text-editor:not(mini) .autocomplete-plus.autocomplete-suggestion-list':
-  'ctrl-p': 'autocomplete-plus:select-previous'
-  'ctrl-n': 'autocomplete-plus:select-next'
+# 'atom-text-editor:not(mini) .autocomplete-plus.autocomplete-suggestion-list':
+#   'ctrl-p': 'autocomplete-plus:select-previous'
+#   'ctrl-n': 'autocomplete-plus:select-next'
 
 '.command-mode-input atom-text-editor':
   'escape': 'core:cancel'

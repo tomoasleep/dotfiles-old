@@ -6,8 +6,10 @@ requireVimModeModule = (libPath) ->
   path = require 'path'
   require path.join(vimMode.path, 'lib', libPath)
 
-atom.services.consume 'vim-cmdline-mode', '^0.1.0', (service) ->
-  service.getCommandRegistory().register
+# atom.services.consume 'vim-cmdline-mode', '^0.1.0', (service) ->
+atom.packages.onDidActivateInitialPackages ->
+  # service.getCommandRegistory()
+  atom.vimcommands.register
     'w':
       'save the current buffer': ->
         process.nextTick =>
