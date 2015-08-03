@@ -46,6 +46,7 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 NeoBundle 'Shougo/neosnippet'
 NeoBundle "scrooloose/syntastic"
+NeoBundle 'mattn/vim-open-atom'
 
 "" let g:EditorConfig_core_mode="python_external"
 "" NeoBundle "editorconfig/editorconfig-vim"

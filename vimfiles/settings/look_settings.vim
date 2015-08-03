@@ -18,7 +18,7 @@ NeoBundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 
 "" look utils
-"" NeoBundle 't9md/vim-quickhl'
+NeoBundle 't9md/vim-quickhl'
 NeoBundle "nathanaelkane/vim-indent-guides"
 "" Bundle "TagHighlight"
 

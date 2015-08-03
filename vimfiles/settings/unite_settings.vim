@@ -7,6 +7,7 @@ NeoBundle "Shougo/unite-outline"
 NeoBundle "tsukkee/unite-tag"
 NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'tacroe/unite-mark'
+NeoBundle 'haya14busa/unite-ghq'
 
 " File
 command! -nargs=* Uf UniteWithBufferDir -buffer-name=files file bookmark file/new
