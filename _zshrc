@@ -63,6 +63,8 @@ case ${OSTYPE} in
     alias vi=vim
     alias tmux='tmux -2'
     alias open='gnome-open'
+    alias pbcopy='xsel -i --clipboard'
+    alias pbpaste='xsel --clipboard'
 esac
 
 if [ -n "$TMUX" ]; then

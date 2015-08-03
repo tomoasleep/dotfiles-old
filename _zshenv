@@ -10,7 +10,7 @@ export PATH=/opt/android-sdk/platform-tools/:$PATH
 
 ## anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
+[[ -x anyenv ]] && eval "$(anyenv init -)"
 
 # ## nodenv
 # export PATH="$HOME/.nodenv/bin:$PATH"
@@ -45,7 +45,7 @@ case ${OSTYPE} in
   linux*)
 esac
 
-eval $(opam config env)
+[[ -x opam ]] && eval $(opam config env)
 
 # restore PATH
 [[ -z $ENV_PATH ]] && export ENV_PATH=$PATH

@@ -7,6 +7,7 @@ files_to_copy=(
   zshenv
   zpreztorc
   tmux.conf
+  tmux.conf.osx
 )
 
 for i in ${files_to_copy[@]}
@@ -20,4 +21,5 @@ do
 done
 
 ln -s ${HOME}/dotfiles/vimfiles ${HOME}/.vim
-ln -s ${HOME}/dotfiles/dotjs/js ${HOME}/.js
+ln -s ${HOME}/dotfiles/vim_backup ${HOME}/.vim_backup
+ln -s ${HOME}/dotfiles/prezto ${HOME}/.zprezto
