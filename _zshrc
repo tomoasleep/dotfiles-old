@@ -119,4 +119,9 @@ typeset -U PATH
 autoload -U compinit
 compinit -u
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # vim: filetype=zsh :
+
+# added by travis gem
+[ -f /Users/tomoya/.travis/travis.sh ] && source /Users/tomoya/.travis/travis.sh

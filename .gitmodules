@@ -4,3 +4,6 @@
 [submodule "tmux-colors-solarized"]
 	path = tmux-colors-solarized
 	url = https://github.com/seebi/tmux-colors-solarized
+[submodule "tmux-copycat"]
+	path = tmux-copycat
+	url = https://github.com/tmux-plugins/tmux-copycat
