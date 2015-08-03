@@ -35,3 +35,15 @@ atom.commands.add 'atom-text-editor',
 atom.commands.add 'atom-text-editor',
   'user:debug', ->
     debugger
+
+atom.commands.add 'atom-text-editor',
+  'user:ipsj', ->
+    mapping = {
+      '、': '，',
+      '。': '．',
+    }
+
+    editor = @getModel()
+    editor.transact ->
+      for k, v of mapping
+        editor.scan(new RegExp(k, 'g'), ({ replace }) -> replace(v))

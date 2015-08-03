@@ -44,21 +44,24 @@
     showInvisibles: true
     softWrap: true
     useShadowDOM: true
-    invisibles:
-      {}
+    invisibles: {}
     fontFamily: "Consolas for Powerline, Ricty"
     showIndentGuide: true
     preferredLineLength: 100
     fontSize: 11
+    lineHeight: 1.2
   "tree-view":
     hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
   "autocomplete-plus":
     includeCompletionsFromAllBuffers: true
     navigateCompletions: "ctrl-p,ctrl-n"
     defaultProvider: "Symbol"
     confirmCompletion: "tab"
   linter:
-    {}
+    ignoredLinterErrors: [
+      "scss-lint"
+    ]
   "make-runner":
     hidePane: true
   notifications:
@@ -69,8 +72,7 @@
     ignoredNames: [
       "node_modules"
     ]
-  tabs:
-    {}
+  tabs: {}
   user:
     maxPaneLength: 20
   term2:
@@ -98,47 +100,61 @@
   "bracket-matcher":
     autocompleteBrackets: false
     autocompleteSmartQuotes: false
-  "atom-typescript":
-    {}
+  "atom-typescript": {}
   build:
     buildOnSave: true
     autoFocusOnBuildPanel: false
     saveOnBuild: true
-  "haskell-ghc-mod":
-    {}
+    stealFocus: false
+    monocleHeight: 0.5
+  "haskell-ghc-mod": {}
   "ide-haskell":
     useBackend: "haskell-ghc-mod"
-".erb.html.text":
+".python.regexp.source":
+  editor:
+    preferredLineLength: 100
+".python.text.traceback":
+  editor:
+    preferredLineLength: 100
+".console.python.text":
   editor:
     preferredLineLength: 100
 ".camlp4.ocaml.source":
   editor:
     preferredLineLength: 100
-".ocaml.source":
+".erb.html.text":
+  editor:
+    preferredLineLength: 100
+".python.source":
   editor:
     preferredLineLength: 100
     tabLength: 2
-".alloy.source":
+    softWrapAtPreferredLineLength: true
+".ocamllex.source":
   editor:
     preferredLineLength: 100
-".c.source":
-  editor:
-    preferredLineLength: 100
-    tabLength: 8
-".clojure.source":
-  editor:
-    preferredLineLength: 100
-".ruby.source":
+    tabLength: 2
+".menhir.source":
   editor:
     preferredLineLength: 100
 ".cpp.source":
   editor:
     preferredLineLength: 100
     tabLength: 8
-".menhir.source":
+".ruby.source":
   editor:
     preferredLineLength: 100
-".ocamllex.source":
+".clojure.source":
+  editor:
+    preferredLineLength: 100
+".c.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 8
+".alloy.source":
+  editor:
+    preferredLineLength: 100
+".ocaml.source":
   editor:
     preferredLineLength: 100
     tabLength: 2
