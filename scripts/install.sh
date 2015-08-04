@@ -23,3 +23,5 @@ done
 ln -s ${HOME}/dotfiles/vimfiles ${HOME}/.vim
 ln -s ${HOME}/dotfiles/vim_backup ${HOME}/.vim_backup
 ln -s ${HOME}/dotfiles/prezto ${HOME}/.zprezto
+ln -s ${HOME}/dotfiles/fzf ${HOME}/.fzf
+ln -s ${HOME}/dotfiles/z ${HOME}/.z_jump
