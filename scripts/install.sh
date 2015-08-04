@@ -1,6 +1,7 @@
 files_to_copy=(
   vimrc
   gvimrc
+  gitconfig
   tigrc
   vimperatorrc
   zshrc
