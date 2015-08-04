@@ -53,11 +53,13 @@ alias vimr="gvim --remote-tab-silent"
 alias attach="tmux attach-session -t"
 alias javac='javac -J-Dfile.encoding=UTF-8 -J-Duser.language=en'
 alias java='java -Dfile.encoding=UTF-8 -Duser.language=en'
+alias pbexec='pbpaste | sed -e "$a\" | tee >(zsh)'
 
 case ${OSTYPE} in
   darwin*)
     [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
     fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+    [[ -n "$TMUX" ]] && alias pbcopy="reattach-to-user-namespace pbcopy"
     ;;
   linux*)
     alias vi=vim
@@ -65,11 +67,9 @@ case ${OSTYPE} in
     alias open='gnome-open'
     alias pbcopy='xsel -i --clipboard'
     alias pbpaste='xsel --clipboard'
+    [[ -x gnome-open ]] && alias open='gnome-open'
 esac
 
-if [ -n "$TMUX" ]; then
-    alias pbcopy="reattach-to-user-namespace pbcopy"
-fi
 alias tmux-copy='tmux save-buffer - | pbcopy'
 
 alias bundle='nocorrect bundle'
@@ -123,6 +123,7 @@ compinit -u
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.z_jump/z.sh ] && source ~/.z_jump/z.sh
 # vim: filetype=zsh :
 
 # added by travis gem
