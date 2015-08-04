@@ -13,3 +13,9 @@
 [submodule "prezto"]
 	path = prezto
 	url = https://github.com/sorin-ionescu/prezto
+[submodule "fzf"]
+	path = fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "z"]
+	path = z
+	url = https://github.com/rupa/z.git
