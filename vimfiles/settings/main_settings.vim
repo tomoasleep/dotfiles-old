@@ -70,7 +70,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.aux
 "" NeoBundle "basyura/twibill.vim"
 "" NeoBundle "basyura/bitly.vim"
 "" NeoBundle "basyura/TweetVim"
-"" NeoBundle "rbtnn/vimconsole.vim"
+NeoBundle "rbtnn/vimconsole.vim"
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'airblade/vim-rooter'
 "" NeoBundle 'tpope/vim-unimpaired'
