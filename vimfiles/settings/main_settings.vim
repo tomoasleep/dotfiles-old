@@ -23,6 +23,11 @@ runtime! settings/vimshell_settings.vim
 runtime! settings/look_settings.vim
 runtime! settings/operator_settings.vim
 
+if !empty(glob("~/.vim/settings/local_settings.vim"))
+  runtime! settings/local_settings.vim
+endif
+
+
 " vim-scripts リポジトリ (1)
 NeoBundle "tpope/vim-fugitive"
 NeoBundle "The-NERD-tree"

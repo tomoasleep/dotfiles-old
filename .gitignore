@@ -1,5 +1,9 @@
 /vimfiles/bundle/
+/vim_backup
 .DS_Store
 *~
 bin
 node_modules
+*.local.*
+local.*
+local_setting*
