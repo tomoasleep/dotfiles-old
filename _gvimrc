@@ -13,7 +13,7 @@ set encoding=utf-8
 if has("mac")
   set guifont=Consolas\ for\ Powerline:h11,Ricty\ 10,Ricty:h10
 else
-  set guifont=Ricty\ 10,Ricty:h10
+  set guifont=Ricty\ 10,Inconsolata\ Medium\ 10
 endif
 " こっちは日本語フォント
 "set guifontwide=Ricty\ 10
