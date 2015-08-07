@@ -34,9 +34,11 @@ export NODE_PATH=/opt/boxen/nodenv/versions/v0.10.13/lib/node_modules/
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH=$PATH:/opt/bin
 export PATH=$PATH:~/.cabal/bin
+export PATH=$PATH:$HOME/.go/bin
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH=/usr/texbin:$PATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
+export GOPATH=$HOME/.go
 
 case ${OSTYPE} in
   darwin*)
