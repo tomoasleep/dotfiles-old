@@ -1,17 +1,31 @@
 #!/bin/sh
 
+red=31
+green=32
+yellow=33
+blue=34
+magenta=35
+cyan=36
+white=36
+
+function cecho {
+    local color=$1
+    shift
+    echo "\033[${color}m$@\033[m"
+}
+
 make_link() {
   local origin=$1
   local target=$2
   if [ ! -e $origin ]; then
-    echo "Warning: $origin does't exist."
+    cecho $red "Warning: $origin does't exist."
   elif [ -L $target ]; then
-    echo "Warning: $target is symbolic link file."
+    echo "Notice: $target is symbolic link file."
     echo "Symlink: $target -> $origin"
     rm -f $target
     ln -s $origin $target
   elif [ -e $target ]; then
-    echo "Warning: $target already exitsts."
+    cecho $red "Warning: $target already exitsts."
   else
     echo "Symlink: $target -> $origin"
     ln -s $origin $target
@@ -19,7 +33,7 @@ make_link() {
 }
 
 link_dotfile() {
-  local origin=${HOME}/dotfiles/_$1
+  local origin=${HOME}/dotfiles/dotsources/_$1
   local target=${HOME}/.$1
   make_link $origin $target
 }
@@ -45,6 +59,6 @@ done
 make_link ${HOME}/dotfiles/vimfiles ${HOME}/.vim
 make_link ${HOME}/dotfiles/vim_backup ${HOME}/.vim_backup
 make_link ${HOME}/dotfiles/evilfiles ${HOME}/.emacs.d
-make_link ${HOME}/dotfiles/prezto ${HOME}/.zprezto
-make_link ${HOME}/dotfiles/fzf ${HOME}/.fzf
-make_link ${HOME}/dotfiles/z ${HOME}/.z_jump
+make_link ${HOME}/dotfiles/extapps/prezto ${HOME}/.zprezto
+make_link ${HOME}/dotfiles/extapps/fzf ${HOME}/.fzf
+make_link ${HOME}/dotfiles/extapps/z ${HOME}/.z_jump
