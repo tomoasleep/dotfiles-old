@@ -1,8 +1,7 @@
 # Install
 
 ```
-git submodule update --init --recursive
-sh $HOME/dotfiles/scripts/install.sh
+./install.sh
 ```
 
 # Package dependencies
