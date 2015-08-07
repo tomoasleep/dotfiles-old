@@ -128,10 +128,10 @@ augroup END
 NeoBundle "jsx/jsx.vim"
 
 "" coq
-NeoBundle "jvoorhis/coq.vim"
+NeoBundleLazy "jvoorhis/coq.vim", {'autoload': {'filetypes': ['coq']}}
 
 "" patched to 'vim-scripts/CoqIDE' (for compatibility with v8.4pl3)
-NeoBundle "tauli/CoqIDE", "patch-1", { 'gui' : 1 }
+NeoBundleLazy "tauli/CoqIDE", "patch-1", { 'gui' : 1, 'autoload': {'filetypes': ['coq']}}
 
 "" slim
 NeoBundleLazy 'slim-template/vim-slim', {'autoload': {'filetypes': ['slim']}}
