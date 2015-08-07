@@ -5,6 +5,11 @@ make_link() {
   local target=$2
   if [ ! -e $origin ]; then
     echo "Warning: $origin does't exist."
+  elif [ -L $target ]; then
+    echo "Warning: $target is symbolic link file."
+    echo "Symlink: $target -> $origin"
+    rm -f $target
+    ln -s $origin $target
   elif [ -e $target ]; then
     echo "Warning: $target already exitsts."
   else
