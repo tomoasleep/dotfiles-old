@@ -1,21 +1,21 @@
 [submodule "vimfiles/bundle/neobundle.vim"]
 	path = vimfiles/bundle/neobundle.vim
-	url = git@github.com:Shougo/neobundle.vim.git
-[submodule "tmux-copycat"]
-	path = tmux-copycat
+	url = https://github.com/Shougo/neobundle.vim.git
+[submodule "extapps/tmux-copycat"]
+	path = extapps/tmux-copycat
 	url = https://github.com/tmux-plugins/tmux-copycat
-[submodule "solarized"]
-	path = solarized
-	url = git@github.com:altercation/solarized.git
-[submodule "gnome-terminal-colors-solarized"]
-	path = gnome-terminal-colors-solarized
-	url = git@github.com:Anthony25/gnome-terminal-colors-solarized.git
-[submodule "prezto"]
-	path = prezto
+[submodule "extapps/solarized"]
+	path = extapps/solarized
+	url = https://github.com/altercation/solarized.git
+[submodule "extapps/gnome-terminal-colors-solarized"]
+	path = extapps/gnome-terminal-colors-solarized
+	url = https://github.com/Anthony25/gnome-terminal-colors-solarized.git
+[submodule "extapps/prezto"]
+	path = extapps/prezto
 	url = https://github.com/sorin-ionescu/prezto
-[submodule "fzf"]
-	path = fzf
+[submodule "extapps/fzf"]
+	path = extapps/fzf
 	url = https://github.com/junegunn/fzf.git
-[submodule "z"]
-	path = z
+[submodule "extapps/z"]
+	path = extapps/z
 	url = https://github.com/rupa/z.git
