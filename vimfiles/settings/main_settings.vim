@@ -41,7 +41,14 @@ NeoBundle 'matchit.zip'
 " github の任意のリポジトリ (2)"
 "" NeoBundle "thinca/vim-ref"
 "" NeoBundle "tsaleh/vim-matchit"
-"" NeoBundle 'thinca/vim-quickrun'
+
+NeoBundle 'thinca/vim-quickrun'
+let g:quickrun_config={'*': {'split': ''}}
+let g:quickrun_config._={ 'runner':'vimproc',
+\       "runner/vimproc/updatetime" : 10,
+\       "outputter/buffer/close_on_empty" : 1,
+\ }
+
 NeoBundle 'Shougo/vimproc', {
       \ 'build': {
       \     'windows' : 'make -f make_mingw32.mak',
