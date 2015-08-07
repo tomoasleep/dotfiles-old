@@ -54,6 +54,7 @@ alias attach="tmux attach-session -t"
 alias javac='javac -J-Dfile.encoding=UTF-8 -J-Duser.language=en'
 alias java='java -Dfile.encoding=UTF-8 -Duser.language=en'
 alias pbexec="pbpaste | sed -e '\$a\\' | tee >(zsh)"
+alias evil="emacs"
 
 case ${OSTYPE} in
   darwin*)
@@ -124,7 +125,9 @@ compinit -u
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.z_jump/z.sh ] && source ~/.z_jump/z.sh
-# vim: filetype=zsh :
-
 # added by travis gem
 [ -f /Users/tomoya/.travis/travis.sh ] && source /Users/tomoya/.travis/travis.sh
+
+[ -f ~/.zshrc.local ] && . ~/.zshrc.local
+
+# vim: filetype=zsh :

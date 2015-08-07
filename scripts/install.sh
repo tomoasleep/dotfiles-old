@@ -5,6 +5,7 @@ files_to_copy=(
   tigrc
   vimperatorrc
   zshrc
+  zshrc.local
   zshenv
   zpreztorc
   tmux.conf

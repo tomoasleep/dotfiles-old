@@ -4,6 +4,7 @@
 *~
 bin
 node_modules
+*.local
 *.local.*
 local.*
 local_setting*
