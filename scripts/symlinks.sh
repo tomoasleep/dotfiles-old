@@ -21,7 +21,7 @@ make_link() {
     cecho $red "Warning: $origin does't exist."
   elif [ -L $target ]; then
     echo "Notice: $target is symbolic link file."
-    echo "Symlink: $target -> $origin"
+    echo "Symlink(Overwrite): $target -> $origin"
     rm -f $target
     ln -s $origin $target
   elif [ -e $target ]; then
@@ -38,20 +38,7 @@ link_dotfile() {
   make_link $origin $target
 }
 
-files_to_copy=(
-  vimrc
-  gvimrc
-  gitconfig
-  gitconfig.local
-  tigrc
-  vimperatorrc
-  zshrc
-  zshrc.local
-  zshenv
-  zpreztorc
-  tmux.conf
-  tmux.conf.osx
-)
+files_to_copy=$(find ~/dotfiles/_sources -name "_*" -type f -exec basename {} \; | sed 's/^_//')
 
 for i in ${files_to_copy[@]}; do
   link_dotfile $i
