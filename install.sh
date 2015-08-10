@@ -8,4 +8,4 @@ do_script() {
 }
 
 do_script submodules
-do_script symlinks
+do_script symlink
