@@ -33,7 +33,7 @@ make_link() {
 }
 
 link_dotfile() {
-  local origin=${HOME}/dotfiles/dotsources/_$1
+  local origin=${HOME}/dotfiles/_sources/_$1
   local target=${HOME}/.$1
   make_link $origin $target
 }
