@@ -42,6 +42,7 @@ files_to_copy=(
   vimrc
   gvimrc
   gitconfig
+  gitconfig.local
   tigrc
   vimperatorrc
   zshrc
