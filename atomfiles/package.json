@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "atom-space-pen-views": "^2.0.5",
+    "bluebird": "^2.9.34",
     "underscore-plus": "^1.6.6"
   },
   "devDependencies": {},

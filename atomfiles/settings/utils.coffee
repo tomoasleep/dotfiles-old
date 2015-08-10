@@ -48,14 +48,22 @@ class UserGeneralSelectListView extends SelectListView
     @panel.show()
     @focusFilterEditor()
 
-gitClone: (source, dest) ->
+gitClone = (source, dest) ->
   command = 'git'
   args = ['clone', source, dest]
   onExit = (code) -> atom.notifications.addError('Git fetch: error') if code isnt 0
   new BufferedProcess({command, args, exit: onExit})
 
+consumeService = (args...) ->
+  atom.packages.serviceHub?.consume?(args...)
+
+provideService = (args...) ->
+  atom.packages.serviceHub?.provide?(args...)
+
 module.exports = {
   observeGrammar, didTheEditorActivate,
   buildEvent, delay, triggerEvent,
+  consumeService,
+  provideService,
   UserGeneralSelectListView,
 }
