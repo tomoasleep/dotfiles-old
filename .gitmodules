@@ -19,3 +19,6 @@
 [submodule "extapps/z"]
 	path = extapps/z
 	url = https://github.com/rupa/z.git
+[submodule "extapps/anyenv"]
+	path = extapps/anyenv
+	url = https://github.com/riywo/anyenv.git

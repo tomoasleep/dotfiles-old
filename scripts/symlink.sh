@@ -51,3 +51,4 @@ make_link ${HOME}/dotfiles/evilfiles ${HOME}/.emacs.d
 make_link ${HOME}/dotfiles/extapps/prezto ${HOME}/.zprezto
 make_link ${HOME}/dotfiles/extapps/fzf ${HOME}/.fzf
 make_link ${HOME}/dotfiles/extapps/z ${HOME}/.z_jump
+make_link ${HOME}/dotfiles/extapps/anyenv ${HOME}/.anyenv

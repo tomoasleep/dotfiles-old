@@ -9,3 +9,4 @@ do_script() {
 
 do_script submodules
 do_script symlink
+do_script install_anyenv

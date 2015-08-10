@@ -10,7 +10,7 @@ export PATH=/opt/android-sdk/platform-tools/:$PATH
 
 ## anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
-[[ -x anyenv ]] && eval "$(anyenv init -)"
+[[ -d $HOME/.anyenv ]] && eval "$(anyenv init -)"
 
 # ## nodenv
 # export PATH="$HOME/.nodenv/bin:$PATH"
