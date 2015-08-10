@@ -46,6 +46,7 @@ done
 
 make_link ${HOME}/dotfiles/vimfiles ${HOME}/.vim
 make_link ${HOME}/dotfiles/vim_backup ${HOME}/.vim_backup
+make_link ${HOME}/dotfiles/atomfiles ${HOME}/.atom
 make_link ${HOME}/dotfiles/evilfiles ${HOME}/.emacs.d
 make_link ${HOME}/dotfiles/extapps/prezto ${HOME}/.zprezto
 make_link ${HOME}/dotfiles/extapps/fzf ${HOME}/.fzf
