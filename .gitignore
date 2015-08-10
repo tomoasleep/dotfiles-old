@@ -1,4 +1,5 @@
 /vimfiles/bundle/
+/atomfiles/local-packages/
 /vim_backup
 .DS_Store
 *~

@@ -1,0 +1,16 @@
+{
+  "name": "atomfiles",
+  "version": "1.0.0",
+  "description": "My atom descriptions",
+  "main": "index.js",
+  "dependencies": {
+    "atom-space-pen-views": "^2.0.5",
+    "underscore-plus": "^1.6.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tomoya Chiba",
+  "license": "MIT"
+}
