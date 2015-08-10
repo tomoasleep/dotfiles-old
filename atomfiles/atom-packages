@@ -4,7 +4,6 @@ auto-indent
 autocomplete-emojis
 autocomplete-haskell
 autocomplete-paths
-autocomplete-plus-async
 autocomplete-ruby
 block-selection-mode
 build
