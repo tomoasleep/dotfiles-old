@@ -26,3 +26,5 @@
 	trustExitCode = true
 [include]
   path = .gitconfig.local
+[color]
+	ui = auto
