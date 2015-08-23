@@ -9,3 +9,4 @@ node_modules
 *.local.*
 local.*
 local_setting*
+/projects.cson
