@@ -22,3 +22,6 @@
 [submodule "extapps/anyenv"]
 	path = extapps/anyenv
 	url = https://github.com/riywo/anyenv.git
+[submodule "extapps/chromium-vim"]
+	path = extapps/chromium-vim
+	url = https://github.com/1995eaton/chromium-vim
