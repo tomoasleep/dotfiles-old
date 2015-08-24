@@ -15,6 +15,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 runtime! settings/neocomplete_settings.vim
+runtime! settings/myfunction_settings.vim
 "" runtime! settings/you_complete_me_settings.vim
 runtime! settings/unite_settings.vim
 
