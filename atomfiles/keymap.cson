@@ -23,8 +23,8 @@
   'ctrl-w t': 'tree-view:toggle-focus'
   'cmd-shift-v': 'user:vim-command:toggle'
   '/': 'find-and-replace:show'
-  'n': 'find-and-replace:select-next'
-  'N': 'find-and-replace:select-undo'
+  'n': 'user:find-next'
+  'N': 'user:find-previous'
 
 'atom-text-editor.vim-mode.insert-mode':
   'ctrl-h': 'core:backspace'
@@ -40,7 +40,7 @@
   'ctrl-p': 'unset!'
   'ctrl-n': 'unset!'
 
-'.workspace':
+'atom-workspace':
   'ctrl-p': 'unset!'
 
 '.select-list atom-text-editor':
@@ -57,6 +57,9 @@
   'escape': 'core:cancel'
   'ctrl-c': 'core:cancel'
   'ctrl-[': 'core:cancel'
+
+'.find-and-replace .find-container':
+  'enter': 'user:go-found'
 
 '.atom-make-runner':
   'escape': 'atom-make-runner:toggle'
