@@ -18,6 +18,7 @@
 #
 'atom-text-editor.vim-mode:not(.insert-mode)':
 #  ':': 'user:vim-command:toggle'
+  'g d': 'find-and-replace:use-selection-as-find-pattern'
   't n': 'pane:show-next-item'
   't p': 'pane:show-previous-item'
   'ctrl-w t': 'tree-view:toggle-focus'
