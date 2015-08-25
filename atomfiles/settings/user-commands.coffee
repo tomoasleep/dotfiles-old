@@ -63,11 +63,18 @@ atom.commands.add 'atom-text-editor', 'user:cancel-select', (event) ->
 
 atom.commands.add 'atom-workspace', 'user:go-found', (event) ->
   atom.commands.dispatch(atom.views.getView(atom.workspace.getActiveTextEditor()), 'user:find-next')
+  atom.commands.dispatch(this, 'user:focus-active-editor')
 
 atom.commands.add 'atom-text-editor', 'user:find-next', (event) ->
   atom.commands.dispatch(this, 'find-and-replace:find-next')
   atom.commands.dispatch(atom.views.getView(atom.workspace.getActiveTextEditor()), 'user:cancel-select')
+  atom.commands.dispatch(this, 'user:focus-active-editor')
 
 atom.commands.add 'atom-text-editor', 'user:find-previous', (event) ->
   atom.commands.dispatch(this, 'find-and-replace:find-previous')
   atom.commands.dispatch(atom.views.getView(atom.workspace.getActiveTextEditor()), 'user:cancel-select')
+  atom.commands.dispatch(this, 'user:focus-active-editor')
+
+atom.commands.add 'atom-text-editor', 'user:use-selection-as-find-pattern', (event) ->
+  atom.commands.dispatch(this, 'find-and-replace:use-selection-as-find-pattern')
+  atom.commands.dispatch(this, 'user:focus-active-editor')
