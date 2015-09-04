@@ -146,6 +146,9 @@ augroup gitcommit_dictionary
   autocmd FileType gitcommit :set dictionary=~/.vim/dictionary/github_user.dict
 augroup END
 
+"" ghq
+NeoBundle 'kelan/gyp.vim'
+
 "" autocmd! rooter
 augroup rooter
   autocmd! rooter
