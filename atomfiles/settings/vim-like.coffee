@@ -62,7 +62,7 @@ atom.packages.onDidActivateInitialPackages ->
     'project':
       'open project manager': ->
         process.nextTick =>
-          triggerEvent('project-manager:toggle', atom.views.getView(this))
+          triggerEvent('project-manager:list-projects', atom.views.getView(this))
     'settings':
       'open settng views': ->
         process.nextTick =>
