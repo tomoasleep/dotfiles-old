@@ -9,6 +9,7 @@ class WindowSelectListView extends SelectListView
       window: item
       title: item.browserWindow.getTitle()
     @setItems(items)
+    @storeFocusedElement()
     @panel ?= atom.workspace.addModalPanel(item: this)
     @panel.show()
     @focusFilterEditor()
