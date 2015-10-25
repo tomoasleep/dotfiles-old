@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<root>
+  <list>
+    <item>
+      <name>Leave Insert Mode with EISUU (vim keybind apps)</name>
+      <identifier>private.vim_keybind_apps_esc_with_eisuu</identifier>
+      <autogen>__KeyToKey__ KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
+      <autogen>__KeyToKey__ KeyCode::C, VK_CONTROL, KeyCode::C, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
+    </item>
+
+    <item>
+      <name>Swap Command_L and Option_L</name>
+      <identifier>private.swap_space_and_tab</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::OPTION_L, KeyCode::JIS_EISUU</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L,  KeyCode::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::DOT, VK_CONTROL, KeyCode::DOT, VK_CONTROL, KeyCode::JIS_KANA</autogen>
+    </item>
+  </list>
+</root>
