@@ -1,13 +1,17 @@
 
-{ delay, triggerEvent } = require './utils'
+{ consumeService, delay, triggerEvent } = require './utils'
 
 requireVimModeModule = (libPath) ->
   vimMode = atom.packages.loadPackage('vim-mode')
   path = require 'path'
   require path.join(vimMode.path, 'lib', libPath)
 
+console.log 'loading vim-like.coffee'
+
 # atom.services.consume 'vim-cmdline-mode', '^0.1.0', (service) ->
-atom.packages.onDidActivateInitialPackages ->
+# atom.packages.onDidActivateInitialPackages ->
+consumeService 'vim-cmdline-mode', '>=0.1.0', ->
+  console.log 'Done: load initial packages'
   # service.getCommandRegistory()
   atom.vimcommands.register
     'w':
