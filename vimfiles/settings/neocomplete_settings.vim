@@ -83,9 +83,9 @@ let g:clang_auto_select = 0
 "" ----------------------------------------------------------
 
 " snipet plugin
-"" NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet'
 " default snippets
-"" NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)

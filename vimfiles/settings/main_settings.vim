@@ -51,12 +51,14 @@ let g:quickrun_config._={ 'runner':'vimproc',
 \ }
 
 NeoBundle 'Shougo/vimproc', {
-      \ 'build': {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \     },
-      \ }
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 NeoBundle 'Shougo/neosnippet'
 NeoBundle "scrooloose/syntastic"
 NeoBundle 'tomoasleep/vim-open-atom'
@@ -299,6 +301,5 @@ let g:tweetvim_display_icon = 1
 
 " restart
 let g:restart_sessionoptions
-    \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
-let g:restart_save_window_values = 0
+    \ = 'winsize,winpos,blank,buffers,curdir,folds,help,localoptions,tabpages'
 

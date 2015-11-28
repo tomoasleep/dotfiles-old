@@ -65,6 +65,9 @@ augroup purescript_settings
   autocmd BufRead *.purs :set syntax=haskell
 augroup END
 
+"" TypeScript
+NeoBundle 'Quramy/tsuquyomi'
+
 let $PATH= $PATH . ":" . $HOME . "/.cabal/bin"
 
 "" alex
