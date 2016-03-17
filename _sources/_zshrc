@@ -110,10 +110,7 @@ compdef mosh=ssh
 # . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 #. $HOME/dotfiles/powerline_setting.sh
 
-
 [[ -z $DOTFILES_ZSHENV ]] && source .zshenv
-[[ -z ~/.zshrc.opam ]] && source ~/.zshrc.opam
-
 # move env_path to head
 export PATH=$ENV_PATH:$PATH
 typeset -U PATH
@@ -123,11 +120,12 @@ autoload -U compinit
 compinit -u
 
 
+[ -f ~/.zshrc.opam ] && source ~/.zshrc.opam
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.z_jump/z.sh ] && source ~/.z_jump/z.sh
 # added by travis gem
 [ -f /Users/tomoya/.travis/travis.sh ] && source /Users/tomoya/.travis/travis.sh
 
-[ -f ~/.zshrc.local ] && . ~/.zshrc.local
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # vim: filetype=zsh :
