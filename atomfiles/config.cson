@@ -1,7 +1,34 @@
 "*":
-  "recent-files":
-    updated: false
+  "atom-typescript": {}
+  "autocomplete-look": {}
+  "autocomplete-plus":
+    confirmCompletion: "tab"
+    defaultProvider: "Symbol"
+    includeCompletionsFromAllBuffers: true
+    navigateCompletions: "ctrl-p,ctrl-n"
+  "bracket-matcher":
+    autocompleteBrackets: false
+    autocompleteSmartQuotes: false
+  build:
+    autoFocusOnBuildPanel: false
+    buildOnSave: true
+    monocleHeight: 0.5
+    saveOnBuild: true
+    stealFocus: false
   core:
+    disabledPackages: [
+      "symbols-view"
+      "tab-switcher"
+      "powerline"
+      "ex-mode"
+      "recent-files"
+      "regex-railroad-diagram"
+      "autocomplete-elixir"
+      "elixir-cmd"
+      "language-elixir"
+      "ruby-block"
+    ]
+    followSymlinks: true
     ignoredNames: [
       ".git"
       ".hg"
@@ -18,143 +45,195 @@
       ".opt"
       ".run"
     ]
-    followSymlinks: true
-    disabledPackages: [
-      "symbols-view"
-      "autocomplete-plus-async"
-      "language-typescript"
-      "tab-switcher"
-      "powerline"
-      "ex-mode"
-      "recent-files"
-      "regex-railroad-diagram"
-    ]
     themes: [
       "one-dark-ui"
       "solarized-light-syntax"
     ]
-  "exception-reporting":
-    userId: "82d47670-14ea-f3b0-2b84-5cf67f58c243"
-  welcome:
-    showOnStartup: false
-  minimap:
-    plugins:
-      "git-diff": true
   editor:
+    fontFamily: "Consolas for Powerline, Ricty"
+    fontSize: 11
+    invisibles: {}
+    lineHeight: 1.2
+    preferredLineLength: 100
+    showIndentGuide: true
     showInvisibles: true
     softWrap: true
     useShadowDOM: true
-    invisibles: {}
-    fontFamily: "Consolas for Powerline, Ricty"
-    showIndentGuide: true
-    preferredLineLength: 100
-    fontSize: 11
-    lineHeight: 1.2
-  "tree-view":
-    hideIgnoredNames: true
-    hideVcsIgnoredFiles: true
-  "autocomplete-plus":
-    includeCompletionsFromAllBuffers: true
-    navigateCompletions: "ctrl-p,ctrl-n"
-    defaultProvider: "Symbol"
-    confirmCompletion: "tab"
-  linter:
-    ignoredLinterErrors: [
-      "scss-lint"
-    ]
-  "make-runner":
-    hidePane: true
-  notifications:
-    showErrorsInDevMode: true
+  "exception-reporting":
+    userId: "82d47670-14ea-f3b0-2b84-5cf67f58c243"
   "find-and-replace":
     openProjectFindResultsInRightPane: true
   "fuzzy-finder":
     ignoredNames: [
       "node_modules"
     ]
+  "github-utils": {}
+  "haskell-ghc-mod": {}
+  "ide-haskell": {}
+  linter:
+    ignoredLinterErrors: [
+      "scss-lint"
+    ]
+  "make-runner":
+    hidePane: true
+  minimap:
+    plugins:
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+  notifications:
+    showErrorsInDevMode: true
+  "pull-requests":
+    githubAuthorizationToken: "182a220223b1f3a13aa29605161e6256d7df0c02"
+    githubPollingInterval: 180
+  "recent-files":
+    updated: false
   tabs: {}
-  user:
-    maxPaneLength: 20
   term2:
     colors:
-      normalBlack: "#073642"
-      normalRed: "#dc322f"
-      normalGreen: "#859900"
-      normalYellow: "#b58900"
-      normalBlue: "#268bd2"
-      normalPurple: "#d33682"
-      normalCyan: "#2aa198"
-      normalWhite: "#3338d5"
-      brightBlack: "#002b36"
-      brightRed: "#cb4b16"
-      brightGreen: "#586e75"
-      brightYellow: "#657b83"
-      brightBlue: "#839496"
-      brightPurple: "#6c71c4"
-      brightCyan: "#93a1a1"
-      brightWhite: "#fdf6e3"
-      background: "#fdf6e3"
-      foreground: "#93a1a1"
+      background:
+        alpha: 1
+        blue: 227
+        green: 246
+        red: 253
+      brightBlack:
+        alpha: 1
+        blue: 54
+        green: 43
+        red: 0
+      brightBlue:
+        alpha: 1
+        blue: 150
+        green: 148
+        red: 131
+      brightCyan:
+        alpha: 1
+        blue: 161
+        green: 161
+        red: 147
+      brightGreen:
+        alpha: 1
+        blue: 117
+        green: 110
+        red: 88
+      brightPurple:
+        alpha: 1
+        blue: 196
+        green: 113
+        red: 108
+      brightRed:
+        alpha: 1
+        blue: 22
+        green: 75
+        red: 203
+      brightWhite:
+        alpha: 1
+        blue: 227
+        green: 246
+        red: 253
+      brightYellow:
+        alpha: 1
+        blue: 131
+        green: 123
+        red: 101
+      foreground:
+        alpha: 1
+        blue: 161
+        green: 161
+        red: 147
+      normalBlack:
+        alpha: 1
+        blue: 66
+        green: 54
+        red: 7
+      normalBlue:
+        alpha: 1
+        blue: 210
+        green: 139
+        red: 38
+      normalCyan:
+        alpha: 1
+        blue: 152
+        green: 161
+        red: 42
+      normalGreen:
+        alpha: 1
+        blue: 0
+        green: 153
+        red: 133
+      normalPurple:
+        alpha: 1
+        blue: 130
+        green: 54
+        red: 211
+      normalRed:
+        alpha: 1
+        blue: 47
+        green: 50
+        red: 220
+      normalWhite:
+        alpha: 1
+        blue: 213
+        green: 56
+        red: 51
+      normalYellow:
+        alpha: 1
+        blue: 0
+        green: 137
+        red: 181
+  "tree-view":
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+  user:
+    maxPaneLength: 20
+  welcome:
+    showOnStartup: false
   whitespace:
     ignoreWhitespaceOnCurrentLine: false
-  "bracket-matcher":
-    autocompleteBrackets: false
-    autocompleteSmartQuotes: false
-  "atom-typescript": {}
-  build:
-    buildOnSave: true
-    autoFocusOnBuildPanel: false
-    saveOnBuild: true
-    stealFocus: false
-    monocleHeight: 0.5
-  "haskell-ghc-mod": {}
-  "ide-haskell":
-    useBackend: "haskell-ghc-mod"
-".python.regexp.source":
-  editor:
-    preferredLineLength: 100
-".python.text.traceback":
-  editor:
-    preferredLineLength: 100
-".console.python.text":
-  editor:
-    preferredLineLength: 100
-".camlp4.ocaml.source":
-  editor:
-    preferredLineLength: 100
-".erb.html.text":
-  editor:
-    preferredLineLength: 100
-".python.source":
-  editor:
-    preferredLineLength: 100
-    tabLength: 2
-    softWrapAtPreferredLineLength: true
-".ocamllex.source":
-  editor:
-    preferredLineLength: 100
-    tabLength: 2
-".menhir.source":
-  editor:
-    preferredLineLength: 100
-".cpp.source":
-  editor:
-    preferredLineLength: 100
-    tabLength: 8
-".ruby.source":
-  editor:
-    preferredLineLength: 100
-".clojure.source":
+".alloy.source":
   editor:
     preferredLineLength: 100
 ".c.source":
   editor:
     preferredLineLength: 100
     tabLength: 8
-".alloy.source":
+".camlp4.ocaml.source":
+  editor:
+    preferredLineLength: 100
+".clojure.source":
+  editor:
+    preferredLineLength: 100
+".console.python.text":
+  editor:
+    preferredLineLength: 100
+".cpp.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 8
+".erb.html.text":
+  editor:
+    preferredLineLength: 100
+".menhir.source":
   editor:
     preferredLineLength: 100
 ".ocaml.source":
   editor:
     preferredLineLength: 100
     tabLength: 2
+".ocamllex.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 2
+".python.regexp.source":
+  editor:
+    preferredLineLength: 100
+".python.source":
+  editor:
+    preferredLineLength: 100
+    softWrapAtPreferredLineLength: true
+    tabLength: 2
+".python.text.traceback":
+  editor:
+    preferredLineLength: 100
+".ruby.source":
+  editor:
+    preferredLineLength: 100
