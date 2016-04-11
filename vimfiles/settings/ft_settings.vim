@@ -1,7 +1,16 @@
 
+NeoBundle "scrooloose/syntastic"
+let g:syntastic_mode_map = { "mode": "passive",
+                           \ "active_filetypes": ['ocaml'],
+                           \ "passive_filetypes": ["coffee"] }
+let g:syntastic_check_on_open = 1
+let g:syntastic_always_populate_loc_list = 1
+
 "" ruby
 "" NeoBundleLazy "tpope/vim-rvm", {'autoload': {'filetypes': ['ruby']}}
 "" NeoBundleLazy "tpope/vim-rails", {'autoload': {'filetypes': ['ruby']}}
+call add(g:syntastic_mode_map.active_filetypes, 'ruby')
+let g:syntastic_ruby_checkers = ['rubocop']
 
 """ highlight local variables
 "" NeoBundleLazy "todesking/ruby_hl_lvar.vim", {'autoload': {'filetypes': ['ruby']}}
@@ -31,6 +40,10 @@ augroup cap_detection
   autocmd! cap_detection
   autocmd BufNewFile,BufRead *.cap :set filetype=ruby
 augroup END
+
+"" rfc
+NeoBundle 'mhinz/vim-rfc'
+NeoBundle 'vim-scripts/rfc-syntax'
 
 "" vagrant
 NeoBundle "markcornick/vim-vagrant"
@@ -82,6 +95,8 @@ augroup END
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload': {'filetypes': ['javascript']}}
 NeoBundleLazy 'briancollins/vim-jst', {'autoload': {'filetypes': ['javascript']}}
 NeoBundleLazy "kchmck/vim-coffee-script", {'autoload': {'filetypes': ['coffee']}}
+NeoBundle 'mtscout6/vim-cjsx'
+NeoBundle 'isRuslan/vim-es6'
 
 augroup js_settings
   autocmd! js_settings
@@ -130,6 +145,9 @@ augroup END
 "" jsx
 NeoBundle "jsx/jsx.vim"
 
+"" Terraform
+NeoBundle 'hashivim/vim-terraform'
+
 "" coq
 NeoBundleLazy "jvoorhis/coq.vim", {'autoload': {'filetypes': ['coq']}}
 
@@ -160,6 +178,13 @@ augroup END
 let g:rooter_use_lcd = 1
 
 let g:syntastic_ghdl_workdir = 'lib'
+
+" ocaml
+let g:syntastic_ocaml_use_ocamlbuild = 1
+let g:syntastic_ocaml_checkers = ['merlin'] 
+NeoBundle 'def-lkb/vimbufsync'
+NeoBundle 'the-lambda-church/merlin', {'rtp': 'vim/merlin'}
+NeoBundle 'OCamlPro/ocp-indent', {'name': 'tools/ocp-indent.vim', 'script_type': 'plugin'}
 
 " emmet
 "" NeoBundle 'mattn/emmet-vim'

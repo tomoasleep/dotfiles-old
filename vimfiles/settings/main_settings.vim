@@ -44,6 +44,8 @@ NeoBundle 'matchit.zip'
 "" NeoBundle "tsaleh/vim-matchit"
 
 NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-localrc'
+
 let g:quickrun_config={'*': {'split': ''}}
 let g:quickrun_config._={ 'runner':'vimproc',
 \       "runner/vimproc/updatetime" : 10,
@@ -60,7 +62,6 @@ NeoBundle 'Shougo/vimproc', {
 \    },
 \ }
 NeoBundle 'Shougo/neosnippet'
-NeoBundle "scrooloose/syntastic"
 NeoBundle 'tomoasleep/vim-open-atom'
 let g:open_atom_silent_simojo_atom=0
 let g:open_atom_unix_options='-n'
@@ -68,9 +69,7 @@ let g:open_atom_unix_options='-n'
 "" let g:EditorConfig_core_mode="python_external"
 "" NeoBundle "editorconfig/editorconfig-vim"
 
-let g:syntastic_mode_map = { "mode": "passive",
-                           \ "active_filetypes": [],
-                           \ "passive_filetypes": ["coffee"] }
+"" let g:syntastic_auto_loc_list = 1
 
 "" NeoBundle "kana/vim-smartchr"
 NeoBundle "Shougo/vinarise"
@@ -79,6 +78,7 @@ NeoBundle "Shougo/vinarise"
 "" Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
 "" http://ctrlpvim.github.com/ctrlp.vim
 NeoBundle "ctrlpvim/ctrlp.vim"
+let g:ctrlp_extensions = ['locate', 'outline']
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.aux
 
 "" NeoBundle "tyru/open-browser.vim"
@@ -90,6 +90,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.aux
 NeoBundle "rbtnn/vimconsole.vim"
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'airblade/vim-rooter'
+NeoBundle 'mattn/googletranslate-vim'
 "" NeoBundle 'tpope/vim-unimpaired'
 
 " NeoBundle 'Shougo/context_filetype.vim'
@@ -139,6 +140,14 @@ let g:gitgutter_eager=0
 "
 runtime! settings/map_settings.vim
 
+" for development
+let filelist = split(expand("~/.vim/dev/bundle/*"), "\n")
+for fname in filelist
+  if isdirectory(fname)
+    NeoBundleLocal fname
+  endif
+endfor
+
 call neobundle#end()
 
 filetype plugin indent on
@@ -150,6 +159,8 @@ NeoBundleCheck
 if !has('vim_starting')
   call neobundle#call_hook('on_source')
 endif
+
+set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
 
 "" call all startup functions
 for e in keys(g:MyStartUpFunc)
