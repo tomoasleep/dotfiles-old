@@ -1,3 +1,10 @@
+# Dotfiles
+
+```
+curl https://git.io/p_- | sh
+```
+
+
 # Install
 
 ```
