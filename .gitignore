@@ -8,6 +8,8 @@ bin
 node_modules
 *.local
 *.local.*
+*_local.*
+*_local
 local.*
 local_setting*
 /projects.cson
