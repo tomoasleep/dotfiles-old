@@ -3,6 +3,7 @@
 export DOTFILES_ZSHENV=true
 
 export EDITOR=vim
+export VISUAL=vim
 
 ## android
 export PATH=/opt/android-sdk/tools/:$PATH
@@ -12,40 +13,21 @@ export PATH=/opt/android-sdk/platform-tools/:$PATH
 export PATH="$HOME/.anyenv/bin:$PATH"
 [[ -d $HOME/.anyenv ]] && eval "$(anyenv init -)"
 
-# ## nodenv
-# export PATH="$HOME/.nodenv/bin:$PATH"
-# eval "$(nodenv init -)"
-#
-# ## rbenv
-# # export RBENV_ROOT=/usr/local/var/rbenv
-# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-## pyenv
-# export PYENV_ROOT="${HOME}/.pyenv"
-# if [ -d "${PYENV_ROOT}" ]; then
-#   export PATH="${PYENV_ROOT}/bin:${PATH}"
-#   eval "$(pyenv init -)"
-# fi
-# export PYENV_ROOT=/usr/local/opt/pyenv
-# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
-export NODE_PATH=/opt/boxen/nodenv/versions/v0.10.13/lib/node_modules/npm/node_modules
-export NODE_PATH=/opt/boxen/nodenv/versions/v0.10.13/lib/node_modules/
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH=$PATH:/opt/bin
 export PATH=$PATH:~/.cabal/bin
 export PATH=$PATH:$HOME/.go/bin
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-# export PATH=/usr/texbin:$PATH
-export PATH=/Library/TeX/texbin:$PATH
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 export GOPATH=$HOME/.go
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 
 case ${OSTYPE} in
   darwin*)
     export ATOM_PATH=$HOME/Applications
+    export PATH=/Library/TeX/texbin:$PATH
     ;;
   linux*)
+    export PATH=/usr/texbin:$PATH
 esac
 
 [[ -x opam ]] && eval $(opam config env)
@@ -54,4 +36,3 @@ esac
 [[ -z $ENV_PATH ]] && export ENV_PATH=$PATH
 
 # vim: set filetype=zsh :
-# export PATH=$HOME/.nodebrew/current/bin:$PATH

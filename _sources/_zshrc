@@ -1,6 +1,9 @@
 [[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshrc" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshrc"
 
-export EDITOR=vim
+autoload -U compinit && compinit
+compdef mosh=ssh
+autoload -U compinit
+compinit -u
 
 # ディレクトリを水色にする｡
 export LS_COLORS='di=01;36'
@@ -49,12 +52,20 @@ alias ll="ls -l"
 alias du="du -h"
 alias df="df -h"
 alias su="su -l"
+alias vi=vim
 alias vimr="gvim --remote-tab-silent"
+alias gvimr="gvim --remote-tab-silent"
 alias attach="tmux attach-session -t"
 alias javac='javac -J-Dfile.encoding=UTF-8 -J-Duser.language=en'
 alias java='java -Dfile.encoding=UTF-8 -Duser.language=en'
 alias pbexec="pbpaste | sed -e '\$a\\' | tee >(zsh)"
 alias evil="emacs"
+alias tmux-copy='tmux save-buffer - | pbcopy'
+alias bundle='nocorrect bundle'
+alias tmux='tmux -2'
+alias ocaml='rlwrap ocaml'
+alias javac="javac -J-Dfile.encoding=UTF8"
+alias gulp="gulp --require coffee-script"
 
 case ${OSTYPE} in
   darwin*)
@@ -63,30 +74,11 @@ case ${OSTYPE} in
     [[ -n "$TMUX" ]] && alias pbcopy="reattach-to-user-namespace pbcopy"
     ;;
   linux*)
-    alias vi=vim
-    alias tmux='tmux -2'
     alias open='gnome-open'
     alias pbcopy='xsel -i --clipboard'
     alias pbpaste='xsel --clipboard'
     [[ -x gnome-open ]] && alias open='gnome-open'
 esac
-
-alias tmux-copy='tmux save-buffer - | pbcopy'
-
-alias bundle='nocorrect bundle'
-alias tmux='tmux -2'
-alias ocaml='rlwrap ocaml'
-alias javac="javac -J-Dfile.encoding=UTF8"
-alias vi='vim'
-alias gvimr="gvim --remote-tab-silent"
-alias gulp="gulp --require coffee-script"
-
-function local-bundle {
-  local GITROOT=$(git rev-parse --show-toplevel)
-  BUNDLE_GEMFILE=$GITROOT/Gemfile.local bundle $*
-}
-
-autoload -U compinit && compinit
 
 function pause_guard {
   ps aux | grep -w 'bin/[g]uard' | awk '{print $2}' | xargs kill -USR1
@@ -104,28 +96,14 @@ function gi {
   curl http://www.gitignore.io/api/$@ ;
 }
 
-compdef mosh=ssh
-
-# powerline
-# . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-#. $HOME/dotfiles/powerline_setting.sh
-
 [[ -z $DOTFILES_ZSHENV ]] && source .zshenv
 # move env_path to head
 export PATH=$ENV_PATH:$PATH
 typeset -U PATH
 
-
-autoload -U compinit
-compinit -u
-
-
 [ -f ~/.zshrc.opam ] && source ~/.zshrc.opam
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.z_jump/z.sh ] && source ~/.z_jump/z.sh
-# added by travis gem
-[ -f /Users/tomoya/.travis/travis.sh ] && source /Users/tomoya/.travis/travis.sh
-
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+[ -f ~/.zshrc_local ] && source ~/.zshrc_local
 
 # vim: filetype=zsh :
