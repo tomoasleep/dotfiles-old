@@ -79,7 +79,14 @@ NeoBundle "Shougo/vinarise"
 "" http://ctrlpvim.github.com/ctrlp.vim
 NeoBundle "ctrlpvim/ctrlp.vim"
 let g:ctrlp_extensions = ['locate', 'outline']
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.aux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.aux,*/node_modules/*
+
+NeoBundle 'nixprime/cpsm', {
+\ 'build' : {
+\     'unix' : './install.sh',
+\    },
+\ }
+let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 
 "" NeoBundle "tyru/open-browser.vim"
 "" NeoBundle "mattn/webapi-vim"

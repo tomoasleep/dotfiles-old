@@ -143,7 +143,10 @@ augroup markdown_ft
 augroup END
 
 "" jsx
-NeoBundle "jsx/jsx.vim"
+"" NeoBundle "jsx/jsx.vim"
+
+"" React jsx
+NeoBundle "mxw/vim-jsx"
 
 "" Terraform
 NeoBundle 'hashivim/vim-terraform'
@@ -181,9 +184,9 @@ let g:syntastic_ghdl_workdir = 'lib'
 
 " ocaml
 let g:syntastic_ocaml_use_ocamlbuild = 1
-let g:syntastic_ocaml_checkers = ['merlin'] 
+"" let g:syntastic_ocaml_checkers = ['merlin'] 
 NeoBundle 'def-lkb/vimbufsync'
-NeoBundle 'the-lambda-church/merlin', {'rtp': 'vim/merlin'}
+"" NeoBundleLazy 'the-lambda-church/merlin', {'rtp': 'vim/merlin', 'autoload': {'filetypes': ['ocaml']}}
 NeoBundle 'OCamlPro/ocp-indent', {'name': 'tools/ocp-indent.vim', 'script_type': 'plugin'}
 
 " emmet
