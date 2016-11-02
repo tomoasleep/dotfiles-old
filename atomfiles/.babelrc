@@ -1,0 +1,7 @@
+{
+  "breakConfig": true,
+  "blacklist": ["es6.forOf", "useStrict"],
+  "optional": ["asyncToGenerator"],
+  "sourceMap": "inline",
+  "stage": 0
+}

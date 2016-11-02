@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "object-curly-spacing": ["error", "always"],
+    "max-len": ["off"]
+  },
+  "eslintConfig": {
+    "env": {
+      "atomtest": true,
+      "browser": true,
+      "node": true,
+      "es6": true
+    }
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}
