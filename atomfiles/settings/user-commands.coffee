@@ -48,6 +48,13 @@ atom.commands.add 'atom-text-editor',
       for k, v of mapping
         editor.scan(new RegExp(k, 'g'), ({ replace }) -> replace(v))
 
+atom.commands.add 'atom-text-editor',
+  'user:close-notifications', ->
+    notifications = atom.notifications.getNotifications()
+    for notification in notifications
+      if notification.isDismissable() and not notification.isDismissed()
+        notification.dismiss()
+
 atom.commands.add 'atom-workspace', 'user:focus-active-editor', (event) ->
   workspace = @getModel()
   textEditor = workspace.getActiveTextEditor()
@@ -78,3 +85,10 @@ atom.commands.add 'atom-text-editor', 'user:find-previous', (event) ->
 atom.commands.add 'atom-text-editor', 'user:use-selection-as-find-pattern', (event) ->
   atom.commands.dispatch(this, 'find-and-replace:use-selection-as-find-pattern')
   atom.commands.dispatch(this, 'user:focus-active-editor')
+
+atom.commands.add 'atom-workspace', 'user:edit-setting-scripts', (event) ->
+  path = require 'path'
+  atom.open(pathsToOpen: path.resolve(__dirname, '../'))
+
+atom.commands.add 'atom-workspace', 'user:fail-promise', (event) ->
+  Promise.reject(Error("hoge"))

@@ -22,10 +22,14 @@
   't n': 'pane:show-next-item'
   't p': 'pane:show-previous-item'
   'ctrl-w t': 'tree-view:toggle-focus'
+  'ctrl-w b': 'user:toggle-tab-bar'
+  'ctrl-q n': 'user:close-notifications'
   'cmd-shift-v': 'user:vim-command:toggle'
   '/': 'find-and-replace:show'
   'n': 'user:find-next'
   'N': 'user:find-previous'
+  'ctrl-j': 'multi-cursor:expandDown'
+  'ctrl-k': 'multi-cursor:expandUp'
 
 'atom-text-editor.vim-mode.insert-mode':
   'ctrl-h': 'core:backspace'
