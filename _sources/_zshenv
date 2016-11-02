@@ -1,38 +1,4 @@
 [[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv"
 
-export DOTFILES_ZSHENV=true
-
-export EDITOR=vim
-export VISUAL=vim
-
-## android
-export PATH=/opt/android-sdk/tools/:$PATH
-export PATH=/opt/android-sdk/platform-tools/:$PATH
-
-## anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-[[ -d $HOME/.anyenv ]] && eval "$(anyenv init -)"
-
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH=$PATH:/opt/bin
-export PATH=$PATH:~/.cabal/bin
-export PATH=$PATH:$HOME/.go/bin
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-export GOPATH=$HOME/.go
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
-
-case ${OSTYPE} in
-  darwin*)
-    export ATOM_PATH=$HOME/Applications
-    export PATH=/Library/TeX/texbin:$PATH
-    ;;
-  linux*)
-    export PATH=/usr/texbin:$PATH
-esac
-
-[[ -x opam ]] && eval $(opam config env)
-
-# restore PATH
-[[ -z $ENV_PATH ]] && export ENV_PATH=$PATH
 
 # vim: set filetype=zsh :

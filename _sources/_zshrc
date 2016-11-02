@@ -1,5 +1,32 @@
 [[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshrc" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshrc"
 
+export EDITOR=vim
+export VISUAL=vim
+
+## android
+export PATH=/opt/android-sdk/tools/:$PATH
+export PATH=/opt/android-sdk/platform-tools/:$PATH
+
+## anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+[[ -d $HOME/.anyenv ]] && eval "$(anyenv init -)"
+
+export PATH=$PATH:/opt/bin
+export PATH=$PATH:~/.cabal/bin
+export PATH=$PATH:$HOME/.go/bin
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export GOPATH=$HOME/.go
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
+
+case ${OSTYPE} in
+  darwin*)
+    export ATOM_PATH=$HOME/Applications
+    export PATH=/Library/TeX/texbin:$PATH
+    ;;
+  linux*)
+    export PATH=/usr/texbin:$PATH
+esac
+
 autoload -U compinit && compinit
 compdef mosh=ssh
 autoload -U compinit
@@ -42,6 +69,8 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 # 関数
 find-grep () { find . -type f -print | xargs grep -n --binary-files=without-match $@ }
 
+expand-alias () { (alias $1 || echo $1) | sed -e "s/^$1=//" | xargs echo }
+
 # alias ls="ls -Gp --color=auto"
 alias gls="gls --color"
 alias where="command -v"
@@ -66,6 +95,7 @@ alias tmux='tmux -2'
 alias ocaml='rlwrap ocaml'
 alias javac="javac -J-Dfile.encoding=UTF8"
 alias gulp="gulp --require coffee-script"
+alias be="bundle exec"
 
 case ${OSTYPE} in
   darwin*)
@@ -79,6 +109,10 @@ case ${OSTYPE} in
     alias pbpaste='xsel --clipboard'
     [[ -x gnome-open ]] && alias open='gnome-open'
 esac
+
+function npmbin {
+  [ $# -ne 0 ] && $(npm bin)/$*
+}
 
 function pause_guard {
   ps aux | grep -w 'bin/[g]uard' | awk '{print $2}' | xargs kill -USR1
@@ -96,14 +130,44 @@ function gi {
   curl http://www.gitignore.io/api/$@ ;
 }
 
-[[ -z $DOTFILES_ZSHENV ]] && source .zshenv
-# move env_path to head
-export PATH=$ENV_PATH:$PATH
-typeset -U PATH
+_load_functions() {
+  for file in $(find $HOME/dotfiles/zsh/functions -maxdepth 1 -type f); do
+    source $file
+  done
+}
+[ -d $HOME/dotfiles/zsh/functions ] && _load_functions
 
-[ -f ~/.zshrc.opam ] && source ~/.zshrc.opam
+# fshow - git commit browser
+fshow() {
+  local out sha q
+  while out=$(
+      git log --graph --color=always \
+          --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+      fzf --ansi --multi --no-sort --reverse --query="$q" --print-query); do
+    q=$(head -1 <<< "$out")
+    while read sha; do
+      git show --color=always $sha | less -R
+    done < <(sed '1d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
+  done
+}
+
+# $DOTFILES_ZSHENV || source .zshenv
+# move env_path to head
+# [ -z $ENV_PATH ] || export PATH=$ENV_PATH:$PATH
+# typeset -U PATH
+#
+#
+## anyenv
+export PATH=$HOME/.anyenv/bin:$PATH
+[[ -d $HOME/.anyenv ]] && eval "$(anyenv init -)"
+export PATH=$HOME/.anyenv/envs/ndenv/shims:$PATH
+export PATH=./node_modules/.bin:$PATH
+
+[ -x $(which opam) ] && eval $(opam config env)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.z_jump/z.sh ] && source ~/.z_jump/z.sh
 [ -f ~/.zshrc_local ] && source ~/.zshrc_local
 
+eval "$(hub alias -s)"
+[[ -e "${HOME}/.iterm2_shell_integration.zsh" ]] && source "${HOME}/.iterm2_shell_integration.zsh"
 # vim: filetype=zsh :
