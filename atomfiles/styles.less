@@ -9,7 +9,7 @@
  */
 
 @tab-width-mini: 100px;
-@tab-width: 100px;
+@tab-width: 70px;
 @tab-width-hover: 200px;
 
 .tree-view {
@@ -27,6 +27,7 @@
 atom-pane.pane {
     -webkit-flex-direction: row;
     -webkit-flex-wrap: wrap;
+
     &:before {
         content: 'Open Files';
         color: #787878;
@@ -36,18 +37,18 @@ atom-pane.pane {
         top: 0;
         left: 0;
     }
+
     .item-views {
         box-shadow: -1px 0 0 0 rgba(0,0,0,.5)
     }
-}
 
-atom-pane.pane {
     .tab-bar {
         width: @tab-width-mini;
         &:hover {
             width: @tab-width-hover;
         }
     }
+
     &.active {
         .tab-bar {
             width: @tab-width;
@@ -56,7 +57,14 @@ atom-pane.pane {
             }
         }
     }
+
+    &:not(.active) {
+        .tab-bar {
+            display: none;
+        }
+    }
 }
+
 .tab-bar {
     height: auto;
     overflow-x: hidden;
@@ -110,8 +118,15 @@ atom-pane.pane {
             box-shadow: 0 0 6px 0 #000;
         }
         .title {
+            line-height: 250%;
+            margin-left: 1px;
+            margin-right: 1px;
             padding-right: 2px;
             padding-left: 2px;
+            &:not(:hover) {
+              text-align: left;
+              padding-left: 5px;
+            }
         }
         .close-icon {
             left: 10px;
@@ -144,5 +159,19 @@ atom-text-editor::shadow {
   .current-result .region {
     background-color: @background-color-highlight;
     opacity: 0.6;
+  }
+}
+
+atom-text-editor::shadow {
+  .ide-flow-error {
+    background-color: rgba(255, 0, 0, 0.2);
+    z-index: 3;
+  }
+
+  .highlight {
+    &.ide-flow-error .region {
+      background: none;
+      z-index: 3;
+    }
   }
 }
