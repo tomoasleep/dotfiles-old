@@ -94,6 +94,9 @@ nnoremap tt :<C-u>tabnew<CR>
 nnoremap tn :<C-u>tabnext<CR>
 nnoremap tp :<C-u>tabprevious<CR>
 
+nnoremap <C-q>n :<C-u>cnext<CR>
+nnoremap <C-q>p :<C-u>cprevious<CR>
+
 nnoremap <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-c><C-c> :<C-u>nohlsearch<CR>
 

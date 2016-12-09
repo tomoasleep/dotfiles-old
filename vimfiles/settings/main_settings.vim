@@ -30,6 +30,7 @@ endif
 
 
 " vim-scripts リポジトリ (1)
+NeoBundle "mattn/vim-usa_president_2016"
 NeoBundle "tpope/vim-fugitive"
 NeoBundle "The-NERD-tree"
 NeoBundle "endwise.vim"
@@ -69,8 +70,6 @@ let g:open_atom_unix_options='-n'
 "" let g:EditorConfig_core_mode="python_external"
 "" NeoBundle "editorconfig/editorconfig-vim"
 
-"" let g:syntastic_auto_loc_list = 1
-
 "" NeoBundle "kana/vim-smartchr"
 NeoBundle "Shougo/vinarise"
 "" NeoBundle "gregsexton/gitv"
@@ -86,7 +85,7 @@ NeoBundle 'nixprime/cpsm', {
 \     'unix' : './install.sh',
 \    },
 \ }
-let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 
 "" NeoBundle "tyru/open-browser.vim"
 "" NeoBundle "mattn/webapi-vim"
@@ -95,9 +94,9 @@ let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 "" NeoBundle "basyura/bitly.vim"
 "" NeoBundle "basyura/TweetVim"
 NeoBundle "rbtnn/vimconsole.vim"
-NeoBundle 'sjl/gundo.vim'
+"" NeoBundle 'sjl/gundo.vim'
 NeoBundle 'airblade/vim-rooter'
-NeoBundle 'mattn/googletranslate-vim'
+:: NeoBundle 'mattn/googletranslate-vim'
 "" NeoBundle 'tpope/vim-unimpaired'
 
 " NeoBundle 'Shougo/context_filetype.vim'
@@ -130,10 +129,10 @@ NeoBundle 'airblade/vim-gitgutter', {
       \ }
 
 "" make benchmark result of your vimrc http://mattn.kaoriya.net/
-NeoBundle 'mattn/benchvimrc-vim'
+"" NeoBundle 'mattn/benchvimrc-vim'
 
 "" measure laptime
-NeoBundle 'LeafCage/laptime.vim'
+": NeoBundle 'LeafCage/laptime.vim'
 
 "" Perform the replacement in quickfix.
 "" NeoBundle 'thinca/vim-qfreplace'
@@ -148,12 +147,7 @@ let g:gitgutter_eager=0
 runtime! settings/map_settings.vim
 
 " for development
-let filelist = split(expand("~/.vim/dev/bundle/*"), "\n")
-for fname in filelist
-  if isdirectory(fname)
-    NeoBundleLocal fname
-  endif
-endfor
+call neobundle#local(expand("~/.vim/dev/bundle/"))
 
 call neobundle#end()
 
@@ -175,7 +169,6 @@ for e in keys(g:MyStartUpFunc)
 endfor
 unlet g:MyStartUpFunc
 
-
 "" set runtimepath+=/path/to/vimdoc-ja
 set helplang=ja,en
 set updatetime=400
@@ -190,12 +183,6 @@ set autoread
 if has("win32") || has("win64")
   badd C:/Users/tomoya/dotfiles/_vimrc
 endif
-
-"" syntastic
-"let g:syntastic_mode_map = { 'mode': 'passive',
-"            \ 'active_filetypes': ['C', 'VHDL'] }
-"let g:syntastic_ruby_checkers = ['rubocop']
-"let g:syntastic_quiet_warnings = 0
 
 if has('kaoriya')
   let s:ruby_libruby = system('ruby -rrbconfig -e "print Config::CONFIG[\"libdir\"] + \"/\" + Config::CONFIG[\"LIBRUBY\"]"')

@@ -31,6 +31,31 @@
   'ctrl-j': 'multi-cursor:expandDown'
   'ctrl-k': 'multi-cursor:expandUp'
 
+'.platform-darwin':
+  'cmd-g': 'advanced-open-file:toggle'
+  'cmd-F': 'project-find:show'
+  'cmd-f': 'find-and-replace:show'
+  'cmd-alt-f': 'find-and-replace:show-replace'
+
+'.platform-darwin .find-and-replace':
+  'shift-enter': 'find-and-replace:show-previous'
+  'cmd-enter': 'find-and-replace:confirm'
+  'alt-enter': 'find-and-replace:find-all'
+  'cmd-alt-/': 'find-and-replace:toggle-regex-option'
+  'cmd-alt-c': 'find-and-replace:toggle-case-option'
+  'cmd-alt-s': 'find-and-replace:toggle-selection-option'
+  'cmd-alt-w': 'find-and-replace:toggle-whole-word-option'
+
+'.platform-darwin .project-find':
+  'cmd-enter': 'project-find:confirm'
+  'cmd-alt-/': 'project-find:toggle-regex-option'
+  'cmd-alt-c': 'project-find:toggle-case-option'
+  'cmd-alt-w': 'project-find:toggle-whole-word-option'
+
+'.find-and-replace, .project-find, .project-find .results-view':
+  'tab': 'find-and-replace:focus-next'
+  'shift-tab': 'find-and-replace:focus-previous'
+
 'atom-text-editor.vim-mode.insert-mode':
   'ctrl-h': 'core:backspace'
 
@@ -56,6 +81,16 @@
   'ctrl-p': 'core:move-up'
   'tab': 'core:move-down' # Tab, Shift-Tabで順送り逆送りしたい
   'shift-tab': 'core:move-up'
+  'ctrl-w': 'user:delete-to-slash'
+
+'.advanced-open-file atom-text-editor':
+  'escape': 'core:cancel'
+  'ctrl-c': 'core:cancel' # Vimっぽくキャンセルしたい
+  'ctrl-[': 'core:cancel'
+  'ctrl-k': 'advanced-open-file:move-cursor-up'
+  'ctrl-j': 'advanced-open-file:move-cursor-down'
+  # 'tab': 'core:move-down' # Tab, Shift-Tabで順送り逆送りしたい
+  # 'shift-tab': 'core:move-up'
   'ctrl-w': 'user:delete-to-slash'
 
 '.find-and-replace, .project-find':

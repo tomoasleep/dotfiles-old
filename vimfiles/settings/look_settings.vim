@@ -14,7 +14,8 @@ NeoBundle 'mhinz/vim-startify'
 let g:startify_custom_header = readfile($HOME . '/.vim/custom_header')
 
 "" airline
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 
 "" look utils

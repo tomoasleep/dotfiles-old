@@ -2,3 +2,4 @@
 
 
 # vim: set filetype=zsh :
+export DYLD_LIBRARY_PATH=/Users/tomoya/.opam/4.03.0/lib:/Users/tomoya/.opam/4.03.0/lib:/Users/tomoya/.opam/4.03.0/lib/lib:/Users/tomoya/.opam/4.03.0/lib/lib:/Users/tomoya/.opam/4.03.0/lib/stublibs:

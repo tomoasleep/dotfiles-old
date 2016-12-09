@@ -5,12 +5,14 @@ let g:syntastic_mode_map = { "mode": "passive",
                            \ "passive_filetypes": ["coffee"] }
 let g:syntastic_check_on_open = 1
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_loc_list_height = 5
 
 "" ruby
 "" NeoBundleLazy "tpope/vim-rvm", {'autoload': {'filetypes': ['ruby']}}
 "" NeoBundleLazy "tpope/vim-rails", {'autoload': {'filetypes': ['ruby']}}
-call add(g:syntastic_mode_map.active_filetypes, 'ruby')
-let g:syntastic_ruby_checkers = ['rubocop']
+"" call add(g:syntastic_mode_map.active_filetypes, 'ruby')
+"" let g:syntastic_ruby_checkers = ['rubocop']
 
 """ highlight local variables
 "" NeoBundleLazy "todesking/ruby_hl_lvar.vim", {'autoload': {'filetypes': ['ruby']}}
@@ -97,6 +99,8 @@ NeoBundleLazy 'briancollins/vim-jst', {'autoload': {'filetypes': ['javascript']}
 NeoBundleLazy "kchmck/vim-coffee-script", {'autoload': {'filetypes': ['coffee']}}
 NeoBundle 'mtscout6/vim-cjsx'
 NeoBundle 'isRuslan/vim-es6'
+call add(g:syntastic_mode_map.active_filetypes, 'javascript')
+let g:syntastic_javascript_checkers = ['eslint', 'flow']
 
 augroup js_settings
   autocmd! js_settings
